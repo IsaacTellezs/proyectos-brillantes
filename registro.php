@@ -48,7 +48,7 @@ Header
                                 <h3 class="text-white mb-3 d-flex justify-content-center">Registrate</h3>
 
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
@@ -60,7 +60,14 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="Apellidos" required>
+                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="Apellido materno" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
+
+                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="Apellido materno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-12">
@@ -73,9 +80,17 @@ Header
 
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-book"></i></span>
+
+                                            <input type="text" name="job-title" id="job-title" class="form-control" placeholder="Área de experiencia" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-phone"></i></span>
 
-                                            <input type="phone" name="job-title" id="job-title" class="form-control" placeholder="Telefono" required>
+                                            <input type="tel" name="job-title" id="job-title" class="form-control" placeholder="Telefono" required>
                                         </div>
                                     </div>
 
