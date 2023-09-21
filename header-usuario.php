@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="index.php">
                     <img src="images/Logo simple.svg" class="img-fluid logo-image">
-
 
                     <div class="d-flex flex-column">
                         <strong class="logo-text">Proyectos </strong>
@@ -43,26 +43,22 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.php">Contacto</a>
+                            <a class="nav-link" href="about.php">Proyectos</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Registrate</a>
-
-                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="registro.php">Registrate como creador</a></li>
-
-                                <li><a class="dropdown-item" href="registroInversionista.php">Registrate como inversionista</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.php">Centro de control</a>
                         </li>
 
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle custom-btn btn" href="#">Iniciar Sesion</a>
+                            <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="login.php">Inicia como creador</a></li>
+                                <li><a class="dropdown-item" href="index.php">Inicio</a></li>
 
-                                <li><a class="dropdown-item" href="login-inversionista.php">Inicia como inversionista</a></li>
+                                <li><a class="dropdown-item" href="perfil.php">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="funciones/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>

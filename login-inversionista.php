@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Login</title>
+        <title>Login inversionista</title>
 
         <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
                        
 
                         <div class="col-lg-6 col-12 ">
-                            <form class="custom-form hero-form" action="funciones/iniciar-sesion.php" method="post" role="form">
+                        <form class="custom-form hero-form" action="funciones/iniciar-sesion-inversionista.php" method="post" role="form">
                                 <h3 class="text-white mb-3 d-flex justify-content-center">Iniciar sesión</h3>
                                   <!-- Mensaje de error -->
                                 <?php

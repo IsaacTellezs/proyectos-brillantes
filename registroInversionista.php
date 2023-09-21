@@ -41,7 +41,7 @@
                        
 
                         <div class="col-lg-6 col-12">
-                            <form class="custom-form hero-form" action="#" method="get" role="form">
+                        <form class="custom-form hero-form" action="funciones/registro-inversionista.php" method="POST" role="form">
                                 <h3 class="text-white mb-3 d-flex justify-content-center">Registrate</h3>
 
                                 <div class="row">
@@ -49,7 +49,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="job-title" id="job-title" class="form-control" placeholder="Nombre" required>
+                                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
                                         </div>
                                     </div>
 
@@ -57,21 +57,28 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="Apellido paterno" required>
+                                            <input type="text" name="A_paterno" id="A_paterno" class="form-control" placeholder="Apellido materno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="Apellido materno" required>
+                                            <input type="text" name="A_materno" id="A_materno" class="form-control" placeholder="Apellido materno" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
+
+                                            <input type="text" name="Nom_usuario" id="Nom_usuario" class="form-control" placeholder="Nombre de usuario" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope"></i></span>
 
-                                            <input type="email" name="job-title" id="job-title" class="form-control" placeholder="Email" required>
+                                            <input type="email" name="Correo" id="Correo" class="form-control" placeholder="Email" required>
                                         </div>
                                     </div>
 
@@ -79,7 +86,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-building"></i></span>
 
-                                            <input type="text" name="job-title" id="job-title" class="form-control" placeholder="Empresa" required>
+                                            <input type="text" name="Empresa" id="Empresa" class="form-control" placeholder="Empresa" required>
                                         </div>
                                     </div>
 
@@ -87,7 +94,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-phone"></i></span>
 
-                                            <input type="phone" name="job-title" id="job-title" class="form-control" placeholder="Telefono" required>
+                                            <input type="tel" name="Tel" id="Tel" class="form-control" placeholder="Telefono" required>
                                         </div>
                                     </div>
 
@@ -95,7 +102,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
 
-                                            <input type="password" name="job-location" id="job-location" class="form-control" placeholder="Contraseña" required>
+                                            <input type="password" name="Contraseña" id="Contraseña" class="form-control" placeholder="Contraseña" required>
                                         </div>
                                     </div>
 
@@ -137,3 +144,4 @@
 
     </body>
 </html>
+

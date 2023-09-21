@@ -1,3 +1,7 @@
+<?php
+   session_start();
+   ?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -30,9 +34,17 @@
     </head>
     
        <!-- Header -->
-    <?php
-     include 'header.php';
-     ?>
+       <?php
+   
+    // Comprueba si el usuario ha iniciado sesión
+    if (isset($_SESSION['Correo'])) {
+        // Header para usuarios que han iniciado sesión
+        include 'header-usuario.php';
+    } else {
+        // Header para usuarios que aún no han iniciado sesión
+        include 'header.php';
+    }
+    ?>
 
     <body>
 
