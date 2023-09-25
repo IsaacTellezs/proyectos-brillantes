@@ -66,6 +66,7 @@
                                             <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
 
                                             <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña" required>
+                                            <i class="px-2 input-group-text toggle-password bi bi-eye" onclick="togglePassword()"></i>
                                         </div>
                                     </div>
 
@@ -96,6 +97,7 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/counter.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/scripteye.js"></script>
 
     </body>
 </html>

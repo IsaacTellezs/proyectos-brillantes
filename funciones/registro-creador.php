@@ -13,7 +13,7 @@ $A_materno = $_POST['A_materno'];
 $Nom_usuario = $_POST['Nom_usuario'];
 $Correo = $_POST['Correo'];
 $Tel = $_POST['Tel'];
-$Contraseña = password_hash($_POST['Contraseña'], PASSWORD_DEFAULT); //  Almacenamiento de contraseñas de forma segura
+$Contraseña = password_hash($_POST['txt-clave'], PASSWORD_DEFAULT); //  Almacenamiento de contraseñas de forma segura
 $Experiencia = $_POST['Experiencia'];   
 
 // Insertar datos en la base de datos

@@ -98,21 +98,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
 
-                                            <input type="password" name="Contraseña" id="Contraseña" class="form-control" placeholder="Contraseña" required>
+                                            <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña" required>
+                                            <i class="px-2 input-group-text toggle-password bi bi-eye" onclick="togglePassword()"></i>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
-
-                                            <input type="password" name="job-location" id="job-location" class="form-control" placeholder="Repite la contraseña" required>
-                                        </div>
-                                    </div>
 
                                     <div class="col-lg-12 col-12">
                                         <button type="submit" class="form-control">
@@ -141,6 +135,7 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/counter.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/scripteye.js"></script>
 
     </body>
 </html>
