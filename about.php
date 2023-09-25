@@ -50,98 +50,164 @@ session_start();
 
     <body class="about-page">
 
-        <main>
+       
+    <main>
 
-            <section class="about-section">
-                <div class="container">
-                    <div class="row justify-content-center align-items-center">
+<section class="about-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
 
-                        <div class="col-lg-5 col-12">
-                            <div class="about-info-text">
-                                <h2 class="mb-0">En "Proyectos Brillantes"</h2>
+            <div class="col-lg-5 col-12">
+                <div class="about-info-text">
+                    <h2 class="mb-0">En "Proyectos Brillantes"</h2>
 
-                                <h4 class="mb-2">Somos una plataforma de financiación colectiva apasionada por impulsar la innovación y hacer realidad las ideas más brillantes.</h4>
+                    <h4 class="mb-2">Somos una plataforma de financiación colectiva apasionada por impulsar la innovación y hacer realidad las ideas más brillantes.</h4>
 
-                                <p>Nuestra misión es conectar a personas con grandes ideas con una comunidad comprometida que comparte su entusiasmo por el cambio y la creatividad.</p>
+                    <p>Nuestra misión es conectar a personas con grandes ideas con una comunidad comprometida que comparte su entusiasmo por el cambio y la creatividad.</p>
 
-                                <div class="d-flex align-items-center mt-4">
-                                    <a href="#services-section" class="custom-btn custom-border-btn btn me-4">Explorar proyectos</a>
+                    <div class="d-flex align-items-center mt-4">
+                        <a href="#services-section" class="custom-btn custom-border-btn btn me-4">Explorar proyectos</a>
 
-                                    <a href="contact.html" class="custom-link smoothscroll">Contacto</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5 col-12 mt-5 mt-lg-0">
-                            <div class="about-image-wrap">
-                                <img src="images/horizontal-shot-happy-mixed-race-females.jpg" class="about-image about-image-border-radius img-fluid" alt="">
-
-                                <div class="about-info d-flex">
-                                    <h4 class="text-white mb-0 me-2">20</h4>
-
-                                    <p class="text-white mb-0">years of experience</p>
-                                </div>
-                            </div>
-                        </div>
-
+                        <a href="contact.html" class="custom-link smoothscroll">Contacto</a>
                     </div>
                 </div>
-            </section>
+            </div>
 
+            <div class="col-lg-5 col-12 mt-5 mt-lg-0">
+                <div class="about-image-wrap">
+                    <img src="images/about1.png" class="about-image about-image-border-radius img-fluid" alt="">
 
-            <section class="services-section section-padding" id="services-section">
-                <div class="container">
-                    <div class="row">
+                    <div class="about-info d-flex">
+                        
 
-                        <div class="col-lg-12 col-12 text-center">
-                            <h2 class="mb-5">Nuestra Plataforma de Financiación Colectiva</h2>
-                        </div>
-
-                        <div class="services-block-wrap col-lg-4 col-md-6 col-12">
-                            <div class="services-block">
-                                <div class="services-block-title-wrap">
-                                    <i class="services-block-icon  bi bi-suit-heart-fill"></i>
-                                
-                                    <h4 class="services-block-title">Lo que Nos Impulsa</h4>
-                                </div>
-
-                                <div class="services-block-body">
-                                    <p>En "Proyectos Brillantes", estamos impulsados por la creencia de que las ideas pueden cambiar el mundo.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="services-block-wrap col-lg-4 col-md-6 col-12 my-4 my-lg-0 my-md-0">
-                            <div class="services-block">
-                                <div class="services-block-title-wrap">
-                                    <i class="services-block-icon bi bi-globe2"></i>
-                                
-                                    <h4 class="services-block-title">Comunidad</h4>
-                                </div>
-
-                                <div class="services-block-body">
-                                    <p>Únete a "Proyectos Brillantes" y sé parte de una comunidad que valora la innovación, la pasión y el apoyo mutuo.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="services-block-wrap col-lg-4 col-md-6 col-12">
-                            <div class="services-block">
-                                <div class="services-block-title-wrap">
-                                    <i class="services-block-icon bi bi-emoji-laughing-fill"></i>
-                                
-                                    <h4 class="services-block-title">Audacia</h4>
-                                </div>
-
-                                <div class="services-block-body">
-                                    <p>Creemos en la audacia de pensar de manera diferente y en la importancia de dar a las personas la oportunidad de convertir sus conceptos en realidad. Nos enorgullece ser un motor de la creatividad y el cambio.</p>
-                                </div>
-                            </div>
-                        </div>
-
+                        <p class="text-white mb-0">Trabajando juntos</p>
                     </div>
                 </div>
-            </section>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="services-section section-padding" id="services-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+                <h2 class="mb-5">Nuestra Plataforma de Financiación Colectiva</h2>
+            </div>
+
+            <div class="services-block-wrap col-lg-4 col-md-6 col-12">
+                <div class="services-block">
+                    <div class="services-block-title-wrap">
+                        <i class="services-block-icon  bi bi-suit-heart-fill"></i>
+                    
+                        <h4 class="services-block-title">Lo que Nos Impulsa</h4>
+                    </div>
+
+                    <div class="services-block-body">
+                        <p>En "Proyectos Brillantes", estamos impulsados por la creencia de que las ideas pueden cambiar el mundo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-block-wrap col-lg-4 col-md-6 col-12 my-4 my-lg-0 my-md-0">
+                <div class="services-block">
+                    <div class="services-block-title-wrap">
+                        <i class="services-block-icon bi bi-globe2"></i>
+                    
+                        <h4 class="services-block-title">Comunidad</h4>
+                    </div>
+
+                    <div class="services-block-body">
+                        <p>Únete a "Proyectos Brillantes" y sé parte de una comunidad que valora la innovación, la pasión y el apoyo mutuo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-block-wrap col-lg-4 col-md-6 col-12">
+                <div class="services-block">
+                    <div class="services-block-title-wrap">
+                        <i class="services-block-icon bi bi-emoji-laughing-fill"></i>
+                    
+                        <h4 class="services-block-title">Audacia</h4>
+                    </div>
+
+                    <div class="services-block-body">
+                        <p>Creemos en la audacia de pensar de manera diferente y en la importancia de dar a las personas la oportunidad de convertir sus conceptos en realidad. Nos enorgullece ser un motor de la creatividad y el cambio.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="about-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-lg-5 col-12">
+                <div class="about-info-text">
+                    <h2 class="mb-0">Creadores</h2>
+
+                   
+
+                    <p>Los creadores dentro de "Proyectos Brillantes" tienen la oportunidad de ser seleccionados para poder realizar un proyecto propuesto por ellos
+    mismos con el proposito de crear un impacto innovador, dicha difucultad o area en la cual desenvolver dicho proyecto sera establecido por el mismo.
+
+Los creadores tendran dos propositos:</p>
+<p>🟠 Finalizar y poner en marcha dicho proyecto</p>    
+<p>🟠 Su donante/inversionita obtendra un beneficio establecido por un acuerdo mutuo entre ambas partes como: ser mencionado en el proyecto, servicio o producto gratis.</p>     
+
+                 
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-12 mt-5 mt-lg-0">
+                <div class="about-image-wrap">
+                    <img src="images/creador.png" class="about-image about-image-border-radius img-fluid" alt="">
+
+             
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<br>
+
+<section class="about-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-lg-5 col-12">
+                <div class="about-info-text">
+                    <h2 class="mb-0">Inversionistas</h2>
+
+                   
+
+                    <p>Los Inversionistas dentro de "Proyectos Brillantes" tendran la oportunidad de apoyar el talento 
+                        y la motivacion de los creadores ayudandolos mediante:</p>
+<p>🟠 Donaciones: donde no se esperara nada a cambio</p>    
+<p>🟠 Inversiones: donde obtendra una recompensa por el dinero invertido segun el acuerdo establecido entre ambas partes</p>     
+
+                 
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-12 mt-5 mt-lg-0">
+                <div class="about-image-wrap">
+                    <img src="images/inversionista.png" class="about-image about-image-border-radius img-fluid" alt="">
+
+             
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<br><br><br>
 
 <!-- 
             <section class="reviews-section section-padding">
@@ -296,6 +362,7 @@ session_start();
             </section>
 -->
 
+
 <section class="cta-section">
     <div class="section-overlay"></div>
 
@@ -305,14 +372,16 @@ session_start();
             <div class="col-lg-6 col-10">
                 <h2 class="text-white mb-2">Donde las Ideas se Hacen Realidad</h2>
 
-                <p class="text-white">¡Únete a nuestra comunidad de apasionados por la innovación! En "Proyectos Brillantes", estamos comprometidos en impulsar el potencial de mentes creativas y emprendedoras. Ayúdanos a convertir ideas en realidad.</p>
+                <p class="text-white">Tienes dudas a cerca de nuestras normas y políticas, consultalas.
+                    Tambien, puedes leer nuestro aviso de privacidad y como protegemos tus datos personales.
+                </p>
             </div>
 
             <div class="col-lg-4 col-12 ms-auto">
                 <div class="custom-border-btn-wrap d-flex align-items-center mt-lg-4 mt-2">
-                    <a href="#" class="custom-btn custom-border-btn btn me-4">Crea una cuenta</a>
+                    <a href="aviso de privacidad.php" class="custom-btn custom-border-btn btn me-4">Aviso de Privacidad</a>
 
-                    <a href="#" class="custom-link">Contacto</a>
+                    <a href="normas y politicas.php" class="custom-link">Normas y Políticas</a>
                 </div>
             </div>
 
