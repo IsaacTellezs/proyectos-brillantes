@@ -127,7 +127,7 @@ session_start();
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="educacion.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-book"></i>
                                 
                                     <small class="categories-block-title">Educacion</small>
@@ -139,7 +139,7 @@ session_start();
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="NegociosyEmprendimiento.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-fill "></i>
                                 
                                     <small class="categories-block-title">Negocios y Emprendimiento</small>
@@ -149,7 +149,7 @@ session_start();
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="GobiernoyServicios.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bank"></i>
                                 
                                     <small class="categories-block-title">Gobiero y Servicios Publicos</small>
@@ -161,7 +161,7 @@ session_start();
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="SocialySinFines.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-chat-square-text"></i>
                                 
                                     <small class="categories-block-title">Social y sin fines de Lucro</small>
@@ -173,7 +173,7 @@ session_start();
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="Salud.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-plus"></i>
                                 
                                     <small class="categories-block-title">Salud</small>
