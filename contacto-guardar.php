@@ -1,21 +1,22 @@
-
 <?php
  require 'php/conexion.php';
   
  
- $nombrecompleto  = $_POST['nombrecompleto'];
- $mensaje  = $_POST['mensaje'];
- $email = $_POST['email'];
+ $nombre  = $_POST['nombre'];
+
+ $motivo = $_POST['motivo'];
+
+ $email= $_POST['email'];
 
 
-$insertar = "INSERT INTO contacto VALUES ('','$nombrecompleto','$mensaje') ";
+$insertar = "INSERT INTO contacto VALUES ('','$nombre','$motivo','$email') ";
 
 $query = mysqli_query($conectar, $insertar);
 
 if($query){
 
    echo "<script> alert('correcto');
-    location.href = '#';
+    location.href = 'confirmacion-contacto.php';
    </script>";
 
 }else{
@@ -23,3 +24,4 @@ if($query){
     location.href = 'contact.php';
     </script>";
 }
+

@@ -75,14 +75,15 @@
          
         
             <div class="col-lg-8 col-12 mx-auto">
-                <form class="custom-form contact-form" action="funciones/confirmacion.php" method="post" role="form">
+        
+                <form method="POST" class="custom-form contact-form" action="contacto-guardar.php" >
                     <h2 class="text-center mb-4">¿Tienes un proyecto en mente o duda? Ponte en contacto con nosotros</h2>
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <label for="first-name">Nombre completo</label>
 
-                            <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Escribe tu nombre" required>
+                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Escribe tu nombre" required>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12">
@@ -92,14 +93,14 @@
                         </div>
 
                         <div class="col-lg-12 col-12">
-                            <label for="message">Mensaje</label>
+                            <label for="motivo">Mensaje</label>
 
-                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="¿En que puedo ayudarte?"></textarea>
+                            <textarea name="motivo" rows="6" class="form-control" id="motivo" placeholder="¿En que puedo ayudarte?"></textarea>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-6 mx-auto">
                             <button type="submit" class="form-control">Enviar mensaje</button>
-                            <a href="#">
+                            <a href="confirmacion-contacto.php">
                         </div>
                     </div>
                 </form>
@@ -134,7 +135,7 @@
     </div>
 </section>
 </main>
-            
+
               <!-- footer -->
     <?php
         include 'footer.php';
