@@ -60,7 +60,7 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="A_paterno" id="A_paterno" class="form-control" placeholder="Apellido materno" required>
+                                            <input type="text" name="A_paterno" id="A_paterno" class="form-control" placeholder="Apellido paterno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
