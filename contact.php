@@ -111,30 +111,7 @@
 </section>
 <br><br><br>
 
-<section class="cta-section">
-    <div class="section-overlay"></div>
 
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-6 col-10">
-                <h2 class="text-white mb-2">Donde las Ideas se Hacen Realidad</h2>
-
-                <p class="text-white">¡Únete a nuestra comunidad de apasionados por la innovación! En "Proyectos Brillantes", estamos comprometidos en impulsar el potencial de mentes creativas y emprendedoras. Ayúdanos a convertir ideas en realidad.</p>
-            </div>
-
-            <div class="col-lg-4 col-12 ms-auto">
-                <div class="custom-border-btn-wrap d-flex align-items-center mt-lg-4 mt-2">
-                    <a href="#" class="custom-btn custom-border-btn btn me-4">Crea una cuenta</a>
-
-                    <a href="#" class="custom-link">Contacto</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-</main>
 
               <!-- footer -->
     <?php
