@@ -1,5 +1,38 @@
 <?php
-session_start();
+include 'funciones/conex.php';
+include 'funciones/funciones.php';
+conectar();       
+session_start(); 
+
+if (isset($_SESSION['Correo'])) {
+    $correo = $_SESSION['Correo'];
+
+    // Realiza una consulta en la tabla 'usuarios' para buscar el correo electrónico
+    $consultaUsuarios = "SELECT * FROM desarrolladores WHERE Correo = '$correo'";
+    // Ejecuta la consulta en la base de datos y almacena el resultado en $resultadoUsuarios
+    $resultadoUsuarios = mysqli_query($conexion, $consultaUsuarios); // $conexion es la conexión a la base de datos
+
+    // Verifica si se encontraron filas en la tabla 'usuarios'
+    if (mysqli_num_rows($resultadoUsuarios) > 0) {
+        // El correo electrónico se encontró en la tabla 'usuarios'
+        $_SESSION['TipoUsuario'] = 'usuario';
+    } else {
+        // Si no se encontraron filas en la tabla 'usuarios', realiza la consulta en la tabla 'inversores'
+        $consultaInversores = "SELECT * FROM inversionistas WHERE Correo = '$correo'";
+        // Ejecuta la consulta en la base de datos y almacena el resultado en $resultadoInversores
+        $resultadoInversores = mysqli_query($conexion, $consultaInversores);
+
+        // Verifica si se encontraron filas en la tabla 'inversores'
+        if (mysqli_num_rows($resultadoInversores) > 0) {
+            // El correo electrónico se encontró en la tabla 'inversores'
+            $_SESSION['TipoUsuario'] = 'inversor';
+        } else {
+            // El correo electrónico no se encontró en ninguna tabla (maneja esto según tus necesidades)
+            $_SESSION['TipoUsuario'] = 'otro';
+        }
+    }
+}
+
 
 ?>
 
@@ -38,13 +71,22 @@ session_start();
     <?php
 
     // Comprueba si el usuario ha iniciado sesión
-    if (isset($_SESSION['Correo'])) {
-        // Header para usuarios que han iniciado sesión
+if (isset($_SESSION['Correo'])) {
+    // Verifica el tipo de usuario
+    if ($_SESSION['TipoUsuario'] == 'usuario') {
+        // Header para usuarios normales
         include 'header-usuario.php';
+    } elseif ($_SESSION['TipoUsuario'] == 'inversor') {
+        // Header para inversores
+        include 'header-inversor.php';
     } else {
-        // Header para usuarios que aún no han iniciado sesión
+        // Header por defecto para otros tipos de usuarios
         include 'header.php';
     }
+} else {
+    // Header para usuarios que aún no han iniciado sesión
+    include 'header.php';
+}
     ?>
     <body >
 
