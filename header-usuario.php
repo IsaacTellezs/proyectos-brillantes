@@ -43,7 +43,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Proyectos</a>
+                            <a class="nav-link" href="perfil-inversionista-proyectos.php">Proyectos</a>
                         </li>
 
                         <li class="nav-item">
