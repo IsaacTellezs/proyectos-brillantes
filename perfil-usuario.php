@@ -99,78 +99,92 @@ Bootstrap 5 HTML CSS Template
 
         <main>
 
-            <section class="hero-section d-flex justify-content-center align-items-center">
-                <div class="section-overlay"></div>
+        <main>
+    <header class="site-header">
+        <div class="section-overlay"></div>
 
-                <div class="container">
-                    <div class="row">
+        <div class="container">
+            <div class="row">
 
-                            <div class="row justify-content-center">
-                                <div class="col-lg-12 col-12">
-                                    <form class="custom-form hero-form" action="#" method="get" role="form">
-                                    <h2 class="text-center text-white mb-4">Perfil Usuario</h2>
-                                    <style>
-                                        .header {
-                                            text-align: center;
-                                            height: 300px;
-                                            padding: 12px;
-                                        }
-                                        .avatar {
-                                            float: left;
-                                            width: 230px;
-                                            height: 300px;
-                                        }
-                                        .socials {
-                                            list-style: none;
-                                            text-align: center;
-                                            padding: 0;
-                                        }
-                                        .icon {
-                                            width: 32px;
-                                            height: 32px;
-                                            display: inline-block;
-                                        }
-                                        .gmail {
-                                            background-image: url("images/gmail.png");
-                                        }
-                                        .facebook {
-                                            background-image: url("images/facebook.png");
-                                        }
-                                        .instagram {
-                                            background-image: url("images/instagram.png");
-                                        }
-                                    </style>
-
-                                    <div class="header">
-                                            <img 
-                                            class="avatar"
-                                            src="images/foto-perfil.jpg">
-                                            <p>Nombre: Alonso Ortega Francisco de Jesus</p>
-                                            <p>Correo Electrónico: FranciscoAlonso@gmail.com</p>
-                                            <p>Ubicación: México, México</p>
-                                            <p>Descripción: Soy un estudiante de arquitectura del TESI, me encuentro es segundo semestre, ya tengo mi ingles terminado y me encuentro cursando cursos intersemestrales.</p>
-                                            <ul class="socials"></ul>
-                                            <i class="icon gmail"></i>
-                                            <a href="https://mail.google.com/mail/u/2/?ogbl#inbox">FranciscoA@gmail.com</a>
-                                            <i class="icon facebook"></i>
-                                            <a href="https://www.facebook.com/profile.php?id=100051118726100">FranciscoAlonso</a>
-                                            <i class="icon instagram"></i>
-                                            <a href="https://www.instagram.com/cuaxho.ax/">FranAlonso</a>
-                                        </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                        </div>
-                                        <a type="submit" href="editar-perfil-usuario.html">Editar Perfil</a>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                            </form>
-                        
-
-                    </div>
+                <div class="col-lg-12 col-12 text-center">
+                    <h1 class="text-white">Mi perfil</h1>
                 </div>
-            </section>
+
+            </div>
+        </div>
+    </header>
+<p>.</p>
+<p>.</p>
+    <div style="text-align: center;">
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombreArchivo = $_FILES["imagen"]["name"];
+        $archivoTemporal = $_FILES["imagen"]["tmp_name"];
+        $carpetaDestino = "uploads/"; // Directorio donde se guardarán las imágenes
+
+        if (move_uploaded_file($archivoTemporal, $carpetaDestino . $nombreArchivo)) {
+            echo "<div style='margin: 0 auto; max-width: 600px;'>"; // Establece el ancho máximo y centra el contenido
+            echo "<img src='$carpetaDestino$nombreArchivo' alt='Imagen Cargada' style='max-width: 200px; float: left; margin-right: 20px;'>";
+            echo "</div>";
+        } else {
+            echo "<p>Hubo un problema al cargar la imagen.</p>";
+        }
+    }
+    ?>
+
+    <div style="display: inline-block; text-align: left; vertical-align: middle; width: 50%;">
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST["nombre"];
+            $correo_electronico = $_POST["email"];
+            $edad = $_POST["edad"];
+            $numero_telefonico = $_POST["numero_telefonico"];
+            $biografia = $_POST["biografia"];
+
+            echo "<p>Nombre: $nombre</p>";
+            echo "<p>Email: $correo_electronico</p>";
+            echo "<p>Edad: $edad</p>";
+            echo "<p>Numero: $numero_telefonico</p>";
+            echo "<p>Biografía: $biografia</p>";
+        }
+        ?>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+
+
+</main>
+
+
+            <section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+            </div>
+        </div>
+        <p>.</p>
+        <p>.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 text-center">
+                <a href="editar-perfil-usuario.html" class="badge" style="font-size: 26px; padding: 6px 10px;">Editar Perfil</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 
         </main>
 
