@@ -36,9 +36,14 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="registro.php">Creadores y Desarrolladores</a></li>
+                                <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
 
-                                <li><a class="dropdown-item" href="registroInversionista.php">Inversionistas y Donantes</a></li>
+                                <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y emprendimiento</a></li>
+
+                                <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobierno y servicios públicos</a></li>
+                                <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de lucro</a></li>
+                                <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
+
                             </ul>
                         </li>
 
@@ -47,7 +52,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Centro de control</a>
+                            <a class="nav-link" href="controlDesarrollador.php">Centro de control</a>
                         </li>
 
 
@@ -57,7 +62,7 @@
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="index.php">Inicio</a></li>
 
-                                <li><a class="dropdown-item" href="perfil.php">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="perfil-usuario.php">Mi perfil</a></li>
                                 <li><a class="dropdown-item" href="funciones/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>
