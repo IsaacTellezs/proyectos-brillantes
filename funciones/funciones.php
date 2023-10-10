@@ -106,5 +106,31 @@ function headerDinamico() {
     }
 }
 
+function obtenerIdDesarrollador($usuario) {
+    global $conexion;
+
+    $nombre_de_usuario = mysqli_real_escape_string($conexion, $usuario);
+
+    $query = "SELECT id_desarrollador FROM desarrolladores WHERE Correo = '$nombre_de_usuario'";
+    $result = $conexion->query($query);
+
+    // Verifica si la consulta fue exitosa
+    if (!$result) {
+        die("Error en la consulta: " . $conexion->error);
+    }
+
+    // Imprime la consulta para depuración
+    
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        return $row['id_desarrollador'];
+    } else {
+        // Si no se encontró el desarrollador, puedes manejar el caso según tus necesidades.
+        // Por ejemplo, podrías retornar un valor predeterminado o lanzar una excepción.
+        return null;
+    }
+}
+
 
     ?>

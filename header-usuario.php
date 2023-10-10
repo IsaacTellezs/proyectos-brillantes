@@ -52,7 +52,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="controlDesarrollador.php">Centro de control</a>
+                            <a class="nav-link" href="./desarrollador/index.php">Centro de control</a>
                         </li>
 
 
