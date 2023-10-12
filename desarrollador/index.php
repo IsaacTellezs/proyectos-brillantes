@@ -78,23 +78,7 @@ if (isset($_SESSION['user_id'])) {
 <body>
   <div class="container-scroller">
     <div >
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          <div class="ps-lg-1">
-            <div class="d-flex align-items-center justify-content-between">
-              <p class="mb-0 font-weight-medium me-3 buy-now-text"></p>
-              <a href="https://www.bootstrapdash.com/product/star-admin-pro/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
-            </div>
-          </div>
-          <div class="d-flex align-items-center justify-content-between">
-            <a href="https://www.bootstrapdash.com/product/star-admin-pro/"><i class="mdi mdi-home me-3 text-white"></i></a>
-            <button id="bannerClose" class="btn border-0 p-0">
-              <i class="mdi mdi-close text-white me-0"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+     
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -104,7 +88,7 @@ if (isset($_SESSION['user_id'])) {
           </button>
         </div>
         <div>
-          <a class="navbar-brand d-flex align-items-center" href="index.php">
+          <a class="navbar-brand d-flex align-items-center" href="../index.php">
            
 
 
@@ -419,17 +403,16 @@ if (isset($_SESSION['user_id'])) {
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Subir nuevo proyecto</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Mis proyectos</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item nav-category">Forms and Datas</li>
+          <li class="nav-item nav-category">Secciones generales</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-card-text-outline"></i>
-              <span class="menu-title">Form elements</span>
+              <span class="menu-title">Proyecto</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
@@ -441,7 +424,7 @@ if (isset($_SESSION['user_id'])) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Estadísticas</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="charts">
@@ -453,7 +436,7 @@ if (isset($_SESSION['user_id'])) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Colaboradores</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="tables">
@@ -465,7 +448,7 @@ if (isset($_SESSION['user_id'])) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
               <i class="menu-icon mdi mdi-layers-outline"></i>
-              <span class="menu-title">Icons</span>
+              <span class="menu-title">Inversionistas</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="icons">
@@ -603,11 +586,11 @@ if (isset($_SESSION['user_id'])) {
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
+                                    <h4 class="card-title card-title-dash">Colaboradores</h4>
                                    <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
                                   </div>
                                   <div>
-                                    <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add new member</button>
+                                    <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Añadir un nuevo miemro</button>
                                   </div>
                                 </div>
                                 <div class="table-responsive  mt-1">
@@ -620,7 +603,7 @@ if (isset($_SESSION['user_id'])) {
                                               <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
                                           </div>
                                         </th>
-                                        <th>Customer</th>
+                                        <th>Colaborador</th>
                                         <th>Company</th>
                                         <th>Progress</th>
                                         <th>Status</th>
@@ -803,7 +786,7 @@ if (isset($_SESSION['user_id'])) {
                           <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                             <div class="card card-rounded">
                               <div class="card-body card-rounded">
-                                <h4 class="card-title  card-title-dash">Recent Events</h4>
+                                <h4 class="card-title  card-title-dash">Eventos Recientes</h4>
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
@@ -871,7 +854,7 @@ if (isset($_SESSION['user_id'])) {
                             <div class="card card-rounded">
                               <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
-                                  <h4 class="card-title card-title-dash">Activities</h4>
+                                  <h4 class="card-title card-title-dash">Actividades</h4>
                                   <p class="mb-0">20 finished, 5 remaining</p>
                                 </div>
                                 <ul class="bullet-line-list">
@@ -938,7 +921,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="row">
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center">
-                                      <h4 class="card-title card-title-dash">Todo list</h4>
+                                      <h4 class="card-title card-title-dash">Lista de tareas</h4>
                                       <div class="add-items d-flex mb-0">
                                         <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
                                         <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p" onclick="addTask()"><i class="mdi mdi-plus"></i></button>
@@ -986,7 +969,7 @@ if (isset($_SESSION['user_id'])) {
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                       <div>
-                                        <h4 class="card-title card-title-dash">Leave Report</h4>
+                                        <h4 class="card-title card-title-dash">Reportes</h4>
                                       </div>
                                       <div>
                                         <div class="dropdown">
@@ -1015,7 +998,7 @@ if (isset($_SESSION['user_id'])) {
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                       <div>
-                                        <h4 class="card-title card-title-dash">Top Performer</h4>
+                                        <h4 class="card-title card-title-dash">Top colaboradores</h4>
                                       </div>
                                     </div>
                                     <div class="mt-3">
