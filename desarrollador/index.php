@@ -16,10 +16,10 @@ if (isset($_SESSION['Correo'])) {
         // Establecer la variable de sesión
         $_SESSION['user_id'] = $user_id;
 
-        // Resto del código...
-        echo "ID del desarrollador: $user_id";
+        
+        
     } else {
-        // Si no se encontró el desarrollador, puedes manejar el caso según tus necesidades.
+        // Si no se encontró el desarrollador
         // Por ejemplo, podrías redirigir al usuario a la página de inicio de sesión.
         echo "No se pudo obtener el ID del desarrollador.";
     }
@@ -571,29 +571,27 @@ if (isset($_SESSION['user_id'])) {
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Vista general</h4>
-                                   <p class="card-subtitle card-subtitle-dash">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                                    <h4 class="card-title card-title-dash">Avances</h4>
+                                   <p class="card-subtitle card-subtitle-dash">Evidencias del proyecto</p>
                                   </div>
                                   <div>
                                     <div class="dropdown">
                                       <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Este mes </button>
                                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                        <h6 class="dropdown-header">Settings</h6>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <h6 class="dropdown-header">Fecha</h6>
+                                        <a class="dropdown-item" href="#">Hace un mes</a>
+                                        <a class="dropdown-item" href="#">Hace 2 meses</a>
+                                        <a class="dropdown-item" href="#">Hace 3 meses</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>
+                                        <a class="dropdown-item" href="#">Ver más</a>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                  <div class="d-sm-flex align-items-center mt-4 justify-content-between"><h2 class="me-2 fw-bold">$36,2531.00</h2><h4 class="me-2">USD</h4><h4 class="text-success">(+1.37%)</h4></div>
-                                  <div class="me-3"><div id="marketing-overview-legend"></div></div>
-                                </div>
+                                
                                 <div class="chartjs-bar-wrapper mt-3">
-                                  <canvas id="marketingOverview"></canvas>
+                                    <img class="img-fluid " src="../images/2.png" alt="">
+                                    <p class="card-subtitle card-subtitle-dash">Descripción de la evidencia</p><h4 class="text-success">Fecha</h4>
                                 </div>
                               </div>
                             </div>
@@ -970,7 +968,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="row">
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <h4 class="card-title card-title-dash">Type By Amount</h4>
+                                      <h4 class="card-title card-title-dash">Inversionistas</h4>
                                     </div>
                                     <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
                                     <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
