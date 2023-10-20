@@ -28,18 +28,18 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Quienes Somos</a>
+                            <a class="nav-link" href="about_inversionista.php">Quienes Somos</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
-                            <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
-                            <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobiero y Servicios Publicos</a></li>
-                            <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de Lucro</a></li>
-                            <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
+                            <li><a class="dropdown-item" href="educacion_inversionista.php">Educación</a></li>
+                            <li><a class="dropdown-item" href="NegociosyEmprendimiento_inversionista.php">Negocios y Emprendimiento</a></li>
+                            <li><a class="dropdown-item" href="GobiernoyServicios_inversionista.php">Gobiero y Servicios Publicos</a></li>
+                            <li><a class="dropdown-item" href="SocialySinFines_inversionista.php">Social y sin fines de Lucro</a></li>
+                            <li><a class="dropdown-item" href="Salud_inversionista.php">Salud</a></li>
                             </ul>
                         </li>
 
@@ -48,7 +48,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Centro de control</a>
+                            <a class="nav-link" href="about_inversionista.php">Centro de control</a>
                         </li>
 
 

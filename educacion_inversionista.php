@@ -4,7 +4,7 @@ require 'funciones/conex.php';
 conectar();
 
 if (isset($_SESSION['Correo'])) {
-    include 'header-usuario.php';
+    include 'header-inversor.php';
 } else {
     include 'header.php';
 }
