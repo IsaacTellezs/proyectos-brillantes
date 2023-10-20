@@ -1,18 +1,15 @@
 <?php
-session_start(); // Asegúrate de que esta línea esté al principio del archivo
-
+session_start();
 require 'funciones/conex.php';
-// Comprueba si el usuario ha iniciado sesión
+conectar();
+
 if (isset($_SESSION['Correo'])) {
-    // Header para usuarios que han iniciado sesión
-    include 'header-usuario.php';
+    include 'header-inversor.php';
 } else {
-    // Header para usuarios que aún no han iniciado sesión
     include 'header.php';
 }
 
 ?>
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -44,12 +41,11 @@ if (isset($_SESSION['Correo'])) {
         <link href="css/index.css" rel="stylesheet">
 
     </head>
-
     <body >
 
         <main>
 
-            <section class="hero-section d-flex justify-content-center align-items-center">
+        <section class="hero-section d-flex justify-content-center align-items-center">
                 <div class="section-overlay"></div>
 
                 <div class="container">
@@ -61,7 +57,7 @@ if (isset($_SESSION['Correo'])) {
 
                                 <h1 class="hero-title text-white mt-4 mb-4">Plataforma de<br> financiacion colectiva</h1>
 
-                                <a href="#categories-section" class="custom-btn custom-border-btn btn">Ver proyectos</a>
+                                <a href="perfil-inversionista-proyectos.php" class="custom-btn custom-border-btn btn">Ver proyectos</a>
                             </div>
                         </div>
 
@@ -130,7 +126,7 @@ if (isset($_SESSION['Correo'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="educacion.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-book"></i>
                                 
                                     <small class="categories-block-title">Educacion</small>
@@ -142,7 +138,7 @@ if (isset($_SESSION['Correo'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="NegociosyEmprendimiento.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="Negocios" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-fill "></i>
                                 
                                     <small class="categories-block-title">Negocios y Emprendimiento</small>

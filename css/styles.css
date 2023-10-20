@@ -1,0 +1,13 @@
+/* styles.css */
+
+.image-container {
+    text-align: center; /* Para centrar la imagen horizontalmente */
+}
+
+#profile-image {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    display: block; /* Elimina el espacio adicional debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+/* Puedes agregar estilos adicionales para los datos del usuario según tus necesidades */

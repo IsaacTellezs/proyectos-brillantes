@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
 <header id="top">
     <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <a class="navbar-brand d-flex align-items-center" href="index_inversionista.php">
                     <img src="images/Logo simple.svg" class="img-fluid logo-image">
 
                     <div class="d-flex flex-column">
@@ -25,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-center ms-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Pagina Principal</a>
+                            <a class="nav-link" href="index_inversionista.php">Pagina Principal</a>
                         </li>
 
                         <li class="nav-item">
@@ -36,19 +35,16 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
-
-                                <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y emprendimiento</a></li>
-
-                                <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobierno y servicios públicos</a></li>
-                                <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de lucro</a></li>
-                                <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
-
+                            <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
+                            <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
+                            <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobiero y Servicios Publicos</a></li>
+                            <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de Lucro</a></li>
+                            <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Proyectos nuevos</a>
+                            <a class="nav-link" href="perfil-inversionista-proyectos.php">Proyectos nuevos</a>
                         </li>
 
                         <li class="nav-item">
@@ -60,9 +56,8 @@
                             <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="index.php">Inicio</a></li>
-
-                                <li><a class="dropdown-item" href="perfil-usuario.php">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="index_inversionista.php">Inicio</a></li>
+                                <li><a class="dropdown-item" href="perfil_inversionista.php">Mi perfil</a></li>
                                 <li><a class="dropdown-item" href="funciones/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>

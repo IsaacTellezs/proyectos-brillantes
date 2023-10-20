@@ -1,3 +1,15 @@
+<?php
+session_start();
+require 'funciones/conex.php';
+conectar();
+
+if (isset($_SESSION['Correo'])) {
+    include 'header-usuario.php';
+} else {
+    include 'header.php';
+}
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -26,40 +38,24 @@
 
         <link href="css/tooplate-gotto-job.css" rel="stylesheet">
         
-
-
     </head>
 
-    <?php
-
-    // Comprueba si el usuario ha iniciado sesión
-    if (isset($_SESSION['Correo'])) {
-        // Header para usuarios que han iniciado sesión
-        include 'header-usuario.php';
-    } else {
-        // Header para usuarios que aún no han iniciado sesión
-        include 'header.php';
-    }
-    ?>
-    
     <body class="Creador-y-desarrollador-page" id="top">
 
         <main>
 
-            <header class="site-header">
-                <div class="section-overlay"></div>
+            <header class="site-header py-5">
+    <div class="section-overlay"></div>
 
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="col-lg-12 col-12 text-center">
-                            <h1 class="text-white">Proyectos sociales y sin fines de lucro.</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Proyectos sociales y sin fines de lucro.</h1>
+            </div>
+        </div>
+    </div>
+</header>
 
-                        </div>
-
-                    </div>
-                </div>
-            </header>
 
             <section class="section-padding pb-0 d-flex justify-content-center align-items-center">
                 <div class="container">

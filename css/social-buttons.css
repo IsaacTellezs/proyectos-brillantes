@@ -1,0 +1,26 @@
+/* Estilos para los botones de redes sociales */
+.social-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999; /* Asegura que estén por encima del contenido */
+}
+
+.social-button {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #007bff; /* Color de fondo de los botones */
+    color: #fff; /* Color del icono */
+    border-radius: 50%; /* Hace que los botones sean circulares */
+    text-align: center;
+    line-height: 40px;
+    margin: 5px;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-size: 20px;
+}
+
+/* Estilos de los íconos de redes sociales (usando Bootstrap Icons) */
+.social-button i {
+    vertical-align: middle;
+}

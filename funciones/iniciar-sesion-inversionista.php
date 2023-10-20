@@ -12,7 +12,7 @@ $_SESSION['Correo'] = $usuario;
 if( validarLoginInversionista($usuario, $clave) ) {
 echo "valida";
 // Accedemos al sistema
-header('Location: ../index.php');
+header('Location: ../index_inversionista.php');
 exit(); 
 } 
 

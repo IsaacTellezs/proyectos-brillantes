@@ -1,3 +1,17 @@
+<?php
+session_start(); // Asegúrate de que esta línea esté al principio del archivo
+
+require 'funciones/conex.php';
+// Comprueba si el usuario ha iniciado sesión
+if (isset($_SESSION['Correo'])) {
+    // Header para usuarios que han iniciado sesión
+    include 'header-inversor.php';
+} else {
+    // Header para usuarios que aún no han iniciado sesión
+    include 'header.php';
+}
+
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -29,23 +43,15 @@
         <link href="css/estilos.css" rel="stylesheet">
 
     </head>
-    <?php
-    include 'header-usuario.php';
-    ?>
-
     
-<header class="site-header">
+    <header class="site-header py-5">
     <div class="section-overlay"></div>
 
     <div class="container">
         <div class="row">
-            
-            <div class="col-lg-12 col-12 text-center">
+            <div class="col-12 text-center">
                 <h1 class="text-white">Proyectos</h1>
-
-             
             </div>
-
         </div>
     </div>
 </header>
