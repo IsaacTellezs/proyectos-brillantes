@@ -57,48 +57,6 @@ if (isset($_SESSION['Correo'])) {
     </div>
 </header>
 
-            <section class="section-padding pb-0 d-flex justify-content-center align-items-center">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12">
-                            <form class="custom-form hero-form" action="#" method="get" role="form">
-                                <h3 class="text-white mb-3">Elije entre nuestros tipos de proyectos</h3>
-                                
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="bi-laptop custom-icon"></i></span>
-
-                                            <select class="form-select form-control" name="job-salary" id="job-salary" aria-label="Default select example">
-                                                <option selected>Tipo de proyecto.</option>
-                                                <option value="1">Aplicaciones educativas interactivas.</option>
-                                                <option value="2">Herramientas de automatización empresarial.</option>
-                                                <option value="3">Aplicaciones de sostenibilidad ambiental.</option>
-                                                <option value="4">Tecnologías financieras innovadoras.</option>
-                                                <option value="5">Videojuegos.</option> 
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <button type="submit" class="form-control">
-                                            Buscar proyectos
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <img src="images/4557388.png" class="hero-image img-fluid" alt="">
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
             <section class="job-section section-padding">
                 <div class="container">
                     <div class="row align-items-center">

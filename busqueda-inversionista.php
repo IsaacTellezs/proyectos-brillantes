@@ -15,28 +15,28 @@ if (isset($_GET['q'])) {
 
     // Verifica si la búsqueda corresponde a categorías específicas y redirige si es el caso
     if ($search === "salud") {
-        header("Location: salud.php");
+        header("Location: salud_inversionista.php");
         exit;
     } elseif ($search === "educacion") {
-        header("Location: educacion.php");
+        header("Location: educacion_inversionista.php");
         exit;
     } elseif ($search === "gobierno") {
-        header("Location: GobiernoyServicios.php");
+        header("Location: GobiernoyServicios_inversionista.php");
         exit;
     } elseif ($search === "servicios") {
-        header("Location: GobiernoyServicios.php");
+        header("Location: GobiernoyServicios_inversionista.php");
         exit;
     } elseif ($search === "negocios") {
-        header("Location: NegociosyEmprendimiento.php");
+        header("Location: NegociosyEmprendimiento_inversionista.php");
         exit;
     } elseif ($search === "emprendimiento") {
-        header("Location: NegociosyEmprendimiento.php");
+        header("Location: NegociosyEmprendimiento_inversionista.php");
         exit;
     } elseif ($search === "social") {
-        header("Location: SocialySinFines.php");
+        header("Location: SocialySinFines_inversionista.php");
         exit;
     } elseif ($search === "fines") {
-        header("Location: SocialySinFines.php");
+        header("Location: SocialySinFines_inversionista.php");
         exit;
     }
     

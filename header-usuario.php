@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<header id="top">
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
+    </head>
+<body>
+    <header id="top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img src="images/Logo simple.svg" class="img-fluid logo-image">
                 <div class="d-flex flex-column">
@@ -52,10 +53,8 @@
                             <li><a class="dropdown-item" href="funciones/logout.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
-                </ul>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
+</body>
 </html>
-

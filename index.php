@@ -247,7 +247,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
+                                        <a href="job-details.html" class="job-title-link">salud</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -293,7 +293,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
+                                        <a href="job-details.html" class="job-title-link">salud</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
