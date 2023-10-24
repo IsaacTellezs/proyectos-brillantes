@@ -44,10 +44,6 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="perfil-inversionista-proyectos.php">Proyectos nuevos</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link" href="about_inversionista.php">Centro de control</a>
                         </li>
 

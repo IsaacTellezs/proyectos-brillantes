@@ -34,23 +34,23 @@ if (isset($_FILES['Imagen'])) {
 
         if ($stmt->execute()) {
             // Éxito: los datos se han insertado correctamente en la base de datos
-
-            // Obtén la categoría seleccionada
-            $categoria = $_POST['Categorias'];
-
+        
+            // Guarda los datos en una sesión
+            $_SESSION['NuevoProyecto'] = $_POST;
+        
             // Redirige al usuario a la página de categoría correspondiente
-            if ($categoria === 'Educación') {
+            if ($Categorias === 'Educación') {
                 header('Location: educacion.php');
-            } elseif ($categoria === 'Negocios y emprendimiento') {
+            } elseif ($Categorias === 'Negocios y emprendimiento') {
                 header('Location: NegociosyEmprendimiento.php');
-            } elseif ($categoria === 'Gobierno y servicios públicos') {
+            } elseif ($Categorias === 'Gobierno y servicios públicos') {
                 header('Location: GobiernoyServicios.php');
-            } elseif ($categoria === 'Social y sin fines de lucro') {
+            } elseif ($Categorias === 'Social y sin fines de lucro') {
                 header('Location: SocialySinFines.php');
-            } elseif ($categoria === 'Salud') {
+            } elseif ($Categorias === 'Salud') {
                 header('Location: Salud.php');
             } // Agrega más categorías según sea necesario
-
+        
             exit();
         } else {
             // Error
@@ -59,9 +59,6 @@ if (isset($_FILES['Imagen'])) {
             exit();
         }
 
-        // Cerrar la conexión
-        $stmt->close();
-        $conexion->close();
     } else {
         // Si no se pudo mover la imagen, muestra un mensaje de error
         $errorRegistro = "Error al subir la imagen.";

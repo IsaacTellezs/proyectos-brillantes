@@ -8,6 +8,81 @@ if (isset($_SESSION['Correo'])) {
 } else {
     include 'header.php';
 }
+
+// Procesamiento del formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verificar si se ha enviado un archivo
+    if (isset($_FILES['Imagen'])) {
+        // Ruta de destino para guardar la imagen
+        $rutaDestino = 'uploads/' . $_FILES['Imagen']['name'];
+
+        // Mover el archivo al directorio de destino
+        if (move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaDestino)) {
+            // La imagen se ha cargado correctamente
+
+            // Recuperar datos del formulario
+            $Nombre_proyecto = $_POST['Nombre_proyecto'];
+            $Categorias = $_POST['Categorias'];
+            $Tipo_inversion = $_POST['Tipo_inversion'];
+            $Descripcion = $_POST['Descripcion'];
+
+            // Insertar datos en la base de datos
+            $sql = "INSERT INTO proyectos (Nombre_proyecto, Categorias, Tipo_inversion, Descripcion, Imagen) VALUES (?,?,?,?,?)";
+
+            // Preparar la sentencia
+            $stmt = $conexion->prepare($sql);
+
+            if (!$stmt) {
+                die("Error en la preparación de la consulta: " . $conexion->error);
+            }
+
+            // Vincular parámetros y ejecutar la consulta
+            $stmt->bind_param("sssss", $Nombre_proyecto, $Categorias, $Tipo_inversion, $Descripcion, $rutaDestino);
+
+            if ($stmt->execute()) {
+                // Éxito: los datos se han insertado correctamente en la base de datos
+
+                // Guarda los datos en una sesión
+                $_SESSION['NuevoProyecto'] = $_POST;
+                $_SESSION['NuevoProyecto']['Imagen'] = $rutaDestino;
+
+                // Redirige al usuario a la página de categoría correspondiente
+                if ($Categorias === 'Educación') {
+                    header('Location: educacion.php');
+                } elseif ($Categorias === 'Negocios y emprendimiento') {
+                    header('Location: NegociosyEmprendimiento.php');
+                } elseif ($Categorias === 'Gobierno y servicios públicos') {
+                    header('Location: GobiernoyServicios.php');
+                } elseif ($Categorias === 'Social y sin fines de lucro') {
+                    header('Location: SocialySinFines.php');
+                } elseif ($Categorias === 'Salud') {
+                    header('Location: Salud.php');
+                } // Agrega más categorías según sea necesario
+
+                exit();
+            } else {
+                // Error
+                $errorRegistro = "Error en el registro, intenta de nuevo.";
+                header('Location: perfil.php?error=' . urlencode($errorRegistro));
+                exit();
+            }
+        } else {
+            // Si no se pudo mover la imagen, muestra un mensaje de error
+            $errorRegistro = "Error al subir la imagen.";
+            header('Location: perfil.php?error=' . urlencode($errorRegistro));
+            exit();
+        }
+    } else {
+        // Si no se ha enviado un archivo, muestra un mensaje de error
+        $errorRegistro = "Debes seleccionar una imagen.";
+        header('Location: perfil.php?error=' . urlencode($errorRegistro));
+        exit();
+    }
+
+    // Cerrar la conexión
+    $stmt->close();
+    $conexion->close();
+}
 ?>
 
 <!doctype html>
@@ -53,7 +128,7 @@ Header
                        
 
                         <div class="col-lg-6 col-12">
-                        <form class="custom-form hero-form" action="registro-creador-proyecto.php" method="POST" role="form" enctype="multipart/form-data">
+                        <form class="custom-form hero-form" action="registro-proyectos.php" method="POST" role="form" enctype="multipart/form-data">
                                 <h3 class="text-white mb-3 d-flex justify-content-center">Proyecto</h3>
 
                                 <div class="row">
@@ -61,7 +136,7 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="Nombre_proyecto" id="Nombre_proyecto" class="form-control" placeholder="Nombre_proyecto" required>
+                                            <input type="text" name="Nombre_proyecto" id="Nombre_proyecto" class="form-control" placeholder="Nombre proyecto" required>
                                         </div>
                                     </div>
 
@@ -77,9 +152,9 @@ Header
                              <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
         <select class="form-select" id="Categorias" name="Categorias" required>
-            <option value="Educación">Educación</option>
+            <option value="Educación">Educacion</option>
             <option value="Negocios y emprendimiento">Negocios y emprendimiento</option>
-            <option value="Gobierno y servicios públicos">Gobierno y servicios públicos</option>
+            <option value="Gobierno y servicios públicos">Gobierno y servicios publicos</option>
             <option value="Social y sin fines de lucro">Social y sin fines de lucro</option>
             <option value="Salud">Salud</option>
         </select>

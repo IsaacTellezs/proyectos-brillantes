@@ -47,14 +47,13 @@ https://www.tooplate.com/view/2134-gotto-job
 Bootstrap 5 HTML CSS Template
 
 -->
+</head>
 
-    </head>
-    
     <body class="Creador-y-desarrollador-page" id="top">
 
-        <main>
+    <main>
 
-        <header class="site-header py-5">
+<header class="site-header py-5">
     <div class="section-overlay"></div>
 
     <div class="container">
@@ -64,318 +63,106 @@ Bootstrap 5 HTML CSS Template
             </div>
         </div>
     </div>
-</header>>
+</header>
 
-            <section class="section-padding pb-0 d-flex justify-content-center align-items-center">
-                <div class="container">
-                    <div class="row">
+<section class="job-section section-padding">
+    <div class="container">
+        <div class="row align-items-center">
 
-                        <div class="col-lg-12 col-12">
-                            <form class="custom-form hero-form" action="#" method="get" role="form">
-                                <h3 class="text-white mb-3">Elije entre nuestros tipos de proyectos</h3>
-                                
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="bi-laptop custom-icon"></i></span>
+            <div class="col-lg-6 col-12 mb-lg-4">
+                <h3>Proyectos.</h3>
+            </div>
 
-                                            <select class="form-select form-control" name="job-salary" id="job-salary" aria-label="Default select example">
-                                                <option selected>Tipo de proyecto.</option>
-                                                <option value="1">Aplicaciones educativas interactivas.</option>
-                                                <option value="2">Herramientas de automatización empresarial.</option>
-                                                <option value="3">Aplicaciones de sostenibilidad ambiental.</option>
-                                                <option value="4">Tecnologías financieras innovadoras.</option>
-                                                <option value="5">Videojuegos.</option> 
-                                            </select>
-                                        </div>
-                                    </div>
+            <div class="col-lg-4 col-12 d-flex align-items-center ms-auto mb-5 mb-lg-4">
+                <p class="mb-0 ms-lg-auto">Sort by:</p>
 
-                                    <div class="col-lg-12 col-12">
-                                        <button type="submit" class="form-control">
-                                            Buscar proyectos
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                <div class="dropdown dropdown-sorting ms-3 me-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSortingButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Newest Jobs
+                    </button>
 
-                        <div class="col-lg-6 col-12">
-                            <img src="images/4557388.png" class="hero-image img-fluid" alt="">
-                        </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownSortingButton">
+                        <li><a class="dropdown-item" href="#">Lastest Jobs</a></li>
 
-                    </div>
+                        <li><a class="dropdown-item" href="#">Highed Salary Jobs</a></li>
+
+                        <li><a class="dropdown-item" href="#">Internship Jobs</a></li>
+                    </ul>
                 </div>
-            </section>
 
+                <div class="d-flex">
+                    <a href="#" class="sorting-icon active bi-list me-2"></a>
 
-            <section class="job-section section-padding">
-                <div class="container">
-                    <div class="row align-items-center">
-
-                        <div class="col-lg-6 col-12 mb-lg-4">
-                            <h3>Herramientas de automatizacion empresarial.</h3>
-                        </div>
-
-                        <div class="col-lg-4 col-12 d-flex align-items-center ms-auto mb-5 mb-lg-4">
-                            <p class="mb-0 ms-lg-auto">Sort by:</p>
-
-                            <div class="dropdown dropdown-sorting ms-3 me-4">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSortingButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Newest Jobs
-                                </button>
-
-                                <ul class="dropdown-menu" aria-labelledby="dropdownSortingButton">
-                                    <li><a class="dropdown-item" href="#">Lastest Jobs</a></li>
-
-                                    <li><a class="dropdown-item" href="#">Highed Salary Jobs</a></li>
-
-                                    <li><a class="dropdown-item" href="#">Internship Jobs</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="d-flex">
-                                <a href="#" class="sorting-icon active bi-list me-2"></a>
-
-                                <a href="#" class="sorting-icon bi-grid"></a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/recursos-humanos.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Sistemas de gestión de recursos humanos.</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/gestion-proyectos.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Herramientas de gestion de proyectos.</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Mirar Proyectos.</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/CRM.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Sistemas de gestion de clientes.</a>
-                                    </h4>
-                                        
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/automatizacion-marketing.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Proyectos de automatizacion de marketing digital.</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/gestion-inventarios.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Herramienta de gestión de inventarios.</a>
-                                    </h4>
-                                        
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4"></div>
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12 col-12">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center mt-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">Prev</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item active" aria-current="page">
-                                        <a class="page-link" href="#">1</a>
-                                    </li>
-                                    
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">2</a>
-                                    </li>
-                                    
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">3</a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">4</a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">5</a>
-                                    </li>
-                                    
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
+                    <a href="#" class="sorting-icon bi-grid"></a>
                 </div>
-            </section>
+            </div>
 
+            <?php
+            
+// Consulta SQL para obtener proyectos de la categoría "Negocios y emprendimiento"
+$query = "SELECT Nombre_proyecto, Imagen, Categorias FROM proyectos WHERE Categorias = 'Negocios y emprendimiento'"; // Filtrar por la categoría
 
-           
-        </main>
+// Ejecuta la consulta
+$result = mysqli_query($conexion, $query);
+
+if ($result) {
+    // Comprueba si hay filas de resultados
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Recupera los datos de la base de datos
+            $Proyecto = $row['Nombre_proyecto'];
+            $Imagen = $row['Imagen'];
+            $Categoria = $row['Categorias'];
+
+            // Ahora puedes mostrar los datos en la sección
+            echo '<div class="col-lg-4 col-md-6 col-12">';
+            echo '    <div class="job-thumb job-thumb-box">';
+            echo '        <div class="job-image-box-wrap">';
+            echo '            <a href="job-details.html">';
+            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" style="width: 300px; height: 300px;">'; // Ajusta el ancho y alto a tus preferencias
+            echo '            </a>';
+            echo '            <div class="job-image-box-wrap-info d-flex align-items-center">';
+            echo '            </div>';
+            echo '        </div>';
+            echo '        <div class="job-body">';
+            echo '            <h4 class="job-title">';
+            echo '                <a href="job-details.html" class="job-title-link">' . $Proyecto . '</a>';
+            echo '            </h4>';
+            // Muestra la categoría
+            echo '            <p class="job-category">Categoría: ' . $Categoria . '</p>';
+            echo '            <div class="d-flex align-items-center">';
+            echo '                <div class "job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
+            echo '                </div>';
+            echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
+            echo '                </a>';
+            echo '                <a href="#" class="bi-heart">';
+            echo '                </a>';
+            echo '            </div>';
+            echo '            <div class="d-flex align-items-center">';
+            echo '            </div>';
+            echo '            <div class="d-flex align-items-center border-top pt-3">';
+            echo '                <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>';
+            echo '            </div>';
+            echo '        </div>';
+            echo '    </div>';
+            echo '</div>';
+        }
+    } else {
+        // Si no hay proyectos en la categoría especificada, puedes mostrar un mensaje o manejarlo de otra manera
+        echo 'No se encontraron proyectos en la categoría "Negocios y emprendimiento".';
+    }
+
+    // Libera el resultado
+    mysqli_free_result($result);
+}
+
+// Cierra la conexión a la base de datos al final
+mysqli_close($conexion);
+            ?>
+        </div>
+    </div>
+</section>
+</main>
 
               <!-- Footer -->
     <?php

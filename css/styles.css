@@ -10,4 +10,9 @@
     margin: 0 auto; /* Centra la imagen horizontalmente */
 }
 
+.custom-image {
+    width: 200px;
+    height: 200px;
+}
+
 /* Puedes agregar estilos adicionales para los datos del usuario según tus necesidades */

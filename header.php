@@ -4,37 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Estilo para ocultar la barra de búsqueda por defecto */
-        .search-bar {
-            display: none;
-        }
-
-        /* Estilo para mostrar la barra de búsqueda al hacer clic en el ícono de lupa */
-        .search-open .search-bar {
-            display: block;
-        }
-
-        /* Estilo para que los elementos de navegación ocupen todo el ancho de la página */
-        .navbar-nav {
-            width: 100%;
-        }
-        
-        /* Alineación del ícono de búsqueda */
-        #search-icon {
-            margin-left: auto;
-        }
-    </style>
 </head>
-<body>
-    <header id="top">
-        <nav class="navbar navbar-expand-lg">
+<header id="top">
+    <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="index.php">
                     <img src="images/Logo simple.svg" class="img-fluid logo-image">
+
                     <div class="d-flex flex-column">
-                        <strong class="logo-text">Proyectos</strong>
+                        <strong class="logo-text">Proyectos </strong>
                         <small class="logo-slogan">brillantes</small>
                     </div>
                 </a>
@@ -45,9 +23,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-center ms-lg-5">
-                    <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="index.php">Pagina Principal</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">Quienes Somos</a>
                         </li>
@@ -56,14 +35,11 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
-
-                                <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y emprendimiento</a></li>
-
-                                <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobierno y servicios públicos</a></li>
-                                <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de lucro</a></li>
-                                <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
-
+                            <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
+                            <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
+                            <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobiero y Servicios Publicos</a></li>
+                            <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de Lucro</a></li>
+                            <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
                             </ul>
                         </li>
 
