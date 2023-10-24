@@ -106,5 +106,29 @@ function headerDinamico() {
     }
 }
 
+function obtenerIdDesarrollador($usuario)
+{
+    // Realiza una consulta SQL para obtener el ID del desarrollador
+    $query = "SELECT id_desarrollador FROM desarrolladores WHERE Nombre = ?";
+    $stmt = $conexion->prepare($query);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+
+    // Obtiene el resultado de la consulta
+    $resultado = $stmt->get_result();
+
+    // Verifica si hay resultados
+    if ($resultado->num_rows > 0) {
+        // Obtiene la primera fila de resultados
+        $row = $resultado->fetch_assoc();
+
+        // Devuelve el ID del desarrollador
+        return $row['id_desarrollador'];
+    } else {
+        // Devuelve null si no se encuentra el desarrollador
+        return null;
+    }
+}
+
 
     ?>

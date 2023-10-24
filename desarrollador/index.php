@@ -1,78 +1,4 @@
-<?php
-include '../funciones/conex.php';
-include '../funciones/funciones.php';
 
-session_start();
-conectar();
-
-
-if (isset($_SESSION['Correo'])) {
-    $usuario = $_SESSION['Correo'];
-
-  
-    $user_id = obtenerIdDesarrollador($usuario);
-
-    if ($user_id !== null) {
-        // Establecer la variable de sesión
-        $_SESSION['user_id'] = $user_id;
-
-        $sql = "SELECT proyectos.*
-                FROM proyectos
-                INNER JOIN desarrolladores ON proyectos.id_desarrollador = desarrolladores.id_desarrollador
-                WHERE desarrolladores.id_desarrollador = ?";
-        
-        $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        
-        $resultado = $stmt->get_result();
-        
-        // Ahora puedes iterar sobre los proyectos y mostrarlos
-       
-        
-        
-    } else {
-        // Si no se encontró el desarrollador
-        // Por ejemplo, podrías redirigir al usuario a la página de inicio de sesión.
-        echo "No se pudo obtener el ID del desarrollador.";
-    }
-} else {
-    echo "Error: No se proporcionó el nombre de usuario.";
-}
-
-if (isset($_SESSION['user_id'])) {
-  $user_id = $_SESSION['user_id'];
-
-  // Consulta para obtener las tareas del usuario
-  $query = "SELECT id_proyecto FROM proyectos WHERE id_desarrollador = $user_id";
-  $result = $conexion->query($query);
-
-  
-// Verifica si hay resultados
-if ($result->num_rows > 0) {
-  // Obtiene la primera fila de resultados
-  $row = $result->fetch_assoc();
-
-  // Imprime el ID del proyecto
-  echo "ID del Proyecto: " . $row['id_proyecto'];
-} else {
-  // Maneja la situación en la que no hay resultados
-  echo "No se encontraron proyectos para el usuario con ID $user_id";
-}
-
-  // Verifica si la consulta fue exitosa
-  if (!$result) {
-      die("Error en la consulta: " . $conexion->error);
-  }
-
-
-
-  // Resto del código...
-} else {
-  echo "Error: La variable de sesión 'user_id' no está establecida.";
-}
-
-?>
 
 
 
@@ -100,6 +26,8 @@ if ($result->num_rows > 0) {
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/logo simple.svg" />
+  <script src="//code.tidio.co/rgzn98oloqhaqcfkizv5yc8wrlboq1qc.js" async></script>
+ 
 </head>
 <body>
   <div class="container-scroller">
@@ -284,24 +212,7 @@ if ($result->num_rows > 0) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
+      
       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -443,7 +354,7 @@ if ($result->num_rows > 0) {
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Mensajes</a></li>
               </ul>
             </div>
           </li>
@@ -589,13 +500,7 @@ if ($result->num_rows > 0) {
                                 <div class="form-group">
                                   <label for="proyecto">Proyecto:</label>
                                   <select class="form-control" id="proyecto" name="proyecto" required>
-                                  <?php
-                                    // Ahora puedes iterar sobre los proyectos y mostrarlos como opciones
-                                    while ($row = $resultado->fetch_assoc()) {
-                                      echo "<option value='" . $row['Nombre_proyecto'] . "'>" . $row['Nombre_proyecto'] . "</option>";
-
-                                   }                                
-                                    ?>
+                                  
                                     
                                     <!-- Agrega más opciones según tus proyectos -->
                                   </select>
@@ -617,7 +522,7 @@ if ($result->num_rows > 0) {
                                 </div>
                                 <!-- Campo para el id_proyecto -->
                                 <div class="form-group">
-                                  <label for="titulo"><?php $row['id_proyecto'];  ?></label>
+                                  <label for="titulo"></label>
                                   <input type="text" class="form-control" id="id_proyecto" name="id_proyecto" required>
                                 </div>
                                 <!-- Botón de envío -->
@@ -1062,8 +967,8 @@ if ($result->num_rows > 0) {
                                         <div class="d-flex">
                                           <img class="img-sm rounded-10" src="images/faces/face1.jpg" alt="profile">
                                           <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Brandon Washington</p>
-                                            <small class="text-muted mb-0">162543</small>
+                                            <p class="ms-1 mb-1 fw-bold">Alberto Alonso</p>
+                                            <small class="text-muted mb-0">16</small>
                                           </div>
                                         </div>
                                         <div class="text-muted text-small">
@@ -1074,7 +979,7 @@ if ($result->num_rows > 0) {
                                         <div class="d-flex">
                                           <img class="img-sm rounded-10" src="images/faces/face2.jpg" alt="profile">
                                           <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Wayne Murphy</p>
+                                            <p class="ms-1 mb-1 fw-bold">Fernanda Colorado</p>
                                             <small class="text-muted mb-0">162543</small>
                                           </div>
                                         </div>
@@ -1086,7 +991,7 @@ if ($result->num_rows > 0) {
                                         <div class="d-flex">
                                           <img class="img-sm rounded-10" src="images/faces/face3.jpg" alt="profile">
                                           <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Katherine Butler</p>
+                                            <p class="ms-1 mb-1 fw-bold">Isaac Tellez</p>
                                             <small class="text-muted mb-0">162543</small>
                                           </div>
                                         </div>
@@ -1094,30 +999,7 @@ if ($result->num_rows > 0) {
                                           1h ago
                                         </div>
                                       </div>
-                                      <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                        <div class="d-flex">
-                                          <img class="img-sm rounded-10" src="images/faces/face4.jpg" alt="profile">
-                                          <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Matthew Bailey</p>
-                                            <small class="text-muted mb-0">162543</small>
-                                          </div>
-                                        </div>
-                                        <div class="text-muted text-small">
-                                          1h ago
-                                        </div>
-                                      </div>
-                                      <div class="wrapper d-flex align-items-center justify-content-between pt-2">
-                                        <div class="d-flex">
-                                          <img class="img-sm rounded-10" src="images/faces/face5.jpg" alt="profile">
-                                          <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Rafell John</p>
-                                            <small class="text-muted mb-0">Alaska, USA</small>
-                                          </div>
-                                        </div>
-                                        <div class="text-muted text-small">
-                                          1h ago
-                                        </div>
-                                      </div>
+                                     
                                     </div>
                                   </div>
                                 </div>
@@ -1133,6 +1015,7 @@ if ($result->num_rows > 0) {
             </div>
           </div>
         </div>
+        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
