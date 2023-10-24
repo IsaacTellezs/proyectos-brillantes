@@ -61,7 +61,7 @@ Bootstrap 5 HTML CSS Template
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="text-white">Proyectos de salud</h1>
+                <h1 class="text-white">Proyectos de educacion</h1>
             </div>
         </div>
     </div>
