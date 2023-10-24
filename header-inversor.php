@@ -61,9 +61,9 @@
                                 <li><a class="dropdown-item" href="funciones/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>
-                    </ul>
-                </div>
             </div>
         </nav>
     </header>
+</script>
+</body>
 </html>

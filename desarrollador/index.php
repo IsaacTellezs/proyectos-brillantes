@@ -5,17 +5,30 @@ include '../funciones/funciones.php';
 session_start();
 conectar();
 
-// Asumiendo que obtienes el valor del nombre de usuario de alguna manera, por ejemplo, desde un formulario POST
+
 if (isset($_SESSION['Correo'])) {
     $usuario = $_SESSION['Correo'];
 
-    // Llama a la función para obtener el ID del desarrollador
+  
     $user_id = obtenerIdDesarrollador($usuario);
 
     if ($user_id !== null) {
         // Establecer la variable de sesión
         $_SESSION['user_id'] = $user_id;
 
+        $sql = "SELECT proyectos.*
+                FROM proyectos
+                INNER JOIN desarrolladores ON proyectos.id_desarrollador = desarrolladores.id_desarrollador
+                WHERE desarrolladores.id_desarrollador = ?";
+        
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        
+        $resultado = $stmt->get_result();
+        
+        // Ahora puedes iterar sobre los proyectos y mostrarlos
+       
         
         
     } else {
@@ -31,8 +44,21 @@ if (isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
 
   // Consulta para obtener las tareas del usuario
-  $query = "SELECT * FROM tasks WHERE id_desarrollador = $user_id";
+  $query = "SELECT id_proyecto FROM proyectos WHERE id_desarrollador = $user_id";
   $result = $conexion->query($query);
+
+  
+// Verifica si hay resultados
+if ($result->num_rows > 0) {
+  // Obtiene la primera fila de resultados
+  $row = $result->fetch_assoc();
+
+  // Imprime el ID del proyecto
+  echo "ID del Proyecto: " . $row['id_proyecto'];
+} else {
+  // Maneja la situación en la que no hay resultados
+  echo "No se encontraron proyectos para el usuario con ID $user_id";
+}
 
   // Verifica si la consulta fue exitosa
   if (!$result) {
@@ -412,7 +438,7 @@ if (isset($_SESSION['user_id'])) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-card-text-outline"></i>
-              <span class="menu-title">Proyecto</span>
+              <span class="menu-title">Chat</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
@@ -424,7 +450,7 @@ if (isset($_SESSION['user_id'])) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Estadísticas</span>
+              <span class="menu-title">Fondos</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="charts">
@@ -466,7 +492,7 @@ if (isset($_SESSION['user_id'])) {
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../index.php"> Inicio </a></li>
               </ul>
             </div>
           </li>
@@ -524,28 +550,85 @@ if (isset($_SESSION['user_id'])) {
                             <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
                           </div>
                           <div>
-                            <p class="statistics-title">New Sessions</p>
+                            <p class="statistics-title">Nuevos inversores</p>
                             <h3 class="rate-percentage">68.8</h3>
                             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
+                            <p class="statistics-title">Tiempo de elaboración</p>
                             <h3 class="rate-percentage">2m:35s</h3>
                             <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">New Sessions</p>
+                            <p class="statistics-title">Fondos</p>
                             <h3 class="rate-percentage">68.8</h3>
                             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
+                            <p class="statistics-title">Lanzamiento</p>
                             <h3 class="rate-percentage">2m:35s</h3>
                             <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                           </div>
                         </div>
                       </div>
                     </div> 
+                    <!-- Modal -->
+                      <div class="modal fade" id="subirAvanceModal" tabindex="-1" role="dialog" aria-labelledby="subirAvanceModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="subirAvanceModalLabel">Subir Avance de Proyecto</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Formulario de Subida de Avance -->
+                              <form action="procesar_subida_avance.php" method="POST" enctype="multipart/form-data">
+                                <!-- Campo para seleccionar el proyecto -->
+                                <div class="form-group">
+                                  <label for="proyecto">Proyecto:</label>
+                                  <select class="form-control" id="proyecto" name="proyecto" required>
+                                  <?php
+                                    // Ahora puedes iterar sobre los proyectos y mostrarlos como opciones
+                                    while ($row = $resultado->fetch_assoc()) {
+                                      echo "<option value='" . $row['Nombre_proyecto'] . "'>" . $row['Nombre_proyecto'] . "</option>";
+
+                                   }                                
+                                    ?>
+                                    
+                                    <!-- Agrega más opciones según tus proyectos -->
+                                  </select>
+                                </div>
+                                <!-- Campo para el título del avance -->
+                                <div class="form-group">
+                                  <label for="titulo">Título del Avance:</label>
+                                  <input type="text" class="form-control" id="titulo" name="titulo" required>
+                                </div>
+                                <!-- Campo para la descripción del avance -->
+                                <div class="form-group">
+                                  <label for="descripcion">Descripción del Avance:</label>
+                                  <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                                </div>
+                                <!-- Campo para la carga de archivos -->
+                                <div class="form-group">
+                                  <label for="archivo">Archivo:</label>
+                                  <input type="file" class="form-control-file" id="archivo" name="archivo" required>
+                                </div>
+                                <!-- Campo para el id_proyecto -->
+                                <div class="form-group">
+                                  <label for="titulo"><?php $row['id_proyecto'];  ?></label>
+                                  <input type="text" class="form-control" id="id_proyecto" name="id_proyecto" required>
+                                </div>
+                                <!-- Botón de envío -->
+                                <button type="submit" class="btn btn-primary">Subir Avance</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
                     <div class="row">
                       <div class="col-lg-8 d-flex flex-column">
                         <div class="row flex-grow">
@@ -554,6 +637,10 @@ if (isset($_SESSION['user_id'])) {
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
+                                    <!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subirAvanceModal">
+  Subir Avance
+</button>
                                     <h4 class="card-title card-title-dash">Avances</h4>
                                    <p class="card-subtitle card-subtitle-dash">Evidencias del proyecto</p>
                                   </div>
@@ -580,6 +667,8 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+                                   <!-- Aqui empieza el comentado de colaboradores
                         <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -782,6 +871,7 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
+                        -->
                         <div class="row flex-grow">
                           <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -790,7 +880,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Change in Directors
+                                      agregado de todo list
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -803,7 +893,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Other Events
+                                      Chat directo
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -816,7 +906,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Quarterly Report
+                                      reporte de inversiones
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -829,7 +919,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Change in Directors
+                                      Aceptado de proyectos por ia
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -843,7 +933,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center pt-3">
                                   <div class="wrapper w-100">
                                     <p class="mb-0">
-                                      <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                                      <a href="#" class="fw-bold text-primary">Más<i class="mdi mdi-arrow-right ms-2"></i></a>
                                     </p>
                                   </div>
                                 </div>
@@ -855,56 +945,21 @@ if (isset($_SESSION['user_id'])) {
                               <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                   <h4 class="card-title card-title-dash">Actividades</h4>
-                                  <p class="mb-0">20 finished, 5 remaining</p>
+                                  <p class="mb-0">20 terminadas, 5 pendientes</p>
                                 </div>
                                 <ul class="bullet-line-list">
                                   <li>
                                     <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>Just now</p>
+                                      <div><span class="text-light-green">Fernanda</span>Te asigno una tarea</div>
+                                      <p>Justo ahora</p>
                                     </div>
                                   </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Jack William</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
+                                 
                                 </ul>
                                 <div class="list align-items-center pt-3">
                                   <div class="wrapper w-100">
                                     <p class="mb-0">
-                                      <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                                      <a href="#" class="fw-bold text-primary">Más <i class="mdi mdi-arrow-right ms-2"></i></a>
                                     </p>
                                   </div>
                                 </div>
@@ -969,14 +1024,14 @@ if (isset($_SESSION['user_id'])) {
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                       <div>
-                                        <h4 class="card-title card-title-dash">Reportes</h4>
+                                        <h4 class="card-title card-title-dash">Fondos</h4>
                                       </div>
                                       <div>
                                         <div class="dropdown">
-                                          <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Month Wise </button>
+                                          <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Este mes </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <h6 class="dropdown-header">week Wise</h6>
-                                            <a class="dropdown-item" href="#">Year Wise</a>
+                                            <h6 class="dropdown-header">Esta semana</h6>
+                                            <a class="dropdown-item" href="#">Este año</a>
                                           </div>
                                         </div>
                                       </div>
@@ -990,6 +1045,7 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
+                         <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
                         <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -1092,6 +1148,11 @@ if (isset($_SESSION['user_id'])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
+<!-- Scripts para formulario de avances de proyecto -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <!-- plugins:js -->
   <script src="js/todo.js"></script>  

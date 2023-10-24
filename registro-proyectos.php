@@ -53,7 +53,7 @@ Header
                        
 
                         <div class="col-lg-6 col-12">
-                            <form class="custom-form hero-form" action="registro-creador-proyecto.php" method="POST" role="form">
+                        <form class="custom-form hero-form" action="registro-creador-proyecto.php" method="POST" role="form" enctype="multipart/form-data">
                                 <h3 class="text-white mb-3 d-flex justify-content-center">Proyecto</h3>
 
                                 <div class="row">
@@ -96,6 +96,12 @@ Header
     </div>
 </div>
 
+<div class="col-lg-12 col-12">
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1"><i class="bi-image custom-icon"></i></span>
+        <input type="file" name="Imagen" id="Imagen" accept="image/*" required>
+    </div>
+</div>
                                     <div class="col-lg-12 col-12">
                                         <button type="submit" class="form-control">
                                             Subir proyecto
