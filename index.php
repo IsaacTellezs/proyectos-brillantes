@@ -73,47 +73,48 @@ if (isset($_SESSION['Correo'])) {
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <form class="custom-form hero-form" action="#" method="get" role="form">
-                                <h3 class="text-white mb-3">Buscas algun proyecto en especifico?</h3>
+    <form class="custom-form hero-form" action="busqueda.php" method="get" role="form">
+        <h3 class="text-white mb-3">¿Buscas algún proyecto en específico?</h3>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                    <input type="text" name="q" id="job-title" class="form-control" placeholder="Buscar por categoría" required>
+                </div>
+            </div>
 
-                                            <input type="text" name="job-title" id="job-title" class="form-control" placeholder="Categoria" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon2"><i class="bi-geo-alt custom-icon"></i></span>
-
-                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="tipo" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <button type="submit" class="form-control">
-                                            Buscar
-                                        </button>
-                                    </div>
-
-                                    <div class="col-12">
+            <div class="col-lg-12 col-12">
+                <button type="submit" class="form-control">Buscar</button>
+            </div>
+        </div>
+        <div class="col-12">
                                         <div class="d-flex flex-wrap align-items-center mt-4 mt-lg-0">
                                             <span class="text-white mb-lg-0 mb-md-0 me-2">Búsquedas populares:</span>
 
                                             <div>
-                                                <a href="job-listings.html" class="badge">Diseño Web</a>
+                                                <a href="educacion.php" class="badge">Educación</a>
 
-                                                <a href="job-listings.html" class="badge">Videojuegos</a>
+                                                <a href="NegociosyEmprendimiento.php" class="badge">Negocios</a>
 
-                                                <a href="job-listings.html" class="badge">Aplicaciones</a>
+                                                <a href="GobiernoyServicios.php" class="badge">Gobierno</a>
+                                                
+                                                <a href="SocialySinFines.php" class="badge">Social</a>
+
+                                                <a href="NegociosyEmprendimiento.php" class="badge">Emprendimiento</a>
+
+                                                <a href="Salud.php" class="badge">Salud</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
+                        </div>
+
+                    </div>
+                </div>
+    </form>
+                            
                         </div>
 
                     </div>
