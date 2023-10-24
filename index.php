@@ -1,17 +1,17 @@
 <?php
-session_start(); // Asegúrate de que esta línea esté al principio del archivo
+include 'funciones/conex.php';
+include 'funciones/funciones.php';
+conectar();       
+session_start(); 
 
-require 'funciones/conex.php';
-// Comprueba si el usuario ha iniciado sesión
-if (isset($_SESSION['id_desarrollador'])) {
-    // Header para usuarios que han iniciado sesión
-    include 'header-usuario.php';
-} else {
-    // Header para usuarios que aún no han iniciado sesión
-    include 'header.php';
-}
+if (isset($_SESSION['Correo'])) {
+    $correo = $_SESSION['Correo'];
+    $_SESSION['TipoUsuario'] = determinarTipoUsuario($correo, $conexion);
+ }
 
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -43,9 +43,16 @@ if (isset($_SESSION['id_desarrollador'])) {
         
         <link href="css/index.css" rel="stylesheet">
 
-    </head>
+        <link rel="shortcut icon" href=" images/logo simple.svg" />
 
+    </head>
+    <?php
+    
+    headerDinamico();
+    ?>
     <body >
+
+        
 
         <main>
 
@@ -66,37 +73,42 @@ if (isset($_SESSION['id_desarrollador'])) {
                         </div>
 
                         <div class="col-lg-6 col-12">
-    <form class="custom-form hero-form" action="busqueda.php" method="get" role="form">
-        <h3 class="text-white mb-3">¿Buscas algún proyecto en específico?</h3>
+                            <form class="custom-form hero-form" action="#" method="get" role="form">
+                                <h3 class="text-white mb-3">Buscas algun proyecto en especifico?</h3>
 
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                    <input type="text" name="q" id="job-title" class="form-control" placeholder="Buscar por categoría" required>
-                </div>
-            </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
-            <div class="col-lg-12 col-12">
-                <button type="submit" class="form-control">Buscar</button>
-            </div>
-        </div>
-        <div class="col-12">
+                                            <input type="text" name="job-title" id="job-title" class="form-control" placeholder="Categoria" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2"><i class="bi-geo-alt custom-icon"></i></span>
+
+                                            <input type="text" name="job-location" id="job-location" class="form-control" placeholder="tipo" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-12">
+                                        <button type="submit" class="form-control">
+                                            Buscar
+                                        </button>
+                                    </div>
+
+                                    <div class="col-12">
                                         <div class="d-flex flex-wrap align-items-center mt-4 mt-lg-0">
                                             <span class="text-white mb-lg-0 mb-md-0 me-2">Búsquedas populares:</span>
 
                                             <div>
-                                                <a href="educacion.php" class="badge">Educación</a>
+                                                <a href="job-listings.html" class="badge">Diseño Web</a>
 
-                                                <a href="NegociosyEmprendimiento.php" class="badge">Negocios</a>
+                                                <a href="job-listings.html" class="badge">Videojuegos</a>
 
-                                                <a href="GobiernoyServicios.php" class="badge">Gobierno</a>
-                                                
-                                                <a href="SocialySinFines.php" class="badge">Social</a>
-
-                                                <a href="NegociosyEmprendimiento.php" class="badge">Emprendimiento</a>
-
-                                                <a href="Salud.php" class="badge">Salud</a>
+                                                <a href="job-listings.html" class="badge">Aplicaciones</a>
                                             </div>
                                         </div>
                                     </div>
@@ -106,8 +118,6 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                     </div>
                 </div>
-    </form>
-</div>             
             </section>
 
 
@@ -121,7 +131,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="educacion.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-book"></i>
                                 
                                     <small class="categories-block-title">Educacion</small>
@@ -133,7 +143,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="NegociosyEmprendimiento.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-fill "></i>
                                 
                                     <small class="categories-block-title">Negocios y Emprendimiento</small>
@@ -143,7 +153,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="GobiernoyServicios.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bank"></i>
                                 
                                     <small class="categories-block-title">Gobiero y Servicios Publicos</small>
@@ -155,7 +165,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="SocialySinFines.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-chat-square-text"></i>
                                 
                                     <small class="categories-block-title">Social y sin fines de Lucro</small>
@@ -167,7 +177,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="Salud.php" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-plus"></i>
                                 
                                     <small class="categories-block-title">Salud</small>
@@ -221,6 +231,332 @@ if (isset($_SESSION['id_desarrollador'])) {
                 </div>
             </section>
 
+
+   <!-----       <section class="job-section job-featured-section section-padding" id="job-section">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 text-center mx-auto mb-4">
+                            <h2>Featured Jobs</h2>
+
+                            <p><strong>Over 10k opening jobs</strong> Feel free to download and use our free HTML templates from Tooplate website.</p>
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="job-thumb d-flex">
+                                <div class="job-image-wrap bg-white shadow-lg">
+                                    <img src="images/logos/google.png" class="job-image img-fluid" alt="">
+                                </div>
+
+                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
+                                    <div class="mb-3">
+                                        <h4 class="job-title mb-lg-0">
+                                            <a href="job-details.html" class="job-title-link">Technical Lead</a>
+                                        </h4>
+
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <p class="job-location mb-0">
+                                                <i class="custom-icon bi-geo-alt me-1"></i>
+                                                Kuala, Malaysia
+                                            </p>
+
+                                            <p class="job-date mb-0">
+                                                <i class="custom-icon bi-clock me-1"></i>
+                                                10 hours ago
+                                            </p>
+
+                                            <p class="job-price mb-0">
+                                                <i class="custom-icon bi-cash me-1"></i>
+                                                $20k
+                                            </p>
+
+                                            <div class="d-flex">
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge badge-level">Internship</a>
+                                                </p>
+
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge">Freelance</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="job-section-btn-wrap">
+                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="job-thumb d-flex">
+                                <div class="job-image-wrap bg-white shadow-lg">
+                                    <img src="images/logos/apple.png" class="job-image img-fluid" alt="">
+                                </div>
+
+                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
+                                    <div class="mb-3">
+                                        <h4 class="job-title mb-lg-0">
+                                            <a href="job-details.html" class="job-title-link">Business Director</a>
+                                        </h4>
+
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <p class="job-location mb-0">
+                                                <i class="custom-icon bi-geo-alt me-1"></i>
+                                                California, USA
+                                            </p>
+
+                                            <p class="job-date mb-0">
+                                                <i class="custom-icon bi-clock me-1"></i>
+                                                1 day ago
+                                            </p>
+
+                                            <p class="job-price mb-0">
+                                                <i class="custom-icon bi-cash me-1"></i>
+                                                $90k
+                                            </p>
+
+                                            <div class="d-flex">
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge badge-level">Senior</a href="job-listings.html">
+                                                </p>
+
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge">Full Time</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="job-section-btn-wrap">
+                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="job-thumb d-flex">
+                                <div class="job-image-wrap bg-white shadow-lg">
+                                    <img src="images/logos/meta.png" class="job-image img-fluid" alt="">
+                                </div>
+
+                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
+                                    <div class="mb-3">
+                                        <h4 class="job-title mb-lg-0">
+                                            <a href="job-details.html" class="job-title-link">HR Manager</a>
+                                        </h4>
+
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <p class="job-location mb-0">
+                                                <i class="custom-icon bi-geo-alt me-1"></i>
+                                                Tower, Paris
+                                            </p>
+
+                                            <p class="job-date mb-0">
+                                                <i class="custom-icon bi-clock me-1"></i>
+                                                22 hours ago
+                                            </p>
+
+                                            <p class="job-price mb-0">
+                                                <i class="custom-icon bi-cash me-1"></i>
+                                                $50k
+                                            </p>
+
+                                            <div class="d-flex">
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge badge-level">Junior</a>
+                                                </p>
+
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge">Contract</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="job-section-btn-wrap">
+                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="job-thumb d-flex">
+                                <div class="job-image-wrap bg-white shadow-lg">
+                                    <img src="images/logos/slack.png" class="job-image img-fluid" alt="">
+                                </div>
+
+                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
+                                    <div class="mb-3">
+                                        <h4 class="job-title mb-lg-0">
+                                            <a href="job-details.html" class="job-title-link">Dev Ops</a>
+                                        </h4>
+
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <p class="job-location mb-0">
+                                                <i class="custom-icon bi-geo-alt me-1"></i>
+                                                Bangkok, Thailand
+                                            </p>
+
+                                            <p class="job-date mb-0">
+                                                <i class="custom-icon bi-clock me-1"></i>
+                                                40 minutes ago
+                                            </p>
+
+                                            <p class="job-price mb-0">
+                                                <i class="custom-icon bi-cash me-1"></i>
+                                                $75k - 80k
+                                            </p>
+
+                                            <div class="d-flex">
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge badge-level">Senior</a>
+                                                </p>
+
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge">Part Time</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="job-section-btn-wrap">
+                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="job-thumb d-flex">
+                                <div class="job-image-wrap bg-white shadow-lg">
+                                    <img src="images/logos/creative-market.png" class="job-image img-fluid" alt="">
+                                </div>
+
+                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
+                                    <div class="mb-3">
+                                        <h4 class="job-title mb-lg-0">
+                                            <a href="job-details.html" class="job-title-link">UX Designer</a>
+                                        </h4>
+
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <p class="job-location mb-0">
+                                                <i class="custom-icon bi-geo-alt me-1"></i>
+                                                Bangkok, Thailand
+                                            </p>
+
+                                            <p class="job-date mb-0">
+                                                <i class="custom-icon bi-clock me-1"></i>
+                                                2 hours ago
+                                            </p>
+
+                                            <p class="job-price mb-0">
+                                                <i class="custom-icon bi-cash me-1"></i>
+                                                $100k
+                                            </p>
+
+                                            <div class="d-flex">
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge badge-level">Entry</a>
+                                                </p>
+
+                                                <p class="mb-0">
+                                                    <a href="job-listings.html" class="badge">Remote</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="job-section-btn-wrap">
+                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center mt-5">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">Prev</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="page-item active" aria-current="page">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">4</a>
+                                    </li>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">5</a>
+                                    </li>
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <div class="custom-text-block custom-border-radius-start">
+                                <h2 class="text-white mb-3">Gotto helps you an easier way to get new job</h2>
+
+                                <p class="text-white">You are not allowed to redistribute the template ZIP file on any other template collection website. Please contact us for more info. Thank you.</p>
+
+                                <div class="d-flex mt-4">
+                                    <div class="counter-thumb"> 
+                                        <div class="d-flex">
+                                            <span class="counter-number" data-from="1" data-to="12" data-speed="1000"></span>
+                                            <span class="counter-number-text">M</span>
+                                        </div>
+
+                                        <span class="counter-text">Daily active users</span>
+                                    </div> 
+
+                                    <div class="counter-thumb">    
+                                        <div class="d-flex">
+                                            <span class="counter-number" data-from="1" data-to="450" data-speed="1000"></span>
+                                            <span class="counter-number-text">k</span>
+                                        </div>
+
+                                        <span class="counter-text">Opening jobs</span>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="video-thumb">
+                                <img src="images/people-working-as-team-company.jpg" class="about-image custom-border-radius-end img-fluid" alt="">
+
+                                <div class="video-info">
+                                    <a href="https://www.youtube.com/tooplate" class="youtube-icon bi-youtube"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section> ---> 
+
+
             <section class="job-section recent-jobs-section section-padding">
                 <div class="container">
                     <div class="row align-items-center">
@@ -247,7 +583,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">salud</a>
+                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -293,7 +629,7 @@ if (isset($_SESSION['id_desarrollador'])) {
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">salud</a>
+                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -481,7 +817,7 @@ if (isset($_SESSION['id_desarrollador'])) {
                                     </h4>
 
                                     <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center "">
+                                        <div class="job-image-wrap d-flex align-items-center ">
                                       
                                         </div>
 
@@ -513,6 +849,160 @@ if (isset($_SESSION['id_desarrollador'])) {
                     </div>
                 </div>
             </section>
+
+<!--------APARTADO DE COMENTARIOS   ----->
+<!--------
+            <section class="reviews-section section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12">
+                            <h2 class="text-center mb-5">Happy customers</h2>
+
+                            <div class="owl-carousel owl-theme reviews-carousel">
+                                <div class="reviews-thumb">
+                                
+                                    <div class="reviews-info d-flex align-items-center">
+                                        <img src="images/avatar/portrait-charming-middle-aged-attractive-woman-with-blonde-hair.jpg" class="avatar-image img-fluid" alt="">
+
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
+                                            <p class="mb-0">
+                                                <strong>Susan L</strong>
+                                                <small>Product Manager</small>
+                                            </p>
+
+                                            <div class="reviews-icons">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-body">
+                                        <img src="images/left-quote.png" class="quote-icon img-fluid" alt="">
+
+                                        <h4 class="reviews-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</h4>
+                                    </div>
+                                </div>
+
+                                <div class="reviews-thumb">
+                                    <div class="reviews-info d-flex align-items-center">
+                                        <img src="images/avatar/medium-shot-smiley-senior-man.jpg" class="avatar-image img-fluid" alt="">
+
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
+                                            <p class="mb-0">
+                                                <strong>Jack</strong>
+                                                <small>Technical Lead</small>
+                                            </p>
+
+                                            <div class="reviews-icons">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star"></i>
+                                                <i class="bi-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-body">
+                                        <img src="images/left-quote.png" class="quote-icon img-fluid" alt="">
+
+                                        <h4 class="reviews-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</h4>
+                                    </div>
+                                </div>
+
+                                <div class="reviews-thumb">
+
+                                    <div class="reviews-info d-flex align-items-center">
+                                        <img src="images/avatar/portrait-beautiful-young-woman.jpg" class="avatar-image img-fluid" alt="">
+
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
+                                            <p class="mb-0">
+                                                <strong>Haley</strong>
+                                                <small>Sales & Marketing</small>
+                                            </p>
+
+                                            <div class="reviews-icons">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-body">
+                                        <img src="images/left-quote.png" class="quote-icon img-fluid" alt="">
+
+                                        <h4 class="reviews-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</h4>
+                                    </div>
+                                </div>
+
+                                <div class="reviews-thumb">
+                                    <div class="reviews-info d-flex align-items-center">
+                                        <img src="images/avatar/blond-man-happy-expression.jpg" class="avatar-image img-fluid" alt="">
+
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
+                                            <p class="mb-0">
+                                                <strong>Jackson</strong>
+                                                <small>Dev Ops</small>
+                                            </p>
+
+                                            <div class="reviews-icons">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star"></i>
+                                                <i class="bi-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-body">
+                                        <img src="images/left-quote.png" class="quote-icon img-fluid" alt="">
+
+                                        <h4 class="reviews-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</h4>
+                                    </div>
+                                </div>
+
+                                <div class="reviews-thumb">
+                                    <div class="reviews-info d-flex align-items-center">
+                                        <img src="images/avatar/university-study-abroad-lifestyle-concept.jpg" class="avatar-image img-fluid" alt="">
+
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
+                                            <p class="mb-0">
+                                                <strong>Kevin</strong>
+                                                <small>Internship</small>
+                                            </p>
+
+                                            <div class="reviews-icons">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-body">
+                                        <img src="images/left-quote.png" class="quote-icon img-fluid" alt="">
+
+                                        <h4 class="reviews-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section> ----->
+
 
             <section class="cta-section">
                 <div class="section-overlay"></div>

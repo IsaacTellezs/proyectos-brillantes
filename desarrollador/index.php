@@ -1,52 +1,4 @@
-<?php
-include '../funciones/conex.php';
-include '../funciones/funciones.php';
 
-session_start();
-conectar();
-
-// Asumiendo que obtienes el valor del nombre de usuario de alguna manera, por ejemplo, desde un formulario POST
-if (isset($_SESSION['Correo'])) {
-    $usuario = $_SESSION['Correo'];
-
-    // Llama a la función para obtener el ID del desarrollador
-    $user_id = obtenerIdDesarrollador($usuario);
-
-    if ($user_id !== null) {
-        // Establecer la variable de sesión
-        $_SESSION['user_id'] = $user_id;
-
-        
-        
-    } else {
-        // Si no se encontró el desarrollador
-        // Por ejemplo, podrías redirigir al usuario a la página de inicio de sesión.
-        echo "No se pudo obtener el ID del desarrollador.";
-    }
-} else {
-    echo "Error: No se proporcionó el nombre de usuario.";
-}
-
-if (isset($_SESSION['user_id'])) {
-  $user_id = $_SESSION['user_id'];
-
-  // Consulta para obtener las tareas del usuario
-  $query = "SELECT * FROM tasks WHERE id_desarrollador = $user_id";
-  $result = $conexion->query($query);
-
-  // Verifica si la consulta fue exitosa
-  if (!$result) {
-      die("Error en la consulta: " . $conexion->error);
-  }
-
-
-
-  // Resto del código...
-} else {
-  echo "Error: La variable de sesión 'user_id' no está establecida.";
-}
-
-?>
 
 
 
@@ -74,6 +26,8 @@ if (isset($_SESSION['user_id'])) {
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/logo simple.svg" />
+  <script src="//code.tidio.co/rgzn98oloqhaqcfkizv5yc8wrlboq1qc.js" async></script>
+ 
 </head>
 <body>
   <div class="container-scroller">
@@ -258,24 +212,7 @@ if (isset($_SESSION['user_id'])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
+      
       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -412,19 +349,19 @@ if (isset($_SESSION['user_id'])) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-card-text-outline"></i>
-              <span class="menu-title">Proyecto</span>
+              <span class="menu-title">Chat</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Mensajes</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Estadísticas</span>
+              <span class="menu-title">Fondos</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="charts">
@@ -466,7 +403,7 @@ if (isset($_SESSION['user_id'])) {
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../index.php"> Inicio </a></li>
               </ul>
             </div>
           </li>
@@ -524,28 +461,79 @@ if (isset($_SESSION['user_id'])) {
                             <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
                           </div>
                           <div>
-                            <p class="statistics-title">New Sessions</p>
+                            <p class="statistics-title">Nuevos inversores</p>
                             <h3 class="rate-percentage">68.8</h3>
                             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
+                            <p class="statistics-title">Tiempo de elaboración</p>
                             <h3 class="rate-percentage">2m:35s</h3>
                             <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">New Sessions</p>
+                            <p class="statistics-title">Fondos</p>
                             <h3 class="rate-percentage">68.8</h3>
                             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
+                            <p class="statistics-title">Lanzamiento</p>
                             <h3 class="rate-percentage">2m:35s</h3>
                             <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                           </div>
                         </div>
                       </div>
                     </div> 
+                    <!-- Modal -->
+                      <div class="modal fade" id="subirAvanceModal" tabindex="-1" role="dialog" aria-labelledby="subirAvanceModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="subirAvanceModalLabel">Subir Avance de Proyecto</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Formulario de Subida de Avance -->
+                              <form action="procesar_subida_avance.php" method="POST" enctype="multipart/form-data">
+                                <!-- Campo para seleccionar el proyecto -->
+                                <div class="form-group">
+                                  <label for="proyecto">Proyecto:</label>
+                                  <select class="form-control" id="proyecto" name="proyecto" required>
+                                  
+                                    
+                                    <!-- Agrega más opciones según tus proyectos -->
+                                  </select>
+                                </div>
+                                <!-- Campo para el título del avance -->
+                                <div class="form-group">
+                                  <label for="titulo">Título del Avance:</label>
+                                  <input type="text" class="form-control" id="titulo" name="titulo" required>
+                                </div>
+                                <!-- Campo para la descripción del avance -->
+                                <div class="form-group">
+                                  <label for="descripcion">Descripción del Avance:</label>
+                                  <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                                </div>
+                                <!-- Campo para la carga de archivos -->
+                                <div class="form-group">
+                                  <label for="archivo">Archivo:</label>
+                                  <input type="file" class="form-control-file" id="archivo" name="archivo" required>
+                                </div>
+                                <!-- Campo para el id_proyecto -->
+                                <div class="form-group">
+                                  <label for="titulo"></label>
+                                  <input type="text" class="form-control" id="id_proyecto" name="id_proyecto" required>
+                                </div>
+                                <!-- Botón de envío -->
+                                <button type="submit" class="btn btn-primary">Subir Avance</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
                     <div class="row">
                       <div class="col-lg-8 d-flex flex-column">
                         <div class="row flex-grow">
@@ -554,6 +542,10 @@ if (isset($_SESSION['user_id'])) {
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
+                                    <!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subirAvanceModal">
+  Subir Avance
+</button>
                                     <h4 class="card-title card-title-dash">Avances</h4>
                                    <p class="card-subtitle card-subtitle-dash">Evidencias del proyecto</p>
                                   </div>
@@ -580,6 +572,8 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+                                   <!-- Aqui empieza el comentado de colaboradores
                         <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -782,6 +776,7 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
+                        -->
                         <div class="row flex-grow">
                           <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -790,7 +785,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Change in Directors
+                                      agregado de todo list
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -803,7 +798,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Other Events
+                                      Chat directo
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -816,7 +811,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Quarterly Report
+                                      reporte de inversiones
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -829,7 +824,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                     <p class="mb-2 font-weight-medium">
-                                      Change in Directors
+                                      Aceptado de proyectos por ia
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="d-flex align-items-center">
@@ -843,7 +838,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="list align-items-center pt-3">
                                   <div class="wrapper w-100">
                                     <p class="mb-0">
-                                      <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                                      <a href="#" class="fw-bold text-primary">Más<i class="mdi mdi-arrow-right ms-2"></i></a>
                                     </p>
                                   </div>
                                 </div>
@@ -855,56 +850,21 @@ if (isset($_SESSION['user_id'])) {
                               <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                   <h4 class="card-title card-title-dash">Actividades</h4>
-                                  <p class="mb-0">20 finished, 5 remaining</p>
+                                  <p class="mb-0">20 terminadas, 5 pendientes</p>
                                 </div>
                                 <ul class="bullet-line-list">
                                   <li>
                                     <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>Just now</p>
+                                      <div><span class="text-light-green">Fernanda</span>Te asigno una tarea</div>
+                                      <p>Justo ahora</p>
                                     </div>
                                   </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Jack William</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
+                                 
                                 </ul>
                                 <div class="list align-items-center pt-3">
                                   <div class="wrapper w-100">
                                     <p class="mb-0">
-                                      <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                                      <a href="#" class="fw-bold text-primary">Más <i class="mdi mdi-arrow-right ms-2"></i></a>
                                     </p>
                                   </div>
                                 </div>
@@ -969,14 +929,14 @@ if (isset($_SESSION['user_id'])) {
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                       <div>
-                                        <h4 class="card-title card-title-dash">Reportes</h4>
+                                        <h4 class="card-title card-title-dash">Fondos</h4>
                                       </div>
                                       <div>
                                         <div class="dropdown">
-                                          <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Month Wise </button>
+                                          <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Este mes </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <h6 class="dropdown-header">week Wise</h6>
-                                            <a class="dropdown-item" href="#">Year Wise</a>
+                                            <h6 class="dropdown-header">Esta semana</h6>
+                                            <a class="dropdown-item" href="#">Este año</a>
                                           </div>
                                         </div>
                                       </div>
@@ -990,6 +950,7 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
+                         <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
                         <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -1006,8 +967,8 @@ if (isset($_SESSION['user_id'])) {
                                         <div class="d-flex">
                                           <img class="img-sm rounded-10" src="images/faces/face1.jpg" alt="profile">
                                           <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Brandon Washington</p>
-                                            <small class="text-muted mb-0">162543</small>
+                                            <p class="ms-1 mb-1 fw-bold">Alberto Alonso</p>
+                                            <small class="text-muted mb-0">16</small>
                                           </div>
                                         </div>
                                         <div class="text-muted text-small">
@@ -1018,7 +979,7 @@ if (isset($_SESSION['user_id'])) {
                                         <div class="d-flex">
                                           <img class="img-sm rounded-10" src="images/faces/face2.jpg" alt="profile">
                                           <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Wayne Murphy</p>
+                                            <p class="ms-1 mb-1 fw-bold">Fernanda Colorado</p>
                                             <small class="text-muted mb-0">162543</small>
                                           </div>
                                         </div>
@@ -1030,7 +991,7 @@ if (isset($_SESSION['user_id'])) {
                                         <div class="d-flex">
                                           <img class="img-sm rounded-10" src="images/faces/face3.jpg" alt="profile">
                                           <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Katherine Butler</p>
+                                            <p class="ms-1 mb-1 fw-bold">Isaac Tellez</p>
                                             <small class="text-muted mb-0">162543</small>
                                           </div>
                                         </div>
@@ -1038,30 +999,7 @@ if (isset($_SESSION['user_id'])) {
                                           1h ago
                                         </div>
                                       </div>
-                                      <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                        <div class="d-flex">
-                                          <img class="img-sm rounded-10" src="images/faces/face4.jpg" alt="profile">
-                                          <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Matthew Bailey</p>
-                                            <small class="text-muted mb-0">162543</small>
-                                          </div>
-                                        </div>
-                                        <div class="text-muted text-small">
-                                          1h ago
-                                        </div>
-                                      </div>
-                                      <div class="wrapper d-flex align-items-center justify-content-between pt-2">
-                                        <div class="d-flex">
-                                          <img class="img-sm rounded-10" src="images/faces/face5.jpg" alt="profile">
-                                          <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">Rafell John</p>
-                                            <small class="text-muted mb-0">Alaska, USA</small>
-                                          </div>
-                                        </div>
-                                        <div class="text-muted text-small">
-                                          1h ago
-                                        </div>
-                                      </div>
+                                     
                                     </div>
                                   </div>
                                 </div>
@@ -1077,6 +1015,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
           </div>
         </div>
+        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -1092,6 +1031,11 @@ if (isset($_SESSION['user_id'])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
+<!-- Scripts para formulario de avances de proyecto -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <!-- plugins:js -->
   <script src="js/todo.js"></script>  

@@ -43,7 +43,7 @@
                         <a class="nav-link" href="registro-proyectos.php">Subir proyecto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">Centro de control</a>
+                        <a class="nav-link" href="./desarrollador/index.php">Centro de control</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio</a>
