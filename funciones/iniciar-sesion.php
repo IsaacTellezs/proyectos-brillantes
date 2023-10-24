@@ -8,7 +8,7 @@ $usuario = $_POST['txt-email'];
 $clave = $_POST['txt-clave'];
 
 conectar();
-$_SESSION['Correo'] = $usuario;
+$_SESSION['id_desarrollador'] = $usuario;
 
 if( validarLogin($usuario, $clave) ) {
 echo "valida";
@@ -22,7 +22,7 @@ else {
     header('Location: ../login.php?error=' . urlencode($errorMensaje));
     exit(); 
 
-$consulta = "SELECT* FROM desarrolladores where Correo = '$usuario' and Contraseña = '$clave' ";
+$consulta = "SELECT* FROM desarrolladores where id_desarrollador = '$usuario' and Contraseña = '$clave' ";
 $resultado = mysqli_query($conexion, $consulta);
 
 $filas=mysqli_fetch_array($resultado);

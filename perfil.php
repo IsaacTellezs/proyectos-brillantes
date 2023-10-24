@@ -3,7 +3,7 @@ session_start();
 require 'funciones/conex.php';
 conectar();
 
-if (isset($_SESSION['Correo'])) {
+if (isset($_SESSION['id_desarrollador'])) {
     include 'header-usuario.php';
 } else {
     include 'header.php';
