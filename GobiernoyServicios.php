@@ -39,16 +39,7 @@ if (isset($_SESSION['Correo'])) {
         <link href="css/owl.theme.default.min.css" rel="stylesheet">
 
         <link href="css/tooplate-gotto-job.css" rel="stylesheet">
-        
-<!--
-
-Tooplate 2134 Gotto Job
-
-https://www.tooplate.com/view/2134-gotto-job
-
-Bootstrap 5 HTML CSS Template
-
--->
+       
 </head>
 
     <body class="Creador-y-desarrollador-page" id="top">
@@ -102,7 +93,7 @@ Bootstrap 5 HTML CSS Template
             <?php
             
 // Consulta SQL para obtener proyectos
-$query = "SELECT Nombre_proyecto, Imagen, Categorias  FROM proyectos WHERE Categorias = 'Gobierno y servicios publicos'";; // Reemplaza 'proyectos' con el nombre de tu tabla
+$query = "SELECT Nombre_proyecto, Imagen, Categorias  FROM proyectos WHERE Categorias = 'Gobierno y servicios publicos'";
 
 // Ejecuta la consulta
 $result = mysqli_query($conexion, $query);
