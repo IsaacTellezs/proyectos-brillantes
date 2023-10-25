@@ -62,13 +62,13 @@
                     <div class="col-lg-4 col-md-8 col-12 mt-3 mt-lg-0">
                         <h6 class="site-footer-title">Email</h6>
 
-                        <form class="custom-form newsletter-form" action="#" method="post" role="form">
+                        <form class="custom-form newsletter-form" action="Enviar-correo.php" method="post" role="form">
                             <h6 class="site-footer-title">Obtener noticias de nuevos proyectos</h6>
 
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-person"></i></span>
 
-                                <input type="text" name="newsletter-name" id="newsletter-name" class="form-control" placeholder="yourname@gmail.com" required>
+                                <input type="text" name="correo-enviado" id="correo-enviado" class="form-control" placeholder="yourname@gmail.com" required>
 
                                 <button type="submit" class="form-control">
                                     <i class="bi-send"></i>
