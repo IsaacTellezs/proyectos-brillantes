@@ -47,6 +47,9 @@
                             <a class="nav-link" href="about_inversionista.php">Centro de control</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="proyectos-nuevos-inversor.php">Proyectos nuevos</a>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio</a>
