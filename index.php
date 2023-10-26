@@ -40,6 +40,7 @@ if (isset($_SESSION['Correo'])) {
         <link href="css/tooplate-gotto-job.css" rel="stylesheet">
         
         <link href="css/index.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
 
         <link rel="shortcut icon" href=" images/logo simple.svg" />
 

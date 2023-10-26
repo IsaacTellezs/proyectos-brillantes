@@ -15,4 +15,11 @@
     height: 200px;
 }
 
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; 
+}
+
 /* Puedes agregar estilos adicionales para los datos del usuario según tus necesidades */
