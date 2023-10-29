@@ -15,7 +15,7 @@ if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];
 
     // Consulta SQL para obtener detalles del proyecto
-    $query = "SELECT Nombre_proyecto, Descripcion, Imagen, Categorias FROM proyectos WHERE id_proyecto = $id_proyecto"; // Ajusta la consulta según tu base de datos
+    $query = "SELECT Nombre_proyecto, Descripcion, Imagen, Categorias FROM proyectos WHERE id_proyecto = $id_proyecto";
 
     // Ejecuta la consulta
     $result = mysqli_query($conexion, $query);
@@ -36,6 +36,19 @@ if (isset($_GET['id_proyecto'])) {
 
         mysqli_free_result($result);
     }
+
+    // Consulta SQL para obtener las URLs de Facebook e Instagram de los desarrolladores
+    $queryDesarrollador = "SELECT Facebook, Instagram FROM desarrolladores WHERE id_desarrollador = $id_proyecto";
+    $resultDesarrollador = mysqli_query($conexion, $queryDesarrollador);
+
+    if ($resultDesarrollador) {
+        if (mysqli_num_rows($resultDesarrollador) > 0) {
+            $rowDesarrollador = mysqli_fetch_assoc($resultDesarrollador);
+            $Facebook = $rowDesarrollador['Facebook'];
+            $Instagram = $rowDesarrollador['Instagram'];
+        }
+        mysqli_free_result($resultDesarrollador);
+    }
 }
 
 // Cierra la conexión a la base de datos al final
@@ -47,7 +60,6 @@ mysqli_close($conexion);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <meta name="author" content="">
     <title>Detalles del Proyecto</title>
     <!-- CSS FILES -->
@@ -62,17 +74,26 @@ mysqli_close($conexion);
     <style>
         .project-details {
             display: flex;
-            align-items: center;
-        }
-
-        .project-description {
-            flex: 1;
-            padding: 20px;
+            flex-direction: row; /* Alinear en fila */
         }
 
         .project-image {
-            flex: 1;
+            flex: 1; /* Ocupa el 50% del ancho */
             padding: 20px;
+        }
+
+        .project-description {
+            flex: 1; /* Ocupa el 50% del ancho */
+            padding: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .button-container .btn {
+            margin-right: 10px; /* Espacio entre los botones */
         }
     </style>
 </head>
@@ -96,7 +117,7 @@ mysqli_close($conexion);
                     <div class="project-image">
                         <div class="job-thumb job-thumb-box">
                             <div class="job-image-box-wrap">
-                                <img src="<?php echo $Imagen; ?>" class="job-image img-fluid" alt="Imagen del Proyecto">
+                                <img src="<?php echo $Imagen; ?>" class="job-image img-fluid" alt="Imagen del Proyecto" style="max-width: 100%; max-height: 100vh;">
                             </div>
                         </div>
                     </div>
@@ -104,13 +125,22 @@ mysqli_close($conexion);
                         <h3>Proyecto: <?php echo $Proyecto; ?></h3>
                         <p>Descripción: <?php echo $Descripcion; ?></p>
                         <p>Categoría: <?php echo $Categoria; ?></p>
+                        <div class="button-container">
+                            <a href="invertir-en-proyecto.php" class="btn btn-outline-primary">
+                                Invertir en proyecto
+                            </a>
+                            <a href="#" class="btn btn-outline-danger">
+                                <i class="bi bi-heart"></i> Follow
+                            </a>
+                            <a href="<?php echo $Facebook; ?>" class="btn btn-outline-primary" target="_blank">
+                                <i class="bi bi-facebook"></i> Facebook
+                            </a>
+                            <a href="<?php echo $Instagram; ?>" class="btn btn-outline-primary" target="_blank">
+                                <i class="bi bi-instagram"></i> Instagram
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12 col-12">
-                <a href="invertir-en-proyecto.php" class="btn btn-primary">
-                    Invertir en proyecto
-                </a>
             </div>
         </div>
     </div>
@@ -119,7 +149,7 @@ mysqli_close($conexion);
 <?php include 'footer.php'; ?>
 <!-- JAVASCRIPT FILES -->
 <script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="js bootstrap.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/counter.js"></script>
 <script src="js/custom.js"></script>

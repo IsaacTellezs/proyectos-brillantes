@@ -58,10 +58,7 @@ if (isset($_SESSION['Correo'])) {
     }
     ?>
 
-<section class="hero-section d-flex justify-content-center align-items-center">
-    <div class="section-overlay"></div>
-    
-    <div class="container">
+<section class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-6 col-12">
                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
