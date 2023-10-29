@@ -126,7 +126,7 @@ mysqli_close($conexion);
                         <p>Descripción: <?php echo $Descripcion; ?></p>
                         <p>Categoría: <?php echo $Categoria; ?></p>
                         <div class="button-container">
-                            <a href="invertir-en-proyecto.php" class="btn btn-outline-primary">
+                            <a href="#" class="btn btn-outline-primary">
                                 Invertir en proyecto
                             </a>
                             <a href="#" class="btn btn-outline-danger">
