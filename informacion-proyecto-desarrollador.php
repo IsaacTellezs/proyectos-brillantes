@@ -106,10 +106,10 @@ mysqli_close($conexion);
                         <p>Categoría: <?php echo $Categoria; ?></p>
                         <div class="col-lg-12 col-12">
     <div class="btn-group" role="group">
-        <a href="invertir-en-proyecto.php" class="btn btn-outline-danger m-2">
+        <a href="#" class="btn btn-outline-danger m-2">
             Invertir en proyecto
         </a>
-        <a href="invertir-en-proyecto.php" class="btn btn-outline-danger m-2">
+        <a href="#" class="btn btn-outline-danger m-2">
             Donar al proyecto
         </a>
         <a href="#" class="btn btn-outline-danger m-2">
