@@ -7,7 +7,7 @@ $clave = $_POST['txt-clave'];
 
 //$password=password_hash($_POST['password'],PASSWORD_DEFAULT);
 conectar();
-$_SESSION['Correo'] = $usuario;
+$_SESSION['correo'] = $usuario;
 
 if( validarLoginInversionista($usuario, $clave) ) {
 echo "valida";

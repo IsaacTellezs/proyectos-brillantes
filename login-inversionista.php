@@ -76,6 +76,31 @@
                                             Iniciar sesión
                                         </button>
                                     </div>
+                                    <a class ="text-white mb-3 d-flex justify-content-center" href="recovery.php">Olvide mi contraseña</a>
+
+                                    <?php 
+                                    if(isset($_GET['message'])){
+                                    
+                                    ?>
+                                      <div class="alert alert-primary" role="alert">
+                                        <?php 
+                                        switch ($_GET['message']) {
+                                          case 'ok':
+                                            echo 'Por favor, revisa tu correo';
+                                            break;
+                                          case 'success_password':
+                                            echo 'Inicia sesión con tu nueva contraseña';
+                                            break;
+                                            
+                                          default:
+                                            echo 'Algo salió mal, intenta de nuevo';
+                                            break;
+                                        }
+                                        ?>
+                                      </div>
+                                    <?php
+                                    }
+                                    ?>
                                     
                                 </div>
                             </form>

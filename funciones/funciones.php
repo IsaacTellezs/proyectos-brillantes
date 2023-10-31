@@ -33,7 +33,7 @@ if ($result->num_rows === 1) {
 	{
 		global $conexion;
 		// Realiza una consulta para buscar al usuario por correo
-$sql = "SELECT  Correo, Contraseña FROM inversionistas WHERE Correo = ?";
+$sql = "SELECT  correo, contraseña FROM datos_personales WHERE correo = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
@@ -42,7 +42,7 @@ $result = $stmt->get_result();
 if ($result->num_rows === 1) {
     // Si se encuentra un usuario con el correo proporcionado
     $row = $result->fetch_assoc();
-    $hashGuardado = $row['Contraseña'];
+    $hashGuardado = $row['contraseña'];
     
     // Verifica la contraseña proporcionada con el hash almacenado
     if (password_verify($clave, $hashGuardado)) {

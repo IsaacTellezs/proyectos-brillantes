@@ -3,12 +3,12 @@ include 'funciones/conex.php';
 include 'funciones/funciones.php';
 conectar();       
 session_start(); 
-
+/* Modificar para determinar usuario
 if (isset($_SESSION['Correo'])) {
     $correo = $_SESSION['Correo'];
     $_SESSION['TipoUsuario'] = determinarTipoUsuario($correo, $conexion);
  }
-
+*/
 ?>
 
 <!doctype html>

@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Login</title>
+        <title>Recuperar contraseña</title>
 
         <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,15 +42,10 @@
                        
 
                         <div class="col-lg-6 col-12 ">
-                            <form class="custom-form hero-form" action="funciones/iniciar-sesion.php" method="post" role="form">
-                                <h3 class="text-white mb-3 d-flex justify-content-center">Iniciar sesión</h3>
+                            <form class="custom-form hero-form" action="funciones/recovery.php" method="post" role="form">
+                                <h3 class="text-white mb-3 d-flex justify-content-center">Recuperar contraseña</h3>
                                   <!-- Mensaje de error -->
-                                <?php
-                                if (isset($_GET['error'])) {
-                                    $errorMensaje = $_GET['error'];
-                                    echo '<div class="alert alert-danger">' . $errorMensaje . '</div>';
-                                }
-                                ?>
+                                
                                 <div class="row">
                                     
                                     <div class="col-lg-12 col-12"> 
@@ -61,47 +56,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
-
-                                            <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña" required >
-                                            <i class="px-2 input-group-text toggle-password bi bi-eye" onclick="togglePassword()"></i>
-                                        </div>
-                                    </div>
+                                    
 
 
                                     <div class="col-lg-12 col-12">
                                         <button type="submit" class="form-control">
-                                            Iniciar sesión
+                                            Enviar
                                         </button>
                                     </div>
-                                    <a class ="text-white mb-3 d-flex justify-content-center" href="recovery.php">Olvide mi contraseña</a>
-
-                                    <?php 
-                                    if(isset($_GET['message'])){
-                                    
-                                    ?>
-                                      <div class="alert alert-primary" role="alert">
-                                        <?php 
-                                        switch ($_GET['message']) {
-                                          case 'ok':
-                                            echo 'Por favor, revisa tu correo';
-                                            break;
-                                          case 'success_password':
-                                            echo 'Inicia sesión con tu nueva contraseña';
-                                            break;
-                                            
-                                          default:
-                                            echo 'Algo salió mal, intenta de nuevo';
-                                            break;
-                                        }
-                                        ?>
-                                      </div>
-                                    <?php
-                                    }
-                                    ?>
-                                    
+                                    <p class="text-white mb-3 d-flex justify-content-center">Escribe la dirección de tu correo electronico</p>
                                 </div>
                             </form>
                         </div>
