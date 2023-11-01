@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Actualizar los datos en MySQL con una sentencia preparada
         $user = $_SESSION['Correo'];
-        $update_sql = "UPDATE datos_personales SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ? WHERE correo = ?";
+        $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ? WHERE correo = ?";
         $stmt = $conexion->prepare($update_sql);
         $stmt->bind_param("sssss", $nom_usuario, $correo, $telefono, $empresa, $user);
 
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT nom_usuario, correo, telefono, empresa FROM datos_personales WHERE correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, empresa FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
