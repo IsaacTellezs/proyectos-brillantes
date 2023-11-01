@@ -27,7 +27,7 @@ try {
     $mail->Port       = 587;
 
     $mail->setFrom('proyectosbrillantes@outlook.com', 'Proyectos Brillantes');
-    $mail->addAddress($email, 'Prueba');
+    $mail->addAddress($email, 'Recuperacion de password');
     $mail->isHTML(true);
     $mail->Subject = 'Recuperacion de contrasena';
     $mail->Body    = 'Hola, este es un correo generado para solicitar tu recuperacion de contraseña, por favor, visita la página de <a href="http://localhost/crowd/change_password.php?nom_usuario='.$row['nom_usuario'].'">Recuperación de contraseña</a>';
