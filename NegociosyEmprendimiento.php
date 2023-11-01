@@ -102,8 +102,7 @@ Bootstrap 5 HTML CSS Template
             <?php
             
 // Consulta SQL para obtener proyectos
-$query = "SELECT Nombre_proyecto, Imagen, Categorias, id_proyecto  FROM proyectos WHERE Categorias = 'Negocios y emprendimiento'";; // Reemplaza 'proyectos' con el nombre de tu tabla
-
+$query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos WHERE categoria = 'Negocios y emprendimiento'";
 // Ejecuta la consulta
 $result = mysqli_query($conexion, $query);
 
@@ -113,9 +112,9 @@ if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             // Recupera los datos de la base de datos
             $ProyectoID = $row['id_proyecto'];
-            $Proyecto = $row['Nombre_proyecto'];
-            $Imagen = $row['Imagen'];
-            $Categoria = $row['Categorias'];
+            $Proyecto = $row['nom_proyecto'];
+            $Imagen = $row['imagen'];
+            $Categoria = $row['categoria'];
 
             // Ahora puedes mostrar los datos en la sección
             echo '<div class="col-lg-4 col-md-6 col-12">';

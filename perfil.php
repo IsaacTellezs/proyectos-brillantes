@@ -3,28 +3,27 @@ session_start();
 require 'funciones/conex.php';
 conectar();
 
-if (isset($_SESSION['id_desarrollador'])) {
+if (isset($_SESSION['Correo'])) {
     include 'header-usuario.php';
 } else {
     include 'header.php';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['Nom_usuario'], $_POST['Correo'], $_POST['Tel'], $_POST['Experiencia'], $_POST['Facebook'], $_POST['Instagram'])) {
+    if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['experiencia'], $_POST['facebook'], $_POST['instagram'])) {
         // Obtener los valores del formulario
-        $Nom_usuario = $_POST['Nom_usuario'];
-        $Correo = $_POST['Correo'];
-        $Tel = $_POST['Tel'];
-        $Experiencia = $_POST['Experiencia'];
-        $Facebook = $_POST['Facebook'];
-        $Instagram = $_POST['Instagram'];
+        $nom_usuario = $_POST['nom_usuario'];
+        $correo = $_POST['correo'];
+        $telefono = $_POST['telefono'];
+        $experiencia = $_POST['experiencia'];
+        $facebook = $_POST['facebook'];
+        $instagram = $_POST['instagram'];
 
         // Actualizar los datos en MySQL con una sentencia preparada
         $user = $_SESSION['Correo'];
-        $update_sql = "UPDATE desarrolladores SET Nom_usuario = ?, Correo = ?, Tel = ?, Experiencia = ?, Facebook = ?, Instagram = ? WHERE Correo = ?";
+        $update_sql = "UPDATE datos_personales SET nom_usuario = ?, correo = ?, telefono = ?, experiencia = ?, facebook = ?, instagram = ? WHERE correo = ?";
         $stmt = $conexion->prepare($update_sql);
-        $stmt->bind_param("sssssss", $Nom_usuario, $Correo, $Tel, $Experiencia, $Facebook, $Instagram, $user);
-        
+        $stmt->bind_param("sssssss", $nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram, $user);
 
         if ($stmt->execute()) {
             // Los datos se han actualizado correctamente
@@ -39,11 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT Nom_usuario, Correo, Tel, Experiencia, Facebook, Instagram FROM desarrolladores WHERE Correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, experiencia, facebook, instagram FROM datos_personales WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
-$stmt->bind_result($Nom_usuario, $Correo, $Tel, $Experiencia, $Facebook, $Instagram);
+$stmt->bind_result($nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -92,12 +91,12 @@ $stmt->close();
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
-                            <label for="Nom_usuario" class="form-label" style="font-size: 24px;">
+                            <label for="nom_usuario" class="form-label" style="font-size: 24px;">
                                 <strong>Nombre</strong>
                             </label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                <input type="text" class="form-control" id="Nom_usuario" placeholder="Tu nombre" name="Nom_usuario" required value="<?php echo $Nom_usuario; ?>">
+                                <input type="text" class="form-control" id="nom_usuario" placeholder="Tu nombre" name="nom_usuario" required value="<?php echo $nom_usuario; ?>">
                             </div>
                         </div>
 
@@ -107,19 +106,19 @@ $stmt->close();
                             </label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-envelope custom-icon"></i></span>
-                                <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com" name="Correo" required value="<?php echo $Correo; ?>">
+                                <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com" name="correo" required value="<?php echo $correo; ?>">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
-                            <label for= "numero" class="form-label" style="font-size: 24px;">
+                            <label for= "telefono" class="form-label" style="font-size: 24px;">
                                 <strong>Número de teléfono</strong>
                             </label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-telephone custom-icon"></i></span>
-                                <input type="text" class="form-control" id="numero" placeholder="Tu número" name= "Tel" required value="<?php echo $Tel; ?>">
+                                <input type="text" class="form-control" id="telefono" placeholder="Tu número" name= "telefono" required value="<?php echo $telefono; ?>">
                             </div>
                         </div>
 
@@ -129,7 +128,7 @@ $stmt->close();
                             </label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                <textarea class="form-control" id="bio"  placeholder="Cuéntanos algo sobre ti" name="Experiencia" required><?php echo $Experiencia; ?></textarea>
+                                <textarea class="form-control" id="bio"  placeholder="Cuéntanos algo sobre ti" name="experiencia" required><?php echo $experiencia; ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -142,7 +141,7 @@ $stmt->close();
                             </label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-facebook custom-icon"></i></span>
-                                <input type="text" class="form-control" id="facebook" placeholder="URL de tu perfil de Facebook" name="Facebook" value="<?php echo $Facebook; ?>">
+                                <input type="text" class="form-control" id="facebook" placeholder="URL de tu perfil de Facebook" name="facebook" value="<?php echo $facebook; ?>">
                             </div>
                         </div>
 
@@ -152,10 +151,11 @@ $stmt->close();
                     </label>
                     <div class="input-group">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-instagram custom-icon"></i></span>
-        <input type="text" class="form-control" id="Instagram" placeholder="URL de tu perfil de Instagram" name="Instagram" value="<?php echo $Instagram; ?>">
+        <input type="text" class="form-control" id="instagram" placeholder="URL de tu perfil de Instagram" name="instagram" value="<?php echo $instagram; ?>">
     </div>
-    <a href="<?php echo $Instagram; ?>" class="social-button" target="_blank" style="font-size: 32px;"><i class="bi bi-instagram"></i></a>
-    <a href="<?php echo $Facebook; ?>" class="social-button" target="_blank" style="font-size: 32px;"><i class="bi bi-facebook"></i></a>
+    <a href="<?php echo $instagram; ?>" class="social-button" target="_blank" style="font-size: 32px;"><i class="bi bi-instagram"></i></a>
+    <a href="<?php echo $facebook; ?>" class="social-button" target="_blank" style="font-size: 32px;"><i class="bi bi-facebook"></i></a>
+
 </div>
                     </div>
 

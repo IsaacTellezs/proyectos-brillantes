@@ -15,7 +15,7 @@ if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];
 
     // Consulta SQL para obtener detalles del proyecto
-    $query = "SELECT Nombre_proyecto, Descripcion, Imagen, Categorias FROM proyectos WHERE id_proyecto = $id_proyecto"; // Ajusta la consulta según tu base de datos
+    $query = "SELECT nom_proyecto, descripcion, imagen, categoria FROM proyectos WHERE id_proyecto = $id_proyecto"; // Ajusta la consulta según tu base de datos
 
     // Ejecuta la consulta
     $result = mysqli_query($conexion, $query);
@@ -23,10 +23,10 @@ if (isset($_GET['id_proyecto'])) {
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            $Proyecto = $row['Nombre_proyecto'];
-            $Descripcion = $row['Descripcion'];
-            $Imagen = $row['Imagen'];
-            $Categoria = $row['Categorias'];
+            $Proyecto = $row['nom_proyecto'];
+            $Descripcion = $row['descripcion'];
+            $Imagen = $row['imagen'];
+            $Categoria = $row['categoria'];
 
             // Ahora puedes mostrar los detalles del proyecto
             // (por ejemplo, título, imagen, descripción, categoría, etc.)

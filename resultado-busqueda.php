@@ -62,7 +62,7 @@ if (isset($_SESSION['resultados_busqueda'])) {
             $nombre_proyecto = mysqli_real_escape_string($conexion, $nombre_proyecto);
 
             // Consulta SQL para buscar por nombre de proyecto
-            $query = "SELECT Nombre_proyecto, Imagen, Categorias, id_proyecto FROM proyectos WHERE Nombre_proyecto = '$nombre_proyecto'";
+            $query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos WHERE nom_proyecto = '$nombre_proyecto'";
 
             // Ejecuta la consulta
             $result = mysqli_query($conexion, $query);
@@ -73,9 +73,9 @@ if (isset($_SESSION['resultados_busqueda'])) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         // Recupera los datos de la base de datos
                         $ProyectoID = $row['id_proyecto'];
-                        $nombre_proyecto = $row['Nombre_proyecto'];
-                        $imagen = $row['Imagen'];
-                        $categoria = $row['Categorias'];
+                        $nombre_proyecto = $row['nom_proyecto'];
+                        $imagen = $row['imagen'];
+                        $categoria = $row['categoria'];
 
                         // Aquí, en lugar de mostrar el nombre del proyecto directamente, debes crear una estructura similar a la del código que proporcionaste.
                         echo '<div class="col-lg-4 col-md-6 col-12">';

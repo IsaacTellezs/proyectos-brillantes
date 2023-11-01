@@ -12,22 +12,22 @@ if (isset($_SESSION['Correo'])) {
 // Procesamiento del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si se ha enviado un archivo
-    if (isset($_FILES['Imagen'])) {
+    if (isset($_FILES['imagen'])) {
         // Ruta de destino para guardar la imagen
-        $rutaDestino = 'uploads/' . $_FILES['Imagen']['name'];
+        $rutaDestino = 'uploads/' . $_FILES['imagen']['name'];
 
         // Mover el archivo al directorio de destino
-        if (move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaDestino)) {
+        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
             // La imagen se ha cargado correctamente
 
             // Recuperar datos del formulario
-            $Nombre_proyecto = $_POST['Nombre_proyecto'];
-            $Categorias = $_POST['Categorias'];
+            $Nombre_proyecto = $_POST['nom_proyecto'];
+            $Categorias = $_POST['categoria'];
             $Tipo_inversion = $_POST['Tipo_inversion'];
-            $Descripcion = $_POST['Descripcion'];
+            $Descripcion = $_POST['descripcion'];
 
             // Insertar datos en la base de datos
-            $sql = "INSERT INTO proyectos (Nombre_proyecto, Categorias, Tipo_inversion, Descripcion, Imagen) VALUES (?,?,?,?,?)";
+            $sql = "INSERT INTO proyectos (nom_proyecto, categoria, Tipo_inversion, descripcion, imagen) VALUES (?,?,?,?,?)";
 
             // Preparar la sentencia
             $stmt = $conexion->prepare($sql);
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Guarda los datos en una sesión
                 $_SESSION['NuevoProyecto'] = $_POST;
-                $_SESSION['NuevoProyecto']['Imagen'] = $rutaDestino;
+                $_SESSION['NuevoProyecto']['imagen'] = $rutaDestino;
 
                 // Redirige al usuario a la página de categoría correspondiente
                 if ($Categorias === 'Educación') {
@@ -136,7 +136,7 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="Nombre_proyecto" id="Nombre_proyecto" class="form-control" placeholder="Nombre proyecto" required>
+                                            <input type="text" name="nom_proyecto" id="nom_proyecto" class="form-control" placeholder="Nombre proyecto" required>
                                         </div>
                                     </div>
 
@@ -144,14 +144,14 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="Descripcion" id="Descripcion" class="form-control" placeholder="Descripcion" required>
+                                            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion" required>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-12">
                              <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-        <select class="form-select" id="Categorias" name="Categorias" required>
+        <select class="form-select" id="categoria" name="categoria" required>
             <option value="Educación">Educacion</option>
             <option value="Negocios y emprendimiento">Negocios y emprendimiento</option>
             <option value="Gobierno y servicios públicos">Gobierno y servicios publicos</option>
@@ -174,7 +174,7 @@ Header
 <div class="col-lg-12 col-12">
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1"><i class="bi-image custom-icon"></i></span>
-        <input type="file" name="Imagen" id="Imagen" accept="image/*" required>
+        <input type="file" name="imagen" id="imagen" accept="image/*" required>
     </div>
 </div>
                                     <div class="col-lg-12 col-12">
