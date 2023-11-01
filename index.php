@@ -8,7 +8,7 @@ if (isset($_SESSION['Correo'])) {
     $correo = $_SESSION['Correo'];
     $_SESSION['TipoUsuario'] = determinarTipoUsuario($correo, $conexion);
  }
-*/
+
 ?>
 
 <!doctype html>

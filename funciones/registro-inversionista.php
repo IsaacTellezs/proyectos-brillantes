@@ -16,7 +16,7 @@ $Empresa = $_POST['empresa'];
 
 // Insertar datos en la base de datos
 
-    $sql = "INSERT INTO datos_personales (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, empresa ) VALUES (?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO usuarios (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, empresa ) VALUES (?,?,?,?,?,?,?,?)";
 // Preparar la sentencia
     $stmt = $conexion->prepare($sql);
 

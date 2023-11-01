@@ -7,7 +7,7 @@ $pass = $_POST['new_password'];
 
 // Generar un hash seguro de la contraseña
 $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
-$query = "UPDATE `datos_personales` SET `contraseña` = '$hashed_password' WHERE `nom_usuario` = '$usuario'";
+$query = "UPDATE `usuarios` SET `contraseña` = '$hashed_password' WHERE `nom_usuario` = '$usuario'";
 
 //$query = "UPDATE usuarios SET New.clave = ‘$pass’ AES_ENCRYPT(NEW.clave, '061219') WHERE usuario = '$usuario'";
 

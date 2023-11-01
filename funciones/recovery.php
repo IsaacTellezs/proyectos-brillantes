@@ -11,7 +11,7 @@ require_once('conex.php');
 conectar();
 
 $email = $_POST['txt-email'];
-$query = "SELECT * FROM datos_personales where correo = '$email'";
+$query = "SELECT * FROM usuarios where correo = '$email'";
 $result = $conexion->query($query);
 $row = $result->fetch_assoc();
 

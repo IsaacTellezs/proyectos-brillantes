@@ -33,7 +33,7 @@ if ($result->num_rows === 1) {
 	{
 		global $conexion;
 		// Realiza una consulta para buscar al usuario por correo
-$sql = "SELECT  correo, contraseña FROM datos_personales WHERE correo = ?";
+$sql = "SELECT  correo, contraseña FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
