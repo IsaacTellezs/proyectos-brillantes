@@ -60,28 +60,28 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="A_paterno" id="A_paterno" class="form-control" placeholder="Apellido paterno" required>
+                                            <input type="text" name="paterno" id="paterno" class="form-control" placeholder="Apellido paterno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="A_materno" id="A_materno" class="form-control" placeholder="Apellido materno" required>
+                                            <input type="text" name="materno" id="materno" class="form-control" placeholder="Apellido materno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="Nom_usuario" id="Nom_usuario" class="form-control" placeholder="Nombre de usuario" required>
+                                            <input type="text" name="nom_usuario" id="nom_usuario" class="form-control" placeholder="Nombre de usuario" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope"></i></span>
 
-                                            <input type="email" name="Correo" id="Correo" class="form-control" placeholder="Email" required>
+                                            <input type="email" name="correo" id="correo" class="form-control" placeholder="Email" required>
                                         </div>
                                     </div>
 
@@ -89,7 +89,7 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-book"></i></span>
 
-                                            <input type="text" name="Experiencia" id="Experiencia" class="form-control" placeholder="Área de experiencia" required>
+                                            <input type="text" name="experiencia" id="experiencia" class="form-control" placeholder="Área de experiencia" required>
                                         </div>
                                     </div>
 
@@ -97,7 +97,7 @@ Header
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-phone"></i></span>
 
-                                            <input type="tel" name="Tel" id="Tel" class="form-control" placeholder="Telefono" required>
+                                            <input type="tel" name="telefono" id="telefono" class="form-control" placeholder="Telefono" required>
                                         </div>
                                     </div>
 
