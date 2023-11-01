@@ -9,6 +9,7 @@ if (isset($_SESSION['Correo'])) {
     $_SESSION['TipoUsuario'] = determinarTipoUsuario($correo, $conexion);
  }
 */
+
 ?>
 
 <!doctype html>
@@ -104,7 +105,6 @@ if (isset($_SESSION['Correo'])) {
                         <div class="col-lg-6 col-12">
     <form class="custom-form hero-form" action="busqueda.php" method="get" role="form">
         <h3 class="text-white mb-3">¿Buscas algún proyecto en específico?</h3>
-
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="input-group">
@@ -581,6 +581,7 @@ if (isset($_SESSION['Correo'])) {
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/counter.js"></script>
         <script src="js/custom.js"></script>
+        
 
     </body>
 </html>
