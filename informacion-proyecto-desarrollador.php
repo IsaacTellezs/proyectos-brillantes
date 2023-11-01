@@ -105,16 +105,42 @@ mysqli_close($conexion);
                         <p>Descripción: <?php echo $Descripcion; ?></p>
                         <p>Categoría: <?php echo $Categoria; ?></p>
                         <div class="col-lg-12 col-12">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
     <div class="btn-group" role="group">
-        <a href="#" class="btn btn-outline-danger m-2">
-            Invertir en proyecto
-        </a>
-        <a href="#" class="btn btn-outline-danger m-2">
-            Donar al proyecto
-        </a>
-        <a href="#" class="btn btn-outline-danger m-2">
-            <i class="bi bi-heart"></i> Follow
-        </a>
+    <div id="donate-button-container">
+<div id="donate-button"></div>
+<script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+<script>
+PayPal.Donation.Button({
+env:'production',
+hosted_button_id:'YYDCTHG6SCJB8',
+image: {
+src:'https://pics.paypal.com/00/s/NjdmZDFiN2EtYWM1MC00ZWQ2LWFjMDYtYjg2OWE5NWZhZWM0/file.PNG',
+alt:'Donar con el botón PayPal',
+title:'PayPal - The safer, easier way to pay online!',
+}
+}).render('#donate-button');
+</script>
+</div>
+<div id="donate-button-container">
+<div id="donate-button"></div>
+<script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+<script>
+PayPal.Donation.Button({
+env:'production',
+hosted_button_id:'F7GJXF9T5MLY2',
+image: {
+src:'https://pics.paypal.com/00/s/ZmY3M2RjNmUtMmExYy00YjE4LWIwMzgtMmZkZDdiNGFhODk1/file.PNG',
+alt:'Donar con el botón PayPal',
+title:'PayPal - The safer, easier way to pay online!',
+}
+}).render('#donate-button');
+</script>
+</div>
     </div>
 </div>
             </div>
