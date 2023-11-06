@@ -3,12 +3,13 @@ include 'funciones/conex.php';
 include 'funciones/funciones.php';
 conectar();       
 session_start(); 
-/* Verificar función
+
 if (isset($_SESSION['Correo'])) {
     $correo = $_SESSION['Correo'];
     $_SESSION['TipoUsuario'] = determinarTipoUsuario($correo, $conexion);
+    echo "El tipo de usuario es: " . $_SESSION['TipoUsuario'];
  }
-*/
+
 ?>
 
 <!doctype html>

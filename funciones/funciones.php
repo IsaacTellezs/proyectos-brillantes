@@ -64,23 +64,21 @@ if ($result->num_rows === 1) {
 
    
 function determinarTipoUsuario($correo, $conexion) {
-    $tipoUsuario = 'otro'; // Valor predeterminado
 
-    $consultaUsuarios = "SELECT * FROM datos_personales WHERE correo = '$correo'";
-    $resultadoUsuarios = mysqli_query($conexion, $consultaUsuarios);
+    $query = "SELECT tipo_usuario FROM usuarios WHERE correo = '$correo'";
+    $resultado = $conexion->query($query);
 
-    if (mysqli_num_rows($resultadoUsuarios) > 0) {
-        $tipoUsuario = 'usuario';
-    } else {
-        $consultaInversores = "SELECT * FROM datos_personales WHERE correo = '$correo'";
-        $resultadoInversores = mysqli_query($conexion, $consultaInversores);
-
-        if (mysqli_num_rows($resultadoInversores) > 0) {
-            $tipoUsuario = 'inversor';
+    if ($resultado) {
+        // Verificar si se obtuvo al menos una fila
+        if ($resultado->num_rows > 0) {
+            // Obtener el tipo de usuario de la primera fila
+            $fila = $resultado->fetch_assoc();
+            return $fila['tipo_usuario'];
         }
     }
 
-    return $tipoUsuario;
+    // Si no se encontró el usuario o hubo un error, puedes manejarlo como desees
+    return "Usuario no encontrado";
 }
 
 
