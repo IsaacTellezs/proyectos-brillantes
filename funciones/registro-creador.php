@@ -16,7 +16,7 @@ $Experiencia = $_POST['experiencia'];
 
 // Insertar datos en la base de datos
 
-    $sql = "INSERT INTO datos_personales (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, experiencia ) VALUES (?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO usuarios (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, experiencia ) VALUES (?,?,?,?,?,?,?,?)";
 // Preparar la sentencia
     $stmt = $conexion->prepare($sql);
 
