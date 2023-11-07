@@ -18,6 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $experiencia = $_POST['experiencia'];
         $facebook = $_POST['facebook'];
         $instagram = $_POST['instagram'];
+                if (!is_numeric($telefono)) {
+                    echo "El campo de teléfono debe contener solo números.";
+                } else {
 
         // Actualizar los datos en MySQL con una sentencia preparada
         $user = $_SESSION['Correo'];
@@ -34,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error al actualizar los datos: " . $conexion->error;
         }
     }
+}
 }
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
