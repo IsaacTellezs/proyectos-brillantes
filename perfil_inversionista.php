@@ -11,28 +11,29 @@ if (isset($_SESSION['Correo'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['empresa'])) {
-        // Obtener los valores del formulario
+
         $nom_usuario = $_POST['nom_usuario'];
         $correo = $_POST['correo'];
-        $telefono = $_POST['telefono']; // Agregar el número de teléfono
+        $telefono = $_POST['telefono'];
         $empresa = $_POST['empresa'];
-
-        // Actualizar los datos en MySQL con una sentencia preparada
-        $user = $_SESSION['Correo'];
-        $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ? WHERE correo = ?";
-        $stmt = $conexion->prepare($update_sql);
-        $stmt->bind_param("sssss", $nom_usuario, $correo, $telefono, $empresa, $user);
-
-        if ($stmt->execute()) {
-            // Los datos se han actualizado correctamente
-            // Puedes redirigir al usuario o mostrar un mensaje de éxito
-            header('Location: perfil_inversionista.php');
-            exit;
+        if (!is_numeric($telefono)) {
+            echo "El campo de teléfono debe contener solo números.";
         } else {
-            echo "Error al actualizar los datos: " . $conexion->error;
+            $user = $_SESSION['Correo'];
+            $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ? WHERE correo = ?";
+            $stmt = $conexion->prepare($update_sql);
+            $stmt->bind_param("sssss", $nom_usuario, $correo, $telefono, $empresa, $user);
+
+            if ($stmt->execute()) {
+                header('Location: perfil_inversionista.php');
+                exit;
+            } else {
+                echo "Error al actualizar los datos: " . $conexion->error;
+            }
         }
     }
 }
+
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
