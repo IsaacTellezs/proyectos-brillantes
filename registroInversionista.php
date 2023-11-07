@@ -49,7 +49,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+                                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="nombre" required>
                                         </div>
                                     </div>
 
@@ -57,28 +57,28 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="A_paterno" id="A_paterno" class="form-control" placeholder="Apellido materno" required>
+                                            <input type="text" name="paterno" id="paterno" class="form-control" placeholder="Apellido materno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="A_materno" id="A_materno" class="form-control" placeholder="Apellido materno" required>
+                                            <input type="text" name="materno" id="materno" class="form-control" placeholder="Apellido materno" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi-person custom-icon"></i></span>
 
-                                            <input type="text" name="Nom_usuario" id="Nom_usuario" class="form-control" placeholder="Nombre de usuario" required>
+                                            <input type="text" name="nom_usuario" id="nom_usuario" class="form-control" placeholder="Nombre de usuario" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope"></i></span>
 
-                                            <input type="email" name="Correo" id="Correo" class="form-control" placeholder="Email" required>
+                                            <input type="email" name="correo" id="correo" class="form-control" placeholder="Email" required>
                                         </div>
                                     </div>
 
@@ -86,7 +86,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-building"></i></span>
 
-                                            <input type="text" name="Empresa" id="Empresa" class="form-control" placeholder="Empresa" required>
+                                            <input type="text" name="empresa" id="empresa" class="form-control" placeholder="Empresa" required>
                                         </div>
                                     </div>
 
@@ -94,7 +94,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-phone"></i></span>
 
-                                            <input type="tel" name="Tel" id="Tel" class="form-control" placeholder="Telefono" required>
+                                            <input type="tel" name="telefono" id="telefono" class="form-control" placeholder="Telefono" required>
                                         </div>
                                     </div>
 
@@ -104,6 +104,9 @@
 
                                             <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña" required>
                                             <i class="px-2 input-group-text toggle-password bi bi-eye" onclick="togglePassword()"></i>
+
+                                            <input type="hidden" name="tipo_usuario" value="inversionista">
+                                            <input type="hidden" name="nivel_usuario" value="2">
                                         </div>
                                     </div>
 

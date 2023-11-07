@@ -35,7 +35,7 @@ if (isset($_GET['q'])) {
     }
 
     // Realiza la consulta en la base de datos
-    $query = "SELECT * FROM proyectos WHERE Nombre_proyecto LIKE '$search%'";
+    $query = "SELECT * FROM proyectos WHERE nom_proyecto LIKE '$search%'";
     $result = mysqli_query($conexion, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -43,7 +43,7 @@ if (isset($_GET['q'])) {
 
         while ($row = mysqli_fetch_assoc($result)) {
             // Almacena los resultados en una sesión
-            $_SESSION['resultados_busqueda'][] = $row['Nombre_proyecto'];
+            $_SESSION['resultados_busqueda'][] = $row['nom_proyecto'];
         }
 
         header("Location: resultado-busqueda.php");

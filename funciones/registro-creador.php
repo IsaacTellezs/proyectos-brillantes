@@ -4,21 +4,21 @@ require 'funciones.php';
 
 conectar();
 
-
-
 // Recuperar datos del formulario
 $nombre = $_POST['nombre'];
-$A_paterno = $_POST['A_paterno'];
-$A_materno = $_POST['A_materno'];
-$Nom_usuario = $_POST['Nom_usuario'];
-$Correo = $_POST['Correo'];
-$Tel = $_POST['Tel'];
+$A_paterno = $_POST['paterno'];
+$A_materno = $_POST['materno'];
+$Nom_usuario = $_POST['nom_usuario'];
+$Correo = $_POST['correo'];
+$Tel = $_POST['telefono'];
 $Contraseña = password_hash($_POST['txt-clave'], PASSWORD_DEFAULT); //  Almacenamiento de contraseñas de forma segura
-$Experiencia = $_POST['Experiencia'];   
+$Experiencia = $_POST['experiencia'];
+$tipo = $_POST['tipo_usuario'];
+$nivel = $_POST['nivel_usuario'];
 
 // Insertar datos en la base de datos
 
-    $sql = "INSERT INTO desarrolladores (Nombre, A_paterno, A_materno, Nom_Usuario, Contraseña,  Correo, Tel, Experiencia ) VALUES (?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO usuarios (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, experiencia, tipo_usuario, nivel_usuario ) VALUES (?,?,?,?,?,?,?,?,?,?)";
 // Preparar la sentencia
     $stmt = $conexion->prepare($sql);
 
@@ -27,7 +27,7 @@ $Experiencia = $_POST['Experiencia'];
     }
     
     // Vincular parámetros y ejecutar la consulta
-    $stmt->bind_param("ssssssis", $nombre, $A_paterno, $A_materno, $Nom_usuario,  $Contraseña, $Correo, $Tel, $Experiencia);
+    $stmt->bind_param("ssssssissi", $nombre, $A_paterno, $A_materno, $Nom_usuario,  $Contraseña, $Correo, $Tel, $Experiencia,$tipo, $nivel);
     
     if ($stmt->execute()) {
         

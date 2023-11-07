@@ -3,7 +3,7 @@
 	{
 		global $conexion;
 		// Realiza una consulta para buscar al usuario por correo
-$sql = "SELECT  Correo, Contraseña FROM desarrolladores WHERE Correo = ?";
+$sql = "SELECT  correo, contraseña FROM datos_personales WHERE correo = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
@@ -12,12 +12,12 @@ $result = $stmt->get_result();
 if ($result->num_rows === 1) {
     // Si se encuentra un usuario con el correo proporcionado
     $row = $result->fetch_assoc();
-    $hashGuardado = $row['Contraseña'];
+    $hashGuardado = $row['contraseña'];
     
     // Verifica la contraseña proporcionada con el hash almacenado
     if (password_verify($clave, $hashGuardado)) {
 		session_start();
-		$_SESSION['Correo'] = $usuario;
+		$_SESSION['correo'] = $usuario;
 		return true;
 
     } else {
@@ -33,7 +33,7 @@ if ($result->num_rows === 1) {
 	{
 		global $conexion;
 		// Realiza una consulta para buscar al usuario por correo
-$sql = "SELECT  Correo, Contraseña FROM inversionistas WHERE Correo = ?";
+$sql = "SELECT  correo, contraseña FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
@@ -42,7 +42,7 @@ $result = $stmt->get_result();
 if ($result->num_rows === 1) {
     // Si se encuentra un usuario con el correo proporcionado
     $row = $result->fetch_assoc();
-    $hashGuardado = $row['Contraseña'];
+    $hashGuardado = $row['contraseña'];
     
     // Verifica la contraseña proporcionada con el hash almacenado
     if (password_verify($clave, $hashGuardado)) {
@@ -64,23 +64,21 @@ if ($result->num_rows === 1) {
 
    
 function determinarTipoUsuario($correo, $conexion) {
-    $tipoUsuario = 'otro'; // Valor predeterminado
 
-    $consultaUsuarios = "SELECT * FROM desarrolladores WHERE Correo = '$correo'";
-    $resultadoUsuarios = mysqli_query($conexion, $consultaUsuarios);
+    $query = "SELECT tipo_usuario FROM usuarios WHERE correo = '$correo'";
+    $resultado = $conexion->query($query);
 
-    if (mysqli_num_rows($resultadoUsuarios) > 0) {
-        $tipoUsuario = 'usuario';
-    } else {
-        $consultaInversores = "SELECT * FROM inversionistas WHERE Correo = '$correo'";
-        $resultadoInversores = mysqli_query($conexion, $consultaInversores);
-
-        if (mysqli_num_rows($resultadoInversores) > 0) {
-            $tipoUsuario = 'inversor';
+    if ($resultado) {
+        // Verificar si se obtuvo al menos una fila
+        if ($resultado->num_rows > 0) {
+            // Obtener el tipo de usuario de la primera fila
+            $fila = $resultado->fetch_assoc();
+            return $fila['tipo_usuario'];
         }
     }
 
-    return $tipoUsuario;
+    // Si no se encontró el usuario o hubo un error, puedes manejarlo como desees
+    return "Usuario no encontrado";
 }
 
 

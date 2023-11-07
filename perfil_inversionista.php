@@ -10,18 +10,18 @@ if (isset($_SESSION['Correo'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['Nom_usuario'], $_POST['Correo'], $_POST['Tel'], $_POST['Empresa'])) {
+    if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['empresa'])) {
         // Obtener los valores del formulario
-        $Nom_usuario = $_POST['Nom_usuario'];
-        $Correo = $_POST['Correo'];
-        $Tel = $_POST['Tel'];
-        $Empresa = $_POST['Empresa'];
+        $nom_usuario = $_POST['nom_usuario'];
+        $correo = $_POST['correo'];
+        $telefono = $_POST['telefono']; // Agregar el número de teléfono
+        $empresa = $_POST['empresa'];
 
         // Actualizar los datos en MySQL con una sentencia preparada
         $user = $_SESSION['Correo'];
-        $update_sql = "UPDATE inversionistas SET Nom_usuario = ?, Correo = ?, Tel = ?, Empresa = ? WHERE Correo = ?";
+        $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ? WHERE correo = ?";
         $stmt = $conexion->prepare($update_sql);
-        $stmt->bind_param("sssss", $Nom_usuario, $Correo, $Tel, $Empresa, $user);
+        $stmt->bind_param("sssss", $nom_usuario, $correo, $telefono, $empresa, $user);
 
         if ($stmt->execute()) {
             // Los datos se han actualizado correctamente
@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT Nom_usuario, Correo, Tel, Empresa FROM inversionistas WHERE Correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, empresa FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
-$stmt->bind_result($Nom_usuario, $Correo, $Tel, $Empresa);
+$stmt->bind_result($nom_usuario, $correo, $telefono, $empresa);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -89,10 +89,10 @@ $stmt->close();
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
-                                <label for="Nom_usuario" style="font-size: 24px;"><strong>Nombre</strong></label>
+                                <label for="nom_usuario" style="font-size: 24px;"><strong>Nombre</strong></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="text" class="form-control" id="Nom_usuario" placeholder="Tu nombre" name="Nom_usuario" required value="<?php echo $Nom_usuario; ?>">
+                                    <input type="text" class="form-control" id="nom_usuario" placeholder="Tu nombre" name="nom_usuario" required value="<?php echo $nom_usuario; ?>">
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@ $stmt->close();
                                 <label for="email" style="font-size: 24px;"><strong>Correo Electrónico</strong></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi-envelope custom-icon"></i></span>
-                                    <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com" name="Correo" required value="<?php echo $Correo; ?>">
+                                    <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com" name="correo" required value="<?php echo $correo; ?>">
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@ $stmt->close();
                                 <label for="numero" style="font-size: 24px;"><strong>Número de teléfono</strong></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi-telephone custom-icon"></i></span>
-                                    <input type="text" class="form-control" id="numero" placeholder="Tu número" name="Tel" required value="<?php echo $Tel; ?>">
+                                    <input type="text" class="form-control" id="numero" placeholder="Tu número" name="telefono" required value="<?php echo $telefono; ?>">
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ $stmt->close();
                                 <label for="empresa" style="font-size: 24px;"><strong>Empresa</strong></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-briefcase custom-icon"></i></span>
-                                    <input type="text" class="form-control" id="Empresa" placeholder="Tu empresa" name="Empresa" required value="<?php echo $Empresa; ?>">
+                                    <input type="text" class="form-control" id="empresa" placeholder="Tu empresa" name="empresa" required value="<?php echo $empresa; ?>">
                                 </div>
                             </div>
                         </div>

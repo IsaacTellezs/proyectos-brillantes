@@ -99,9 +99,8 @@ Bootstrap 5 HTML CSS Template
 
             <?php
             
-// Consulta SQL para obtener proyectos de la categoría "Negocios y emprendimiento"
-$query = "SELECT Nombre_proyecto, Imagen, Categorias FROM proyectos WHERE Categorias = 'Negocios y emprendimiento'"; // Filtrar por la categoría
-
+// Consulta SQL para obtener proyectos
+$query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos WHERE categoria = 'Negocios y emprendimiento'";
 // Ejecuta la consulta
 $result = mysqli_query($conexion, $query);
 
@@ -110,28 +109,29 @@ if ($result) {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             // Recupera los datos de la base de datos
-            $Proyecto = $row['Nombre_proyecto'];
-            $Imagen = $row['Imagen'];
-            $Categoria = $row['Categorias'];
+            $ProyectoID = $row['id_proyecto'];
+            $Proyecto = $row['nom_proyecto'];
+            $Imagen = $row['imagen'];
+            $Categoria = $row['categoria'];
 
             // Ahora puedes mostrar los datos en la sección
             echo '<div class="col-lg-4 col-md-6 col-12">';
             echo '    <div class="job-thumb job-thumb-box">';
             echo '        <div class="job-image-box-wrap">';
-            echo '            <a href="job-details.html">';
-            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" style="width: 300px; height: 300px;">'; // Ajusta el ancho y alto a tus preferencias
+            // Enlaza la imagen y el título al detalle del proyecto
+            echo '            <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
+            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" style="width: 300px; height: 300px;">';
             echo '            </a>';
-            echo '            <div class="job-image-box-wrap-info d-flex align-items-center">';
-            echo '            </div>';
             echo '        </div>';
             echo '        <div class="job-body">';
+            // Enlaza el título al detalle del proyecto
             echo '            <h4 class="job-title">';
-            echo '                <a href="job-details.html" class="job-title-link">' . $Proyecto . '</a>';
+            echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $Proyecto . '</a>';
             echo '            </h4>';
             // Muestra la categoría
             echo '            <p class="job-category">Categoría: ' . $Categoria . '</p>';
             echo '            <div class="d-flex align-items-center">';
-            echo '                <div class "job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
+            echo '                <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
             echo '                </div>';
             echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
             echo '                </a>';
@@ -141,15 +141,15 @@ if ($result) {
             echo '            <div class="d-flex align-items-center">';
             echo '            </div>';
             echo '            <div class="d-flex align-items-center border-top pt-3">';
-            echo '                <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>';
+            echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
             echo '            </div>';
             echo '        </div>';
             echo '    </div>';
             echo '</div>';
         }
     } else {
-        // Si no hay proyectos en la categoría especificada, puedes mostrar un mensaje o manejarlo de otra manera
-        echo 'No se encontraron proyectos en la categoría "Negocios y emprendimiento".';
+        // Si no hay proyectos en la base de datos, puedes mostrar un mensaje o manejarlo de otra manera
+        echo 'No se encontraron proyectos.';
     }
 
     // Libera el resultado
@@ -158,7 +158,7 @@ if ($result) {
 
 // Cierra la conexión a la base de datos al final
 mysqli_close($conexion);
-            ?>
+?>
         </div>
     </div>
 </section>

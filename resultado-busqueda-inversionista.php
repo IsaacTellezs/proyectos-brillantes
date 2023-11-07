@@ -49,8 +49,7 @@ if (isset($_SESSION['Correo'])) {
     <section class="job-section section-padding">
     <div class="container">
         <div class="row align-items-center">
-<?php
-
+        <?php
 if (isset($_SESSION['resultados_busqueda'])) {
     $resultados = $_SESSION['resultados_busqueda'];
 
@@ -62,7 +61,7 @@ if (isset($_SESSION['resultados_busqueda'])) {
             $nombre_proyecto = mysqli_real_escape_string($conexion, $nombre_proyecto);
 
             // Consulta SQL para buscar por nombre de proyecto
-            $query = "SELECT Nombre_proyecto, Imagen, Categorias FROM proyectos WHERE Nombre_proyecto = '$nombre_proyecto'";
+            $query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos WHERE nom_proyecto = '$nombre_proyecto'";
 
             // Ejecuta la consulta
             $result = mysqli_query($conexion, $query);
@@ -72,23 +71,24 @@ if (isset($_SESSION['resultados_busqueda'])) {
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         // Recupera los datos de la base de datos
-                        $nombre_proyecto = $row['Nombre_proyecto'];
-                        $imagen = $row['Imagen'];
-                        $categoria = $row['Categorias'];
+                        $ProyectoID = $row['id_proyecto'];
+                        $nombre_proyecto = $row['nom_proyecto'];
+                        $imagen = $row['imagen'];
+                        $categoria = $row['categoria'];
 
                         // Aquí, en lugar de mostrar el nombre del proyecto directamente, debes crear una estructura similar a la del código que proporcionaste.
                         echo '<div class="col-lg-4 col-md-6 col-12">';
                         echo '    <div class="job-thumb job-thumb-box">';
                         echo '        <div class="job-image-box-wrap">';
-                        echo '            <a href="job-details.html">';
+                        // Enlaza la imagen y el título al detalle del proyecto
+                        echo '            <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
                         echo '                <img src="' . $imagen . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
                         echo '            </a>';
-                        echo '            <div class="job-image-box-wrap-info d-flex align-items-center">';
-                        echo '            </div>';
                         echo '        </div>';
                         echo '        <div class="job-body">';
+                        // Enlaza el título al detalle del proyecto
                         echo '            <h4 class="job-title">';
-                        echo '                <a href="job-details.html" class="job-title-link">' . $nombre_proyecto . '</a>';
+                        echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $nombre_proyecto . '</a>';
                         echo '            </h4>';
                         // Debes recuperar la categoría del proyecto aquí y mostrarla.
                         echo '            <p class="job-category">Categoría: ' . $categoria . '</p>';
@@ -103,7 +103,7 @@ if (isset($_SESSION['resultados_busqueda'])) {
                         echo '            <div class="d-flex align-items-center">';
                         echo '            </div>';
                         echo '            <div class="d-flex align-items-center border-top pt-3">';
-                        echo '                <a href="job-details.html" class="custom-btn btn ms-auto">Mirar proyectos.</a>';
+                        echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
                         echo '            </div>';
                         echo '        </div>';
                         echo '    </div>';
