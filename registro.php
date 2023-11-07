@@ -107,6 +107,10 @@ Header
 
                                             <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña" required>
                                             <i class="px-2 input-group-text toggle-password bi bi-eye" onclick="togglePassword()"></i>
+
+                                            <input type="hidden" name="tipo_usuario" value="desarrollador">
+                                            <input type="hidden" name="nivel_usuario" value="1">
+
                                         </div>
                                     </div>
 
