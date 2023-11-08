@@ -4,11 +4,14 @@ include 'funciones/funciones.php';
 conectar();       
 session_start(); 
 
+
+
 if (isset($_SESSION['Correo'])) {
-    $correo = $_SESSION['Correo'];
-    $_SESSION['TipoUsuario'] = determinarTipoUsuario($correo, $conexion);
-    echo "El tipo de usuario es: " . $_SESSION['TipoUsuario'];
- }
+    include 'header-usuario.php';
+} else {
+    include 'header.php';
+}
+ 
 
 ?>
 
@@ -76,10 +79,7 @@ if (isset($_SESSION['Correo'])) {
         <!-- Fin del bloque de script -->
 
     </head>
-    <?php
-    
-    headerDinamico();
-    ?>
+ 
     <body >
 
         
