@@ -48,7 +48,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="proyectos-nuevos-inversor.php">Proyectos nuevos</a>
+                            <a class="nav-link" href="Datos2.php">Proyectos nuevos</a>
                         </li>
 
                         <li class="nav-item dropdown">
