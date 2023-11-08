@@ -8,40 +8,23 @@ if (isset($_SESSION['Correo'])) {
 } else {
     include 'header.php';
 }
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['empresa'])) {
-
+        // Obtener datos del formulario
         $nom_usuario = $_POST['nom_usuario'];
         $correo = $_POST['correo'];
         $telefono = $_POST['telefono'];
         $empresa = $_POST['empresa'];
-        if (!is_numeric($telefono)) {
-            echo "El campo de teléfono debe contener solo números.";
-        } else {
-            $user = $_SESSION['Correo'];
-            $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ? WHERE correo = ?";
-            $stmt = $conexion->prepare($update_sql);
-            $stmt->bind_param("sssss", $nom_usuario, $correo, $telefono, $empresa, $user);
-
-            if ($stmt->execute()) {
-                header('Location: perfil_inversionista.php');
-                exit;
-            } else {
-                echo "Error al actualizar los datos: " . $conexion->error;
-            }
-        }
+        
     }
 }
-
-
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT nom_usuario, correo, telefono, empresa FROM usuarios WHERE correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, empresa, foto FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
-$stmt->bind_result($nom_usuario, $correo, $telefono, $empresa);
+$stmt->bind_result($nom_usuario, $correo, $telefono, $empresa, $foto); // Agregado $foto
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -66,85 +49,49 @@ $stmt->close();
     <link href="css/tooplate-gotto-job.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
 </head>
-
 <header class="site-header py-5">
     <div class="section-overlay"></div>
 
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="text-white">Mi perfil</h1>
+                <h1 class="text-white">Mi perfil.</h1>
             </div>
         </div>
     </div>
 </header>
-<p>.</p>
+<br>
+<br>
 <body>
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <form class="custom-form hero-form" action="perfil_inversionista.php" method="post" role="form">
-                    <h2 class="text-center text-white mb-4">Datos del inversionista</h2>
-
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="nom_usuario" style="font-size: 24px;"><strong>Nombre</strong></label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="text" class="form-control" id="nom_usuario" placeholder="Tu nombre" name="nom_usuario" required value="<?php echo $nom_usuario; ?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="email" style="font-size: 24px;"><strong>Correo Electrónico</strong></label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-envelope custom-icon"></i></span>
-                                    <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com" name="correo" required value="<?php echo $correo; ?>">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="numero" style="font-size: 24px;"><strong>Número de teléfono</strong></label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-telephone custom-icon"></i></span>
-                                    <input type="text" class="form-control" id="numero" placeholder="Tu número" name="telefono" required value="<?php echo $telefono; ?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="empresa" style="font-size: 24px;"><strong>Empresa</strong></label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-briefcase custom-icon"></i></span>
-                                    <input type="text" class="form-control" id="empresa" placeholder="Tu empresa" name="empresa" required value="<?php echo $empresa; ?>">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                </form>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <img src="uploads/<?php echo $foto; ?>" alt="Foto de perfil" width="350" height="350">
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="project-description">
+                <h3 style="font-size: 40px;">Datos del usuario.</h3>
+                <p style="font-size: 30px;">Nombre de usuario: <?php echo $nom_usuario; ?></p>
+                <p style="font-size: 30px;">Correo: <?php echo $correo; ?></p>
+                <p style="font-size: 30px;">Telefono: <?php echo $telefono; ?></p>
+                <p style="font-size: 30px;">Empresa: <?php echo $empresa; ?></p>
+                <div class="col-12">
+                    <a href="editar_perfil_inversionista.php" class="btn btn-secondary">Editar perfil</a>
+                </div>
             </div>
         </div>
     </div>
-</main>
+</div>
 
-<?php
-include 'footer.php';
-?>
+        <?php
+        include 'footer.php';
+        ?>
 
-<!-- JAVASCRIPT FILES -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/counter.js"></script>
-<script src="js/custom.js"></script>
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
 </body>
 </html>
