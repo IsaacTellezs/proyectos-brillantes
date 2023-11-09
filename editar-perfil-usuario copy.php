@@ -9,14 +9,15 @@ if (isset($_SESSION['Correo'])) {
     include 'header.php';
 }
 
-if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['experiencia'], $_POST['facebook'], $_POST['instagram'])) {
-    // Obtener datos del formulario
-    $nom_usuario = $_POST['nom_usuario'];
-    $correo = $_POST['correo'];
-    $telefono = $_POST['telefono'];
-    $experiencia = $_POST['experiencia'];
-    $facebook = $_POST['facebook'];
-    $instagram = $_POST['instagram'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['experiencia'], $_POST['facebook'], $_POST['instagram'])) {
+        // Obtener datos del formulario
+        $nom_usuario = $_POST['nom_usuario'];
+        $correo = $_POST['correo'];
+        $telefono = $_POST['telefono'];
+        $experiencia = $_POST['experiencia'];
+        $facebook = $_POST['facebook'];
+        $instagram = $_POST['instagram'];
 
         // Validación de teléfono
         if (!is_numeric($telefono)) {
@@ -37,12 +38,12 @@ if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['e
 
                     // Insertar los datos en la base de datos (usando una conexión MySQL)
                     $user = $_SESSION['Correo'];
-                    $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, experiencia = ?, facebook = ?, instagram = ?, foto = ? WHERE correo = ?";
-$stmt = $conexion->prepare($update_sql);
-$stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram, $file_name, $user);
+                    $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, experiencia = ?, foto = ?, facebook = ?, instagram = ? WHERE correo = ?";
+                    $stmt = $conexion->prepare($update_sql);
+                    $stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram, $file_name, $user);
 
                     if ($stmt->execute()) {
-                        header('Location: perfil.php');
+                        header('Location: perfil_inversionista.php');
                         exit;
                     } else {
                         echo "Error al actualizar los datos: " . $conexion->error;
@@ -55,6 +56,7 @@ $stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $f
             }
         }
     }
+}
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
@@ -148,31 +150,33 @@ $stmt->close();
                             </div>
                         </div>
                     </div>
+
+                    <!-- Campos para las URLs de redes sociales -->
                     <div class="row">
-    <div class="col-lg-6 col-md-6 col-12">
-        <div class="form-group">
-            <label for="facebook" style="font-size: 24px;"><strong>Facebook</strong></label>
-            <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-facebook custom-icon"></i></span>
-                <input type="text" class="form-control" id="facebook" placeholder="Tu perfil de Facebook" name="facebook" value="<?php echo $facebook; ?>">
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-12">
-        <div class="form-group">
-            <label for="instagram" style="font-size: 24px;"><strong>Instagram</strong></label>
-            <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-instagram custom-icon"></i></span>
-                <input type="text" class="form-control" id="instagram" placeholder="Tu perfil de Instagram" name="instagram" value="<?php echo $instagram; ?>">
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <label for="facebook" class="form-label" style="font-size: 24px;">
+                                <strong>Perfil de Facebook</strong>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-facebook custom-icon"></i></span>
+                                <input type="text" class="form-control" id="facebook" placeholder="URL de tu perfil de Facebook" name="facebook" value="<?php echo $facebook; ?>">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-12" style="position: relative;">
+                        <label for="instagram" class="form-label" style="font-size: 24px;">
+                        <strong>Perfil de Instagram</strong>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-instagram custom-icon"></i></span>
+                        <input type="text" class="form-control" id="instagram" placeholder="URL de tu perfil de Instagram" name="instagram" value="<?php echo $instagram; ?>">
+                    </div>
+                    </div>
+
                 <div class="form-group">
                     <label for="photo" style="font-size: 24px;"><strong>Subir una foto</strong></label>
                     <input type="file" class="form-control" id="photo" name="user_photo">
                 </div>
-            
                 <br>
                 <div>
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
