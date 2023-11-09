@@ -41,6 +41,7 @@ if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['e
 $stmt = $conexion->prepare($update_sql);
 $stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram, $file_name, $user);
 
+
                     if ($stmt->execute()) {
                         header('Location: perfil.php');
                         exit;
@@ -105,8 +106,8 @@ $stmt->close();
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <form class="custom-form hero-form" action="perfil.php" method="post" role="form" enctype="multipart/form-data">
-                <h2 class="text-center text-white mb-4">Datos del desarrollador</h2>
+            <form class="custom-form hero-form" action="editar-perfil-usuario.php" method="post" role="form" enctype="multipart/form-data">
+                <h2 class="text-center text-white mb-4">Datos del inversionista</h2>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
@@ -144,11 +145,12 @@ $stmt->close();
                             <label for="experiencia" style="font-size: 24px;"><strong>Experiencia</strong></label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-briefcase custom-icon"></i></span>
-                                <input type="text" class="form-control" id="experiencia" placeholder="Tu experiencia" name="experiencia" required value="<?php echo $experiencia; ?>">
+                                <input type="text" class="form-control" id="experiencia" placeholder="Tu empresa" name="experiencia" required value="<?php echo $experiencia; ?>">
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
     <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
             <label for="facebook" style="font-size: 24px;"><strong>Facebook</strong></label>
@@ -168,11 +170,11 @@ $stmt->close();
         </div>
     </div>
 </div>
+
                 <div class="form-group">
                     <label for="photo" style="font-size: 24px;"><strong>Subir una foto</strong></label>
                     <input type="file" class="form-control" id="photo" name="user_photo">
                 </div>
-            
                 <br>
                 <div>
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>

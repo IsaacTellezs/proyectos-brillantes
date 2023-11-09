@@ -49,6 +49,7 @@ $stmt->close();
     <link href="css/tooplate-gotto-job.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <header class="site-header py-5">
     <div class="section-overlay"></div>
@@ -93,8 +94,6 @@ $stmt->close();
         </div>
     </div>
 </div>
-
-
 
         <?php
         include 'footer.php';
