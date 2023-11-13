@@ -30,7 +30,7 @@ if ($result->num_rows === 1) {
             session_start();
             $_SESSION['Correo'] = $usuario;
 
-            header('Location: ../index.php');
+            header('Location: ../index_creador.php');
             exit(); 
 
         } else {
