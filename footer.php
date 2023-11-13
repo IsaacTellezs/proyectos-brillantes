@@ -49,11 +49,7 @@
                         <h6 class="site-footer-title">Proyecto</h6>
 
                         <ul class="footer-menu">
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Acerca de</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Blog</a></li>
-
-
+                            <li class="footer-menu-item"><a href="about.php" class="footer-menu-link">Acerca de</a></li>
                             <li class="footer-menu-item"><a href="contact.php" class="footer-menu-link">Contacto</a></li>
                             <li class="footer-menu-item"><a href="preguntas-frecuentes.php" class="footer-menu-link">Preguntas frecuentes</a></li>
                         </ul>
