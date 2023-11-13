@@ -37,7 +37,7 @@
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
                             <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
-                            <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobiero y Servicios Publicos</a></li>
+                            <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobierno y Servicios Publicos</a></li>
                             <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de Lucro</a></li>
                             <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
                             </ul>

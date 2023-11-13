@@ -37,7 +37,7 @@
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li><a class="dropdown-item" href="educacion_inversionista.php">Educación</a></li>
                             <li><a class="dropdown-item" href="NegociosyEmprendimiento_inversionista.php">Negocios y Emprendimiento</a></li>
-                            <li><a class="dropdown-item" href="GobiernoyServicios_inversionista.php">Gobiero y Servicios Publicos</a></li>
+                            <li><a class="dropdown-item" href="GobiernoyServicios_inversionista.php">Gobierno y Servicios Publicos</a></li>
                             <li><a class="dropdown-item" href="SocialySinFines_inversionista.php">Social y sin fines de Lucro</a></li>
                             <li><a class="dropdown-item" href="Salud_inversionista.php">Salud</a></li>
                             </ul>

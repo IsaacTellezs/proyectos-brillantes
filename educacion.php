@@ -121,7 +121,7 @@ if ($result) {
             echo '        <div class="job-image-box-wrap">';
             // Enlaza la imagen y el título al detalle del proyecto
             echo '            <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
-            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" style="width: 300px; height: 300px;">';
+            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="">';
             echo '            </a>';
             echo '        </div>';
             echo '        <div class="job-body">';
@@ -132,8 +132,6 @@ if ($result) {
             // Muestra la categoría
             echo '            <p class="job-category">Categoría: ' . $Categoria . '</p>';
             echo '            <div class="d-flex align-items-center">';
-            echo '                <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
-            echo '                </div>';
             echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
             echo '                </a>';
             echo '                <a href="#" class="bi-heart">';
