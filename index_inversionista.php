@@ -559,7 +559,7 @@ if (isset($_SESSION['Correo'])) {
                             <div class="custom-border-btn-wrap d-flex align-items-center mt-lg-4 mt-2">
                                 <a href="#" class="custom-btn custom-border-btn btn me-4">Crea una cuenta</a>
 
-                                <a href="#" class="custom-link">Contacto</a>
+                                <a href="contac.php" class="custom-link">Contacto</a>
                             </div>
                         </div>
 
