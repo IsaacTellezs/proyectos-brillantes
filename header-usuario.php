@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos Brillantes</title>
+    <link rel="icon" href="images/logo simple.svg" type="image/svg">
     </head>
 <body>
     <header id="top">
