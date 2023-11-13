@@ -54,22 +54,20 @@ function determinarTipoUsuario($correo, $conexion) {
 
 //Funcion para heaader segun el tipo de usuario
 
-function headerDinamico() {
-    // Comprueba si el usuario ha iniciado sesión
+function headerDinamico($conexion) {
+
     if (isset($_SESSION['Correo'])) {
-        // Verifica el tipo de usuario
-        if ($_SESSION['TipoUsuario'] == 'usuario') {
-            // Header para usuarios normales
-            include 'header-usuario.php';
-        } elseif ($_SESSION['TipoUsuario'] == 'inversor') {
-            // Header para inversores
-            include 'header-inversor.php';
-        } else {
-            // Header por defecto para otros tipos de usuarios
-            include 'header.php';
+        $tipoUsuario = determinarTipoUsuario($_SESSION['Correo'], $conexion);
+
+        switch ($tipoUsuario) {
+            case 'desarrollador':
+                include 'header-usuario.php';
+                break;
+            case 'inversionista':
+                include 'header-inversor.php';
+                break;
         }
     } else {
-        // Header para usuarios que aún no han iniciado sesión
         include 'header.php';
     }
 }

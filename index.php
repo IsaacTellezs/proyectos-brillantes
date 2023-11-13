@@ -5,12 +5,7 @@ conectar();
 session_start(); 
 
 
-
-if (isset($_SESSION['Correo'])) {
-    include 'header-usuario.php';
-} else {
-    include 'header.php';
-}
+headerDinamico($conexion);
  
 
 ?>
