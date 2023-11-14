@@ -11,7 +11,7 @@
     <header id="top">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="../index.php">
+            <a class="navbar-brand d-flex align-items-center" href="/crowd/index.php">
             <img src="/crowd/images/Logo%20simple.svg" class="img-fluid logo-image">
                 <div class="d-flex flex-column">
                     <strong class="logo-text">Proyectos </strong>
