@@ -4,14 +4,14 @@ include '../funciones/funciones.php';
 conectar();       
 session_start(); 
 
-headerDinamicoGlobal($conexion);
+headerDinamico($conexion);
 
 // Procesamiento del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si se ha enviado un archivo
     if (isset($_FILES['imagen'])) {
         // Ruta de destino para guardar la imagen
-        $rutaDestino = 'uploads/' . $_FILES['imagen']['name'];
+        $rutaDestino = '../uploads/' . $_FILES['imagen']['name'];
 
         // Mover el archivo al directorio de destino
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Redirige al usuario a la página de categoría correspondiente
                 if ($Categorias === 'Educación') {
-                    header('Location: educacion.php');
+                    header('Location: ../categorias/educacion.php');
                 } elseif ($Categorias === 'Negocios y emprendimiento') {
                     header('Location: NegociosyEmprendimiento.php');
                 } elseif ($Categorias === 'Gobierno y servicios públicos') {

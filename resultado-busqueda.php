@@ -4,7 +4,7 @@ include 'funciones/funciones.php';
 conectar();       
 session_start(); 
 
-headerDinamicoGlobal($conexion);
+headerDinamico($conexion);
 
 
 ?>
@@ -91,8 +91,6 @@ if (isset($_SESSION['resultados_busqueda'])) {
                         // Debes recuperar la categoría del proyecto aquí y mostrarla.
                         echo '            <p class="job-category">Categoría: ' . $categoria . '</p>';
                         echo '            <div class="d-flex align-items-center">';
-                        echo '                <div class "job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
-                        echo '                </div>';
                         echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
                         echo '                </a>';
                         echo '                <a href="#" class="bi-heart">';

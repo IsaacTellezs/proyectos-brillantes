@@ -34,7 +34,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
+                            <li><a class="dropdown-item" href="./categorias/educacion.php">Educación</a></li>
                             <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
                             <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobierno y Servicios Publicos</a></li>
                             <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de Lucro</a></li>
@@ -42,7 +42,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="registro-proyectos.php">Subir proyecto</a>
+                        <a class="nav-link" href="./desarrollador/registro-proyectos.php">Subir proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./desarrollador/index.php">Centro de control</a>
