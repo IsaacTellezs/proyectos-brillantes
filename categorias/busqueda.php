@@ -1,6 +1,6 @@
 <?php
-include './funciones/conex.php';
-include './funciones/funciones.php';
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
 conectar();       
 session_start(); 
 
