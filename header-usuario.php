@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="../index.php">
-                <img src="images/Logo simple.svg" class="img-fluid logo-image">
+            <img src="/crowd/images/Logo%20simple.svg" class="img-fluid logo-image">
                 <div class="d-flex flex-column">
                     <strong class="logo-text">Proyectos </strong>
                     <small class="logo-slogan">brillantes</small>
