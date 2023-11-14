@@ -16,15 +16,11 @@
 
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-
-        <link href="css/owl.carousel.min.css" rel="stylesheet">
-
-        <link href="css/owl.theme.default.min.css" rel="stylesheet">
-
-        <link href="css/tooplate-gotto-job.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-icons.css" rel="stylesheet">
+        <link href="../css/owl.carousel.min.css" rel="stylesheet">
+        <link href="../css/owl.theme.default.min.css" rel="stylesheet">
+        <link href="../css/tooplate-gotto-job.css" rel="stylesheet">
         
 <!--
 
@@ -267,7 +263,7 @@ Bootstrap 5 HTML CSS Template
 
                                     <div class="d-flex align-items-center">
                                         <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">
-                                            <img src="images/logos/salesforce.png" class="job-image me-3 img-fluid" alt="">
+                                            <img src="../images/logos/salesforce.png" class="job-image me-3 img-fluid" alt="">
 
                                             <p class="mb-0">Salesforce</p>
                                         </div>

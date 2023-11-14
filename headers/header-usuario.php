@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyectos Brillantes</title>
+    
     <link rel="icon" href="images/logo simple.svg" type="image/svg">
     </head>
 <body>
     <header id="top">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <a class="navbar-brand d-flex align-items-center" href="../index.php">
                 <img src="images/Logo simple.svg" class="img-fluid logo-image">
                 <div class="d-flex flex-column">
                     <strong class="logo-text">Proyectos </strong>
@@ -51,6 +51,7 @@
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li><a class="dropdown-item" href="index.php">Inicio</a></li>
                             <li><a class="dropdown-item" href="perfil.php">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="desarrollador/misProyectos.php">Mis proyectos</a></li>
                             <li><a class="dropdown-item" href="funciones/logout.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
