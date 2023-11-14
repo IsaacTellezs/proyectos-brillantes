@@ -101,7 +101,7 @@ headerDinamico($conexion);
                         </div>
 
                         <div class="col-lg-6 col-12">
-    <form class="custom-form hero-form" action="./funciones/busqueda.php" method="get" role="form">
+    <form class="custom-form hero-form" action="busqueda.php" method="get" role="form">
         <h3 class="text-white mb-3">¿Buscas algún proyecto en específico?</h3>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">

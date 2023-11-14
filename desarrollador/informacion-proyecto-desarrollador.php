@@ -4,7 +4,7 @@ include '../funciones/funciones.php';
 conectar();       
 session_start(); 
 
-headerDinamicoGlobal($conexion);
+headerDinamico($conexion);
 
 if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];

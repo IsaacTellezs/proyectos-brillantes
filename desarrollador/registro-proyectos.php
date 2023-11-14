@@ -47,13 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($Categorias === 'Educación') {
                     header('Location: ../categorias/educacion.php');
                 } elseif ($Categorias === 'Negocios y emprendimiento') {
-                    header('Location: NegociosyEmprendimiento.php');
+                    header('Location: ../categorias/NegociosyEmprendimiento.php');
                 } elseif ($Categorias === 'Gobierno y servicios públicos') {
-                    header('Location: GobiernoyServicios.php');
+                    header('Location: ../categorias/GobiernoyServicios.php');
                 } elseif ($Categorias === 'Social y sin fines de lucro') {
-                    header('Location: SocialySinFines.php');
+                    header('Location: ../categorias/SocialySinFines.php');
                 } elseif ($Categorias === 'Salud') {
-                    header('Location: Salud.php');
+                    header('Location: ../categorias/Salud.php');
                 } // Agrega más categorías según sea necesario
 
                 exit();

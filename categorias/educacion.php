@@ -116,14 +116,14 @@ if ($result) {
             echo '    <div class="job-thumb job-thumb-box">';
             echo '        <div class="job-image-box-wrap">';
             // Enlaza la imagen y el título al detalle del proyecto
-            echo '            <a href="./desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
+            echo '            <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
             echo '                <img src="'  . $imagen . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
             echo '            </a>';
             echo '        </div>';
             echo '        <div class="job-body">';
             // Enlaza el título al detalle del proyecto
             echo '            <h4 class="job-title">';
-            echo '                <a href="./desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $nombre_proyecto . '</a>';
+            echo '                <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $nombre_proyecto . '</a>';
             echo '            </h4>';
             // Debes recuperar la categoría del proyecto aquí y mostrarla.
             echo '            <p class="job-category">Categoría: ' . $categoria . '</p>';
@@ -136,7 +136,7 @@ if ($result) {
             echo '            <div class="d-flex align-items-center">';
             echo '            </div>';
             echo '            <div class="d-flex align-items-center border-top pt-3">';
-            echo '                <a href="./desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
+            echo '                <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
             echo '            </div>';
             echo '        </div>';
             echo '    </div>';
