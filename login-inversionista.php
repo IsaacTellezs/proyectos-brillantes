@@ -26,7 +26,7 @@
 
     <!-- Header -->
     <?php
-        include 'header.php';
+        include 'headers/header.php';
     ?>
     
     <body>

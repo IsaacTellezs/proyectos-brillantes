@@ -61,32 +61,18 @@ function headerDinamico($conexion) {
 
         switch ($tipoUsuario) {
             case 'desarrollador':
-                include 'headers/header-usuario.php';
+                $rutaCompleta = $_SESSION['currentDir'] . '/header-usuario.php';    
+                include $rutaCompleta;
                 break;
+
             case 'inversionista':
-                include 'headers/header-inversor.php';
+                $rutaCompleta = $_SESSION['currentDir'] . '/header-inversor.php';    
+                include $rutaCompleta;
                 break;
         }
     } else {
-        include 'headers/header.php';
-    }
-}
-
-function headerDinamicoGlobal($conexion) {
-
-    if (isset($_SESSION['Correo'])) {
-        $tipoUsuario = determinarTipoUsuario($_SESSION['Correo'], $conexion);
-
-        switch ($tipoUsuario) {
-            case 'desarrollador':
-                include '../headers/header-usuario.php';
-                break;
-            case 'inversionista':
-                include '../headers/header-inversor.php';
-                break;
-        }
-    } else {
-        include '../headers/header.php';
+        $rutaCompleta = $_SESSION['currentDir'] . '/header.php';    
+        include $rutaCompleta;
     }
 }
 

@@ -3,13 +3,7 @@ include '../funciones/conex.php';
 include '../funciones/funciones.php';
 conectar();       
 session_start(); 
-
-
-headerDinamicoGlobal($conexion);
- 
-$currentDir = __DIR__;
-echo $currentDir;
-
+headerDinamico($conexion);
 ?>
 
 <!doctype html>

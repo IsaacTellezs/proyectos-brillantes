@@ -3,6 +3,9 @@ include 'funciones/conex.php';
 include 'funciones/funciones.php';
 conectar();       
 session_start(); 
+ // Ruta absoluta para el header dinamico
+$currentDir = __DIR__;
+$_SESSION['currentDir'] = $currentDir;
 
 
 headerDinamico($conexion);
