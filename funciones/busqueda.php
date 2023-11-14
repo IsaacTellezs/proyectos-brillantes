@@ -1,36 +1,39 @@
 <?php
-session_start();
-require 'funciones/conex.php';
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
+conectar();       
+session_start(); 
 
-conectar(); // Llama a la función para establecer la conexión
+
+headerDinamico($conexion);
 
 if (isset($_GET['q'])) {
     $search = mysqli_real_escape_string($conexion, $_GET['q']);
 
     // Verifica si la búsqueda corresponde a categorías específicas y redirige si es el caso
     if ($search === "salud") {
-        header("Location: salud.php");
+        header("Location: ../categorias/salud.php");
         exit;
     } elseif ($search === "educacion") {
-        header("Location: educacion.php");
+        header("Location: ../categorias/educacion.php");
         exit;
     } elseif ($search === "gobierno") {
-        header("Location: GobiernoyServicios.php");
+        header("Location: ../categorias/GobiernoyServicios.php");
         exit;
     } elseif ($search === "servicios") {
-        header("Location: GobiernoyServicios.php");
+        header("Location: ../categorias/GobiernoyServicios.php");
         exit;
     } elseif ($search === "negocios") {
-        header("Location: NegociosyEmprendimiento.php");
+        header("Location: ../categorias/NegociosyEmprendimiento.php");
         exit;
     } elseif ($search === "emprendimiento") {
-        header("Location: NegociosyEmprendimiento.php");
+        header("Location: ../categorias/NegociosyEmprendimiento.php");
         exit;
     } elseif ($search === "social") {
-        header("Location: SocialySinFines.php");
+        header("Location: ../categorias/SocialySinFines.php");
         exit;
     } elseif ($search === "fines") {
-        header("Location: SocialySinFines.php");
+        header("Location: ../categorias/SocialySinFines.php");
         exit;
     }
 
@@ -46,7 +49,7 @@ if (isset($_GET['q'])) {
             $_SESSION['resultados_busqueda'][] = $row['nom_proyecto'];
         }
 
-        header("Location: resultado-busqueda-inversionista.php");
+        header("Location: ../resultado-busqueda.php");
         exit;
     } else {
         $_SESSION['mensaje_busqueda'] = "No se encontraron resultados.";
