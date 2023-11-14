@@ -98,7 +98,7 @@ headerDinamico($conexion);
                         </div>
 
                         <div class="col-lg-6 col-12">
-    <form class="custom-form hero-form" action="busqueda.php" method="get" role="form">
+    <form class="custom-form hero-form" action="./funciones/busqueda.php" method="get" role="form">
         <h3 class="text-white mb-3">¿Buscas algún proyecto en específico?</h3>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
@@ -116,12 +116,12 @@ headerDinamico($conexion);
             <div class="d-flex flex-wrap align-items-center mt-4 mt-lg-0">
                 <span class="text-white mb-lg-0 mb-md-0 me-2">Búsquedas populares:</span>
                 <div>
-                    <a href="educacion.php" class="badge">Educación</a>
-                    <a href="NegociosyEmprendimiento.php" class="badge">Negocios</a>
-                    <a href="GobiernoyServicios.php" class="badge">Gobierno</a>
-                    <a href="SocialySinFines.php" class="badge">Social</a>
-                    <a href="NegociosyEmprendimiento.php" class="badge">Emprendimiento</a>
-                    <a href="Salud.php" class="badge">Salud</a>
+                    <a href="./categorias/educacion.php" class="badge">Educación</a>
+                    <a href="./categorias/NegociosyEmprendimiento.php" class="badge">Negocios</a>
+                    <a href="./categorias/GobiernoyServicios.php" class="badge">Gobierno</a>
+                    <a href="./categorias/SocialySinFines.php" class="badge">Social</a>
+                    <a href="./categorias/NegociosyEmprendimiento.php" class="badge">Emprendimiento</a>
+                    <a href="./categorias/Salud.php" class="badge">Salud</a>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@ headerDinamico($conexion);
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="./categorias/educacion.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-book"></i>
                                 
                                     <small class="categories-block-title">Educacion</small>
@@ -158,7 +158,7 @@ headerDinamico($conexion);
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="./categorias/NegociosyEmprendimiento.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-fill "></i>
                                 
                                     <small class="categories-block-title">Negocios y Emprendimiento</small>
@@ -168,7 +168,7 @@ headerDinamico($conexion);
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="./categorias/GobiernoyServicios.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bank"></i>
                                 
                                     <small class="categories-block-title">Gobiero y Servicios Publicos</small>
@@ -180,7 +180,7 @@ headerDinamico($conexion);
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="./categorias/SocialySinFines.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-chat-square-text"></i>
                                 
                                     <small class="categories-block-title">Social y sin fines de Lucro</small>
@@ -192,7 +192,7 @@ headerDinamico($conexion);
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="#" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="./categorias/Salud.ph" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-plus"></i>
                                 
                                     <small class="categories-block-title">Salud</small>

@@ -11,7 +11,7 @@
 
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="images/Logo simple.svg" class="img-fluid logo-image">
+                            <img src="./images/Logo simple.svg" class="img-fluid logo-image">
 
                             <div class="d-flex flex-column">
                                 <strong class="logo-text">Proyectos</strong>

@@ -35,11 +35,11 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="educacion.php">Educación</a></li>
-                            <li><a class="dropdown-item" href="NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
-                            <li><a class="dropdown-item" href="GobiernoyServicios.php">Gobierno y Servicios Publicos</a></li>
-                            <li><a class="dropdown-item" href="SocialySinFines.php">Social y sin fines de Lucro</a></li>
-                            <li><a class="dropdown-item" href="Salud.php">Salud</a></li>
+                            <li><a class="dropdown-item" href="./categorias/educacion.php">Educación</a></li>
+                            <li><a class="dropdown-item" href="./categorias/NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
+                            <li><a class="dropdown-item" href="./categorias/GobiernoyServicios.php">Gobierno y Servicios Publicos</a></li>
+                            <li><a class="dropdown-item" href="./categorias/SocialySinFines.php">Social y sin fines de Lucro</a></li>
+                            <li><a class="dropdown-item" href="./categorias/Salud.php">Salud</a></li>
                             </ul>
                         </li>
 

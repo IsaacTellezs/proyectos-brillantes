@@ -1,15 +1,10 @@
 <?php
-// Verifica la sesión y la conexión a la base de datos
-session_start();
-require 'funciones/conex.php';
-conectar();
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
+conectar();       
+session_start(); 
 
-// Verifica si la sesión está activa
-if (isset($_SESSION['Correo'])) {
-    include 'header-usuario.php';
-} else {
-    include 'header.php';
-}
+headerDinamico($conexion);
 ?>
 
 <!doctype html>
@@ -30,15 +25,15 @@ if (isset($_SESSION['Correo'])) {
 
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="../css/bootstrap-icons.css" rel="stylesheet">
 
-        <link href="css/owl.carousel.min.css" rel="stylesheet">
+        <link href="../css/owl.carousel.min.css" rel="stylesheet">
 
-        <link href="css/owl.theme.default.min.css" rel="stylesheet">
+        <link href="../css/owl.theme.default.min.css" rel="stylesheet">
 
-        <link href="css/tooplate-gotto-job.css" rel="stylesheet">
+        <link href="../css/tooplate-gotto-job.css" rel="stylesheet">
         
 <!--
 
@@ -121,20 +116,18 @@ if ($result) {
             echo '    <div class="job-thumb job-thumb-box">';
             echo '        <div class="job-image-box-wrap">';
             // Enlaza la imagen y el título al detalle del proyecto
-            echo '            <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
+            echo '            <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
             echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" style="width: 300px; height: 300px;">';
             echo '            </a>';
             echo '        </div>';
             echo '        <div class="job-body">';
             // Enlaza el título al detalle del proyecto
             echo '            <h4 class="job-title">';
-            echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $Proyecto . '</a>';
+            echo '                <a href=../desarrollador/"informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $Proyecto . '</a>';
             echo '            </h4>';
             // Muestra la categoría
             echo '            <p class="job-category">Categoría: ' . $Categoria . '</p>';
             echo '            <div class="d-flex align-items-center">';
-            echo '                <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
-            echo '                </div>';
             echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
             echo '                </a>';
             echo '                <a href="#" class="bi-heart">';
@@ -143,7 +136,7 @@ if ($result) {
             echo '            <div class="d-flex align-items-center">';
             echo '            </div>';
             echo '            <div class="d-flex align-items-center border-top pt-3">';
-            echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
+            echo '                <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
             echo '            </div>';
             echo '        </div>';
             echo '    </div>';
@@ -168,15 +161,15 @@ mysqli_close($conexion);
 
               <!-- Footer -->
     <?php
-        include 'footer.php';
+        include '../footer.php';
     ?>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/counter.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/owl.carousel.min.js"></script>
+        <script src="../js/counter.js"></script>
+        <script src="../js/custom.js"></script>
 
     </body>
 </html>
