@@ -4,7 +4,7 @@ include '../funciones/funciones.php';
 conectar();       
 session_start(); 
 
-headerDinamico($conexion);
+headerDinamicoGlobal($conexion);
 ?>
 
 <!doctype html>

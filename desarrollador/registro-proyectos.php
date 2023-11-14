@@ -1,13 +1,10 @@
 <?php
-session_start();
-require 'funciones/conex.php';
-conectar();
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
+conectar();       
+session_start(); 
 
-if (isset($_SESSION['Correo'])) {
-    include 'header-usuario.php';
-} else {
-    include 'header.php';
-}
+headerDinamicoGlobal($conexion);
 
 // Procesamiento del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -102,12 +99,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-        <link href="css/owl.carousel.min.css" rel="stylesheet">
-        <link href="css/owl.theme.default.min.css" rel="stylesheet">
-        <link href="css/tooplate-gotto-job.css" rel="stylesheet">
-        <link href="css/index.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-icons.css" rel="stylesheet">
+        <link href="../css/owl.carousel.min.css" rel="stylesheet">
+        <link href="../css/owl.theme.default.min.css" rel="stylesheet">
+        <link href="../css/tooplate-gotto-job.css" rel="stylesheet">
+        <link href="../css/index.css" rel="stylesheet">
 
     </head>
     <!--
@@ -196,16 +193,16 @@ Header
 Footer
 -->
     <?php
-    include 'footer.php';
+    include '../footer.php';
     ?>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/counter.js"></script>
-        <script src="js/custom.js"></script>
-        <script src="js/scripteye.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/owl.carousel.min.js"></script>
+        <script src="../js/counter.js"></script>
+        <script src="../js/custom.js"></script>
+        <script src="../js/scripteye.js"></script>
 
     </body>
 </html>
