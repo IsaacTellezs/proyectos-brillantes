@@ -1,8 +1,10 @@
 <?php
-// Verifica la sesión y la conexión a la base de datos
-session_start();
-require '../funciones/conex.php';
-conectar();
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
+conectar();       
+session_start(); 
+
+headerDinamicoGlobal($conexion);
 
 if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];
