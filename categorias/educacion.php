@@ -4,7 +4,7 @@ include '../funciones/funciones.php';
 conectar();       
 session_start(); 
 
-headerDinamicoGlobal($conexion);
+headerDinamico($conexion);
 ?>
 
 <!doctype html>
@@ -109,7 +109,6 @@ if ($result) {
             $ProyectoID = $row['id_proyecto'];
             $nombre_proyecto = $row['nom_proyecto'];
             $imagen = $row['imagen'];
-            $imagen2 = "../uploads/" .$imagen;
             $categoria = $row['categoria'];
 
             // Aquí, en lugar de mostrar el nombre del proyecto directamente, debes crear una estructura similar a la del código que proporcionaste.
@@ -117,20 +116,18 @@ if ($result) {
             echo '    <div class="job-thumb job-thumb-box">';
             echo '        <div class="job-image-box-wrap">';
             // Enlaza la imagen y el título al detalle del proyecto
-            echo '            <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
-            echo '                <img src="'  . $imagen2 . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
+            echo '            <a href="./desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
+            echo '                <img src="'  . $imagen . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
             echo '            </a>';
             echo '        </div>';
             echo '        <div class="job-body">';
             // Enlaza el título al detalle del proyecto
             echo '            <h4 class="job-title">';
-            echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $nombre_proyecto . '</a>';
+            echo '                <a href="./desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $nombre_proyecto . '</a>';
             echo '            </h4>';
             // Debes recuperar la categoría del proyecto aquí y mostrarla.
             echo '            <p class="job-category">Categoría: ' . $categoria . '</p>';
             echo '            <div class="d-flex align-items-center">';
-            echo '                <div class "job-image-wrap d-flex align-items-center bg-white shadow-lg mt-2 mb-4">';
-            echo '                </div>';
             echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
             echo '                </a>';
             echo '                <a href="#" class="bi-heart">';
@@ -139,7 +136,7 @@ if ($result) {
             echo '            <div class="d-flex align-items-center">';
             echo '            </div>';
             echo '            <div class="d-flex align-items-center border-top pt-3">';
-            echo '                <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
+            echo '                <a href="./desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
             echo '            </div>';
             echo '        </div>';
             echo '    </div>';

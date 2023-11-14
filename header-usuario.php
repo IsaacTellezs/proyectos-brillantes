@@ -42,7 +42,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../desarrollador/registro-proyectos.php">Subir proyecto</a>
+                        <a class="nav-link" href="./desarrollador/registro-proyectos.php">Subir proyecto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./desarrollador/index.php">Centro de control</a>

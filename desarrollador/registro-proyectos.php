@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Redirige al usuario a la página de categoría correspondiente
                 if ($Categorias === 'Educación') {
-                    header('Location: educacion.php');
+                    header('Location: ../categorias/educacion.php');
                 } elseif ($Categorias === 'Negocios y emprendimiento') {
                     header('Location: NegociosyEmprendimiento.php');
                 } elseif ($Categorias === 'Gobierno y servicios públicos') {
