@@ -109,6 +109,7 @@ if ($result) {
             $ProyectoID = $row['id_proyecto'];
             $nombre_proyecto = $row['nom_proyecto'];
             $imagen = $row['imagen'];
+            $imagen2 = "../uploads/" .$imagen;
             $categoria = $row['categoria'];
 
             // Aquí, en lugar de mostrar el nombre del proyecto directamente, debes crear una estructura similar a la del código que proporcionaste.
@@ -117,7 +118,7 @@ if ($result) {
             echo '        <div class="job-image-box-wrap">';
             // Enlaza la imagen y el título al detalle del proyecto
             echo '            <a href="informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
-            echo '                <img src="' . $imagen . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
+            echo '                <img src="'  . $imagen2 . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
             echo '            </a>';
             echo '        </div>';
             echo '        <div class="job-body">';
