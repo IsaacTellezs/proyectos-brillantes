@@ -49,11 +49,11 @@ if (isset($_GET['q'])) {
             $_SESSION['resultados_busqueda'][] = $row['nom_proyecto'];
         }
 
-        header("Location: ../resultado-busqueda.php");
+        header("Location: ./resultado-busqueda.php");
         exit;
     } else {
         $_SESSION['mensaje_busqueda'] = "No se encontraron resultados.";
-        header("Location: resultado-busqueda.php");
+        header("Location: ./resultado-busqueda.php");
         exit;
     }
 }
