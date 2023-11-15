@@ -11,7 +11,7 @@ headerDinamico($conexion);
 
 ?>
 
-
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -193,7 +193,7 @@ headerDinamico($conexion);
 
                         <div class="col-lg-2 col-md-4 col-6">
                             <div class="categories-block">
-                                <a href="./categorias/Salud.ph" class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <a href="./categorias/Salud.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-plus"></i>
                                 
                                     <small class="categories-block-title">Salud</small>

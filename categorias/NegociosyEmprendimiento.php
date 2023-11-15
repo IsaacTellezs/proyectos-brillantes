@@ -2,9 +2,9 @@
 include '../funciones/conex.php';
 include '../funciones/funciones.php';
 conectar();       
-session_start(); 
-
+session_start();
 headerDinamico($conexion);
+
 ?>
 
 <!doctype html>

@@ -1,13 +1,10 @@
 <?php
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
+conectar();       
 session_start();
-require 'funciones/conex.php';
-conectar();
+headerDinamico($conexion);
 
-if (isset($_SESSION['Correo'])) {
-    include 'header-usuario.php';
-} else {
-    include 'header.php';
-}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['experiencia'])) {
         // Obtener datos del formulario
@@ -42,12 +39,12 @@ $stmt->close();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="css/tooplate-gotto-job.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-icons.css" rel="stylesheet">
+    <link href="../css/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="../css/tooplate-gotto-job.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -68,7 +65,7 @@ $stmt->close();
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-12">
-            <img src="uploads/<?php echo $foto; ?>" alt="Foto de perfil" width="350" height="350">
+            <img src="../uploads/<?php echo $foto; ?>" alt="Foto de perfil" width="350" height="350">
         </div>
         <div class="col-lg-6 col-12">
             <div class="project-description">
@@ -78,7 +75,7 @@ $stmt->close();
                 <p style="font-size: 30px;">Telefono: <?php echo $telefono; ?></p>
                 <p style="font-size: 30px;">Experiencia: <?php echo $experiencia; ?></p>
                 <div class="col-12">
-                    <a href="editar-perfil-usuario.php" class="btn btn-secondary btn-lg rounded-circle">
+                    <a href="../desarrollador/editar-perfil-usuario.php" class="btn btn-secondary btn-lg rounded-circle">
                         Editar perfil
                     </a>
                 </div>
@@ -96,14 +93,14 @@ $stmt->close();
 </div>
 
         <?php
-        include 'footer.php';
+        include '../footer.php';
         ?>
 
     <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/counter.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/counter.js"></script>
+    <script src="../js/custom.js"></script>
 </body>
 </html>
