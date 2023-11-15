@@ -97,6 +97,7 @@ CREATE TABLE `proyectos` (
   `fecha_termino` date NOT NULL,
   `id_user` tinyint(255) NOT NULL,
   `categoria` text NOT NULL
+  `Tipo_inversion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
