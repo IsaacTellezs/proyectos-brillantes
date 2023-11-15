@@ -7,9 +7,7 @@ session_start();
 $currentDir = __DIR__;
 $_SESSION['currentDir'] = $currentDir;
 
-
 headerDinamico($conexion);
- 
 
 ?>
 

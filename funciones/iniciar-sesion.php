@@ -5,13 +5,13 @@ require 'funciones.php';
 $usuario = $_POST['txt-email'];
 $clave = $_POST['txt-clave'];
 
-//$password=password_hash($_POST['password'],PASSWORD_DEFAULT);
 conectar();
-$_SESSION['correo'] = $usuario;
+$_SESSION['Correo'] = $usuario;
 
 global $conexion;
+
 // Realiza una consulta para buscar al usuario por correo
-$sql = "SELECT correo, contraseña, tipo_usuario FROM usuarios WHERE correo = ?";
+$sql = "SELECT id_usuario, correo, contraseña, tipo_usuario FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
@@ -25,31 +25,31 @@ if ($result->num_rows === 1) {
 
     // Verifica la contraseña proporcionada con el hash almacenado
     if (password_verify($clave, $hashGuardado)) {
-        // Verifica si el usuario es un inversionista
+        // Agrega el id_usuario a la variable de sesión
+        session_start();
+        $_SESSION['id'] = $row['id_usuario'];
+        $_SESSION['Correo'] = $usuario;
+
+        // Verifica si el usuario es un desarrollador
         if ($tipoUsuario == "desarrollador") {
-            session_start();
-            $_SESSION['Correo'] = $usuario;
-
             header('Location: ../index.php');
-            exit(); 
-
+            exit();
         } else {
-            // Si no es un inversionista, devuelve false
+            // Si no es un desarrollador, devuelve false
             $errorMensaje = "Usted no es desarrollador.";
             header('Location: ../login.php?error=' . urlencode($errorMensaje));
-            exit(); 
+            exit();
         }
     } else {
         // Contraseña incorrecta
         $errorMensaje = "La contraseña es incorrecta. Por favor, intenta nuevamente.";
         header('Location: ../login.php?error=' . urlencode($errorMensaje));
-        exit(); 
+        exit();
     }
 } else {
     // Usuario no encontrado
     $errorMensaje = "Usuario no encontrado.";
     header('Location: ../login.php?error=' . urlencode($errorMensaje));
-    exit(); 
+    exit();
 }
-
 ?>
