@@ -7,13 +7,13 @@ session_start();
 headerDinamico($conexion);
 
 // Variables para almacenar los valores iniciales del proyecto
-$id_proyecto = $Proyecto = $Descripcion = $Imagen = $Categoria = "";
+$id_proyecto = $Proyecto = $Descripcion = $Imagen = $Categoria = $MetaFinanciacion = $FechaInicio = $FechaTermino = "";
 
 if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];
 
     // Consulta SQL para obtener detalles del proyecto
-    $query = "SELECT nom_proyecto, descripcion, imagen, categoria FROM proyectos WHERE id_proyecto = $id_proyecto"; // Ajusta la consulta según tu base de datos
+    $query = "SELECT nom_proyecto, descripcion, imagen, categoria, meta_financiacion, fecha_inicio, fecha_termino FROM proyectos WHERE id_proyecto = $id_proyecto";
 
     // Ejecuta la consulta
     $result = mysqli_query($conexion, $query);
@@ -24,7 +24,10 @@ if (isset($_GET['id_proyecto'])) {
             $Proyecto = $row['nom_proyecto'];
             $Descripcion = $row['descripcion'];
             $Imagen = $row['imagen'];
-            $Categoria = $row['categoria'];
+            $Categoria = $row['categoria'];  
+            $MetaFinanciacion = $row['meta_financiacion'];  
+            $FechaInicio = $row['fecha_inicio'];  
+            $FechaTermino = $row['fecha_termino'];  
         } else {
             echo 'No se encontraron detalles para el proyecto.';
         }
@@ -33,22 +36,48 @@ if (isset($_GET['id_proyecto'])) {
     }
 }
 
-// Cierra la conexión a la base de datos al final
-mysqli_close($conexion);
-
 // Procesamiento del formulario de edición
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recuperar los datos del formulario
     $nuevoProyecto = $_POST['nuevoProyecto'];
     $nuevaDescripcion = $_POST['nuevaDescripcion'];
-    $nuevaCategoria = $_POST['nuevaCategoria'];
+    $categoria = $_POST['categoria'];
+    $meta_financiacion = $_POST['meta_financiacion'];
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_termino = $_POST['fecha_termino'];
 
     // Actualizar los datos en la base de datos
-    $queryUpdate = "UPDATE proyectos SET nom_proyecto = '$nuevoProyecto', descripcion = '$nuevaDescripcion', categoria = '$nuevaCategoria' WHERE id_proyecto = $id_proyecto";
+    $queryUpdate = "UPDATE proyectos SET nom_proyecto = '$nuevoProyecto', descripcion = '$nuevaDescripcion', categoria = '$categoria', meta_financiacion = $meta_financiacion, fecha_inicio = '$fecha_inicio', fecha_termino = '$fecha_termino' WHERE id_proyecto = $id_proyecto";
     $resultUpdate = mysqli_query($conexion, $queryUpdate);
 
     if ($resultUpdate) {
         // Éxito: los datos se han actualizado correctamente en la base de datos
+
+        // Verificar si se ha cargado una imagen
+        if (isset($_FILES['project_photo']) && $_FILES['project_photo']['error'] === UPLOAD_ERR_OK) {
+            // Directorio de destino para la imagen
+            $upload_directory = '../uploads/';
+            // Nombre del archivo
+            $file_name = basename($_FILES['project_photo']['name']);
+            // Ruta completa del archivo en el servidor
+            $target_path = $upload_directory . $file_name;
+
+            // Mover la imagen al directorio de carga
+            if (move_uploaded_file($_FILES['project_photo']['tmp_name'], $target_path)) {
+                // La imagen se cargó con éxito
+
+                // Actualizar el campo de imagen en la base de datos
+                $queryUpdateImage = "UPDATE proyectos SET imagen = '$file_name' WHERE id_proyecto = $id_proyecto";
+                $resultUpdateImage = mysqli_query($conexion, $queryUpdateImage);
+
+                if (!$resultUpdateImage) {
+                    echo 'Error al actualizar la imagen en la base de datos.';
+                }
+            } else {
+                echo "Error al cargar la imagen.";
+            }
+        }
+
         echo 'Datos actualizados correctamente.';
         // Puedes redirigir al usuario o realizar otras acciones después de la actualización
     } else {
@@ -56,6 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo 'Error al actualizar los datos.';
     }
 }
+
+// Cierra la conexión a la base de datos al final, fuera del bloque de procesamiento del formulario
+mysqli_close($conexion);
 ?>
 
 <!doctype html>
@@ -123,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <main>
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-10 col-md-10 col-12">
+            <div class="col-lg-12 col-md-10 col-12">
                 <form class="custom-form hero-form" method="post" action="editar_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form">
                     <h3 class="text-white mb-3 d-flex justify-content-center">Editar Proyecto</h3>
 
@@ -143,15 +175,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12">
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                <input type="text" name="nuevaCategoria" id="nuevaCategoria" class="form-control" placeholder="Nueva Categoría" value="<?php echo $Categoria; ?>" required>
-                            </div>
-                        </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                                        <select class="form-select" id="categoria" name="categoria" required>
+                                            <option value="Educación">Educacion</option>
+                                            <option value="Negocios y emprendimiento">Negocios y emprendimiento</option>
+                                            <option value="Gobierno y servicios públicos">Gobierno y servicios publicos</option>
+                                            <option value="Social y sin fines de lucro">Social y sin fines de lucro</option>
+                                            <option value="Salud">Salud</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <!-- Puedes agregar más campos según sea necesario -->
-                        </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                                        <input type="number" name="meta_financiacion" id="meta_financiacion" class="form-control" placeholder="Meta de financiacion" required pattern="[0-9]+" title="Ingrese solo números">
+                                    </div>
+                                </div>
+
+                                <!-- Campo fecha_inicio -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                                        <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="Fecha de inicio" required>
+                                    </div>
+                                </div>
+
+                                <!-- Campo fecha_termino -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                                        <input type="date" name="fecha_termino" id="fecha_termino" class="form-control" placeholder="Fecha de término" required>
+                                    </div>
+                                </div>
 
                         <div class="col-lg-12 col-12">
                             <button type="submit" class="form-control">
