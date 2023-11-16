@@ -113,6 +113,7 @@ headerDinamico($conexion);
                                     echo $row['descripcion'];
                                     echo '</div>';
                                     echo '<div class="d-flex align-items-center border-top pt-3">';
+                                    echo '<a href="job-details.html" class="custom-btn btn ms-auto">Editar proyecto</a>';
                                     echo '<a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>';
                                     echo '</div>';
                                     echo '</div>';

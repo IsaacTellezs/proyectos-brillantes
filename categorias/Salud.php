@@ -137,6 +137,7 @@ if ($result) {
             echo '            </div>';
             echo '            <div class="d-flex align-items-center border-top pt-3">';
             echo '                <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Mirar proyectos</a>';
+            echo '                <a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto">Editar proyecto</a>';
             echo '            </div>';
             echo '        </div>';
             echo '    </div>';
