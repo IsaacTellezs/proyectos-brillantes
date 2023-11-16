@@ -9,8 +9,8 @@ headerDinamico($conexion);
 if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];
 
-    // Consulta SQL para obtener detalles del proyecto
-    $query = "SELECT nom_proyecto, descripcion, imagen, categoria FROM proyectos WHERE id_proyecto = $id_proyecto"; // Ajusta la consulta según tu base de datos
+    // Consulta SQL para obtener detalles del proyecto, incluyendo meta_financiacion, fecha_inicio y fecha_termino
+    $query = "SELECT nom_proyecto, descripcion, imagen, categoria, meta_financiacion, fecha_inicio, fecha_termino FROM proyectos WHERE id_proyecto = $id_proyecto";
 
     // Ejecuta la consulta
     $result = mysqli_query($conexion, $query);
@@ -22,9 +22,12 @@ if (isset($_GET['id_proyecto'])) {
             $Descripcion = $row['descripcion'];
             $Imagen = $row['imagen'];
             $Categoria = $row['categoria'];
+            $MetaFinanciacion = $row['meta_financiacion'];
+            $FechaInicio = $row['fecha_inicio'];
+            $FechaTermino = $row['fecha_termino'];
 
-            // Ahora puedes mostrar los detalles del proyecto
-            // (por ejemplo, título, imagen, descripción, categoría, etc.)
+            // Ahora puedes mostrar los detalles del proyecto, incluyendo los nuevos campos
+            // (por ejemplo, título, imagen, descripción, categoría, meta_financiacion, fecha_inicio, fecha_termino, etc.)
         } else {
             echo 'No se encontraron detalles para el proyecto.';
         }
@@ -96,10 +99,12 @@ mysqli_close($conexion);
                         </div>
                     </div>
                     <div class="project-description">
-                        <h3>Proyecto: <?php echo $Proyecto; ?></h3>
-                        <p>Descripción: <?php echo $Descripcion; ?></p>
-                        <p>Categoría: <?php echo $Categoria; ?></p>
-                        <div class="col-lg-12 col-12">
+    <h3>Proyecto: <?php echo $Proyecto; ?></h3>
+    <p>Descripción: <?php echo $Descripcion; ?></p>
+    <p>Categoría: <?php echo $Categoria; ?></p>
+    <p>Meta de Financiación: <?php echo $MetaFinanciacion; ?></p>
+    <p>Fecha de Inicio: <?php echo $FechaInicio; ?></p>
+    <p>Fecha de Término: <?php echo $FechaTermino; ?></p>
                         <p></p>
                         <p></p>
                         <p></p>
