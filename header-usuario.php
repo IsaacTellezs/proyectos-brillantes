@@ -45,14 +45,13 @@
                         <a class="nav-link" href="\crowd\desarrollador\registro-proyectos.php">Subir proyecto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\crowd\index.php">Centro de control</a>
+                    <a class="nav-link" href="\crowd\desarrollador\misProyectos.php">Mis proyectos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio</a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li><a class="dropdown-item" href="\crowd\index.php">Inicio</a></li>
                             <li><a class="dropdown-item" href="\crowd\desarrollador\perfil.php">Mi perfil</a></li>
-                            <li><a class="dropdown-item" href="\crowd\desarrollador\misProyectos.php">Mis proyectos</a></li>
                             <li><a class="dropdown-item" href="\crowd\funciones\logout.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
