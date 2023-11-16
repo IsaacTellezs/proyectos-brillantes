@@ -11,7 +11,7 @@
 
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="./images/Logo simple.svg" class="img-fluid logo-image">
+                            <img src="\crowd\images\Logo simple.svg" class="img-fluid logo-image">
 
                             <div class="d-flex flex-column">
                                 <strong class="logo-text">Proyectos</strong>
@@ -49,16 +49,16 @@
                         <h6 class="site-footer-title">Proyecto</h6>
 
                         <ul class="footer-menu">
-                            <li class="footer-menu-item"><a href="about.php" class="footer-menu-link">Acerca de</a></li>
-                            <li class="footer-menu-item"><a href="contact.php" class="footer-menu-link">Contacto</a></li>
-                            <li class="footer-menu-item"><a href="preguntas-frecuentes.php" class="footer-menu-link">Preguntas frecuentes</a></li>
+                            <li class="footer-menu-item"><a href="\crowd\about.php" class="footer-menu-link">Acerca de</a></li>
+                            <li class="footer-menu-item"><a href="\crowd\contact.php" class="footer-menu-link">Contacto</a></li>
+                            <li class="footer-menu-item"><a href="\crowd\preguntas-frecuentes.php" class="footer-menu-link">Preguntas frecuentes</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-8 col-12 mt-3 mt-lg-0">
                         <h6 class="site-footer-title">Email</h6>
 
-                        <form class="custom-form newsletter-form" action="Enviar-correo.php" method="post" role="form">
+                        <form class="custom-form newsletter-form" action="\crowd\funciones\Enviar-correo.php" method="post" role="form">
                             <h6 class="site-footer-title">Obtener noticias de nuevos proyectos</h6>
 
                             <div class="input-group">
