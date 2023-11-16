@@ -67,7 +67,7 @@ headerDinamico($conexion);
                     <div class="row align-items-center">
 
                         <div class="col-lg-6 col-12 mb-4">
-                            <h2>Proyectos Recientes</h2>
+                            <h2>Proyectos</h2>
                         </div>
 
                         <div class="clearfix"></div>
