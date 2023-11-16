@@ -60,48 +60,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fecha_termino = $_POST['fecha_termino'];
 
             // Obtener el ID del usuario de la sesión
-            $id_usuario = $_SESSION['id_usuario'];
+$id_usuario = $_SESSION['id_usuario'];
 
-            // Insertar datos en la base de datos con el ID del usuario
-            $sql = "INSERT INTO proyectos (id_usuario, nom_proyecto, categoria, meta_financiacion, descripcion, fecha_inicio, fecha_termino, imagen) VALUES (?,?,?,?,?,?,?,?)";
+// Insertar datos en la base de datos con el ID del usuario
+$sql = "INSERT INTO proyectos (id_user, nom_proyecto, categoria, meta_financiacion, descripcion, fecha_inicio, fecha_termino, imagen) VALUES (?,?,?,?,?,?,?,?)";
 
-            // Preparar la sentencia
-            $stmt = $conexion->prepare($sql);
+// Preparar la sentencia
+$stmt = $conexion->prepare($sql);
 
-            if (!$stmt) {
-                die("Error en la preparación de la consulta: " . $conexion->error);
-            }
+if (!$stmt) {
+    die("Error en la preparación de la consulta: " . $conexion->error);
+}
 
-            // Vincular parámetros y ejecutar la consulta
-            $stmt->bind_param("isssssss", $id_usuario, $Nombre_proyecto, $Categorias, $meta_financiacion, $Descripcion, $fecha_inicio, $fecha_termino, $rutaDestino);
+// Vincular parámetros y ejecutar la consulta
+$stmt->bind_param("isssssss", $id_usuario, $Nombre_proyecto, $Categorias, $meta_financiacion, $Descripcion, $fecha_inicio, $fecha_termino, $rutaDestino);
 
-            if ($stmt->execute()) {
-                // Éxito: los datos se han insertado correctamente en la base de datos
+if ($stmt->execute()) {
+    // Éxito: los datos se han insertado correctamente en la base de datos
 
-                // Guarda los datos en una sesión
-                $_SESSION['NuevoProyecto'] = $_POST;
-                $_SESSION['NuevoProyecto']['imagen'] = $rutaDestino;
+    // Guarda los datos en una sesión
+    $_SESSION['NuevoProyecto'] = $_POST;
+    $_SESSION['NuevoProyecto']['imagen'] = $rutaDestino;
 
-                // Redirige al usuario a la página de categoría correspondiente
-                if ($Categorias === 'Educación') {
-                    header('Location: ../categorias/educacion.php');
-                } elseif ($Categorias === 'Negocios y emprendimiento') {
-                    header('Location: ../categorias/NegociosyEmprendimiento.php');
-                } elseif ($Categorias === 'Gobierno y servicios públicos') {
-                    header('Location: ../categorias/GobiernoyServicios.php');
-                } elseif ($Categorias === 'Social y sin fines de lucro') {
-                    header('Location: ../categorias/SocialySinFines.php');
-                } elseif ($Categorias === 'Salud') {
-                    header('Location: ../categorias/Salud.php');
-                } // Agrega más categorías según sea necesario
+    // Redirige al usuario a la página de categoría correspondiente
+    if ($Categorias === 'Educación') {
+        header('Location: ../categorias/educacion.php');
+    } elseif ($Categorias === 'Negocios y emprendimiento') {
+        header('Location: ../categorias/NegociosyEmprendimiento.php');
+    } elseif ($Categorias === 'Gobierno y servicios públicos') {
+        header('Location: ../categorias/GobiernoyServicios.php');
+    } elseif ($Categorias === 'Social y sin fines de lucro') {
+        header('Location: ../categorias/SocialySinFines.php');
+    } elseif ($Categorias === 'Salud') {
+        header('Location: ../categorias/Salud.php');
+    } // Agrega más categorías según sea necesario
 
-                exit();
-            } else {
-                // Error
-                $errorRegistro = "Error en el registro, intenta de nuevo.";
-                header('Location: perfil.php?error=' . urlencode($errorRegistro));
-                exit();
-            }
+    exit();
+} else {
+    // Error
+    $errorRegistro = "Error en el registro, intenta de nuevo.";
+    header('Location: perfil.php?error=' . urlencode($errorRegistro));
+    exit();
+}
         } else {
             // Si no se pudo mover la imagen, muestra un mensaje de error
             $errorRegistro = "Error al subir la imagen.";
