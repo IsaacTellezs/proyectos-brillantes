@@ -760,6 +760,12 @@ nav[aria-label="breadcrumb"] {
   height: 100%;
 }
 
+.about-image-project {
+  display: block;
+  object-fit: cover;
+  height: 80%;
+}
+
 .custom-border-radius-start {
   border-radius: var(--border-radius-medium) 0 0 var(--border-radius-medium);
 }
