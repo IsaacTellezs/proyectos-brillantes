@@ -38,18 +38,7 @@ if (isset($_FILES['Imagen'])) {
             // Guarda los datos en una sesión
             $_SESSION['NuevoProyecto'] = $_POST;
         
-            // Redirige al usuario a la página de categoría correspondiente
-            if ($Categorias === 'Educación') {
-                header('Location: educacion.php');
-            } elseif ($Categorias === 'Negocios y emprendimiento') {
-                header('Location: NegociosyEmprendimiento.php');
-            } elseif ($Categorias === 'Gobierno y servicios públicos') {
-                header('Location: GobiernoyServicios.php');
-            } elseif ($Categorias === 'Social y sin fines de lucro') {
-                header('Location: SocialySinFines.php');
-            } elseif ($Categorias === 'Salud') {
-                header('Location: Salud.php');
-            } // Agrega más categorías según sea necesario
+            header('Location: ../desarrollador/aceptacion-proyecto.php');
         
             exit();
         } else {

@@ -99,19 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['NuevoProyecto']['imagen'] = $rutaDestino;
 
                 // Redirige al usuario a la página de categoría correspondiente
-                if ($Categorias === 'Educación') {
-                    header('Location: ../categorias/educacion.php');
-                } elseif ($Categorias === 'Negocios y emprendimiento') {
-                    header('Location: ../categorias/NegociosyEmprendimiento.php');
-                } elseif ($Categorias === 'Gobierno y servicios públicos') {
-                    header('Location: ../categorias/GobiernoyServicios.php');
-                } elseif ($Categorias === 'Social y sin fines de lucro') {
-                    header('Location: ../categorias/SocialySinFines.php');
-                } elseif ($Categorias === 'Salud') {
-                    header('Location: ../categorias/Salud.php');
-                } // Agrega más categorías según sea necesario
-
-                exit();
+                header('Location: ../desarrollador/aceptacion-proyecto.php');
             } else {
                 // Error
                 $errorRegistro = "Error en el registro, intenta de nuevo.";
