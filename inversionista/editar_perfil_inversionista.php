@@ -1,13 +1,9 @@
 <?php
+include '../funciones/conex.php';
+include '../funciones/funciones.php';
+conectar();       
 session_start();
-require 'funciones/conex.php';
-conectar();
-
-if (isset($_SESSION['Correo'])) {
-    include 'header-inversor.php';
-} else {
-    include 'header.php';
-}
+headerDinamico($conexion);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['empresa'])) {
@@ -24,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verificar si se ha cargado una imagen
             if (isset($_FILES['user_photo']) && $_FILES['user_photo']['error'] === UPLOAD_ERR_OK) {
                 // Directorio de destino para la imagen
-                $upload_directory = 'uploads/';
+                $upload_directory = '../uploads/';
                 // Nombre del archivo
                 $file_name = basename($_FILES['user_photo']['name']);
                 // Ruta completa del archivo en el servidor
@@ -80,12 +76,12 @@ $stmt->close();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="css/tooplate-gotto-job.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-icons.css" rel="stylesheet">
+    <link href="../css/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="../css/tooplate-gotto-job.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
 </head>
 
 <header class="site-header py-5">
@@ -164,14 +160,14 @@ $stmt->close();
 </main>
 
 <?php
-include 'footer.php';
+include '../footer.php';
 ?>
 
 <!-- JAVASCRIPT FILES -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/counter.js"></script>
-<script src="js/custom.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/counter.js"></script>
+<script src="../js/custom.js"></script>
 </body>
 </html>
