@@ -240,9 +240,8 @@ if (isset($_SESSION['errorRegistro'])) {
                                             <input type="number" name="meta_financiacion" id="meta_financiacion" class="form-control" placeholder="Meta de financiacion" required pattern="[0-9]+" title="Ingrese solo números">
                                         </div>
                                     </div>
-
-                                   <!-- Campo fecha_inicio --> 
-                                   <div class="col-lg-6 col-md-6 col-12">
+<!-- Campo fecha_inicio --> 
+                                <div class="col-lg-6 col-md-6 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-calendar2 custom-icon"></i></span>
                                                 <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="Fecha de inicio" required title="Fecha de inicio">
