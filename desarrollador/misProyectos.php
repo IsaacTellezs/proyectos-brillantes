@@ -39,27 +39,17 @@ headerDinamico($conexion);
 
         <main>
 
-            <section class="site-header">
-                <div class="section-overlay"></div>
+        <header class="site-header py-5">
+    <div class="section-overlay"></div>
 
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="col-lg-12 col-12 text-center">
-                            <h1 class="text-white">Mis proyectos</h1>
-
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-
-                                    <li class="breadcrumb-item active" aria-current="page">Mis proyectos</li>
-                                </ol>
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Mis proyectos</h1>
+            </div>
+        </div>
+    </div>
+</header>
 
 
             <section class="job-section recent-jobs-section section-padding">

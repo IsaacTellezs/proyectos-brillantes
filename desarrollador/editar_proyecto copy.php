@@ -136,6 +136,21 @@ mysqli_close($conexion);
                 </div>
             </div>
         </header>
+        <section class="job-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="project-details">
+                            <div class="project-image">
+                                <div class="job-thumb job-thumb-box">
+                                    <div class="job-image-box-wrap">
+                                        <img src="<?php echo $Imagen; ?>" class="job-image img-fluid" alt="Imagen del Proyecto" style="max-width: 100%; max-height: 100vh;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-description">
+                                <h3>Proyecto: <?php echo $Proyecto; ?></h3>
+                                <!-- Agregar el formulario de edición -->
                                 
                                 <main>
     <div class="container">

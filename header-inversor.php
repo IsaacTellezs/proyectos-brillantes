@@ -9,7 +9,7 @@
 <header id="top">
     <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <a class="navbar-brand d-flex align-items-center" href="../index.php">
                     <img src="\crowd\images\Logo simple.svg" class="img-fluid logo-image">
 
                     <div class="d-flex flex-column">
