@@ -1,3 +1,12 @@
+<?php
+include 'funciones/conex.php';
+include 'funciones/funciones.php';
+conectar();       
+session_start();
+headerDinamico($conexion);
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -29,10 +38,6 @@
         <link href="css/estilos.css" rel="stylesheet">
 
     </head>
-
-    <?php
-    include 'header.php';
-    ?>
 
 <style>
      .video-container {
