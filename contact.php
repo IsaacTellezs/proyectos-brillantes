@@ -1,3 +1,12 @@
+<?php
+include 'funciones/conex.php';
+include 'funciones/funciones.php';
+conectar();       
+session_start();
+headerDinamico($conexion);
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -29,9 +38,7 @@
 
     </head>
     
-    <?php
-    include 'header.php';
-    ?>
+   
 
     <body>
 
@@ -70,13 +77,13 @@
                         <div class="col-lg-6 col-md-6 col-12">
                             <label for="first-name">Nombre completo</label>
 
-                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Escribe tu nombre" required>
+                            <input type="text" name="nombre_completo" id="nombre_completo" class="form-control" placeholder="Escribe tu nombre" required>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12">
                             <label for="email">Email</label>
 
-                             <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Escribe tu correo electronico" required>
+                             <input type="email" name="correo_electronico" id="correo_electronico" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Escribe tu correo electronico" required>
                         </div>
 
                         <div class="col-lg-12 col-12">
@@ -114,3 +121,4 @@
 
     </body>
 </html>
+
