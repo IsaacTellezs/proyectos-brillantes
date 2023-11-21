@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexion->close();
 }
 
-// Función de validación de palabras clave// Función de validación de palabras clave
+// Función de validación de palabras clave/
 function validarPalabrasClave($nombreProyecto, $descripcion) {
     $palabrasClave = array('ilegal ','discriminacion','homofobia','machismo','alcohol','cigarros','ilicito','prohibido',
     'odio','violencia','negro','humillacion','pendejo','cigarros','menores','mal uso','sexo','coito',
@@ -149,9 +149,9 @@ function validarPalabrasClave($nombreProyecto, $descripcion) {
             return false; // Proyecto no válido
         }
     }
-    return true; // Proyecto válido si no se encontraron palabras clave en la descripción
+    return true;
 }
-
+// Termina Función de validación de palabras clave/
     // Initialize $errorRegistro variable
 $errorRegistro = "";
 
@@ -164,51 +164,7 @@ if (isset($_SESSION['errorRegistro'])) {
 
     // Termina funcion de validacion
 ?>
-<style>
-        /* Agrega el estilo directamente aquí */
-        .error-box {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            width: 900px;
-            height: 100px;
-            text-align: center;
-            margin-left: 330px;
-        }
-                /* Estilos del modal de error */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%; /* Ancho del modal */
-            max-width: 400px; /* Ancho máximo del modal */
-        }
-
-        .modal-content p {
-            font-size: 18px; /* Tamaño de fuente del mensaje de error */
-            line-height: 1.4; /* Espaciado de línea del mensaje de error */
-        }
-
-        .modal-content button {
-            padding: 12px 20px; /* Relleno del botón de cerrar */
-        }
-    </style>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -230,6 +186,7 @@ if (isset($_SESSION['errorRegistro'])) {
         <link href="../css/owl.theme.default.min.css" rel="stylesheet">
         <link href="../css/tooplate-gotto-job.css" rel="stylesheet">
         <link href="../css/index.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -331,13 +288,10 @@ if (isset($_SESSION['errorRegistro'])) {
                     $("#fecha_inicio").datepicker();
                     $("#fecha_termino").datepicker();
                 });
-
-                 // Encuentra el modal y los botones de cierre
     var modal = document.getElementById('errorModal');
     var closeBtn = document.getElementsByClassName('close')[0];
     var closeBtnModal = document.getElementById('closeModalBtn');
 
-    // Cuando el usuario haga clic en el botón de cierre, cierra el modal
     closeBtn.onclick = function () {
         modal.style.display = 'none';
     };
@@ -346,99 +300,38 @@ if (isset($_SESSION['errorRegistro'])) {
         modal.style.display = 'none';
     };
 
-    // Muestra el modal si existe contenido de error
-    <?php if (isset($_SESSION['errorRegistro']) && !empty($_SESSION['errorRegistro'])) { ?>
+<?php if (isset($_SESSION['errorRegistro']) && !empty($_SESSION['errorRegistro'])) { ?>
         modal.style.display = 'block';
     <?php } ?>
-    document.getElementById('fecha_inicio').addEventListener('change', function() {
-        // Obtener la fecha actual
-        var today = new Date();
-
-        // Obtener la fecha seleccionada en el campo de fecha de inicio
-        var startDate = new Date(this.value);
-
-        // Comparar las fechas
-        if (startDate < today) {
-            alert('Selecciona una fecha de inicio futura.');
-            this.value = ''; // Limpiar el campo
-            return;
-        }
-
-        // Calcular la fecha de término permitida (6 meses después de la fecha de inicio)
-        var endDateLimit = new Date(startDate);
-        endDateLimit.setMonth(endDateLimit.getMonth() + 6);
-
-        // Establecer la fecha máxima en el campo de fecha de término
-        var maxEndDate = endDateLimit.toISOString().split('T')[0];
-        document.getElementById('fecha_termino').setAttribute('min', maxEndDate);
-    });
-
-    document.getElementById('fecha_termino').addEventListener('change', function() {
-        // Obtener la fecha seleccionada en el campo de fecha de término
-        var endDate = new Date(this.value);
-
-        // Obtener la fecha mínima permitida del atributo 'min' del campo de fecha de término
-        var minEndDate = new Date(document.getElementById('fecha_termino').getAttribute('min'));
-
-        // Comparar las fechas
-        if (endDate > minEndDate) {
-            alert('Selecciona una fecha de término dentro de los 6 meses permitidos.');
-            this.value = ''; // Limpiar el campo
-        }
-    });
 
             </script>
             
             <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Obtener la fecha actual
+    document.addEventListener('DOMContentLoaded', function() { 
         var today = new Date();
-
-        // Establecer la fecha actual como fecha de inicio por defecto
         document.getElementById('fecha_inicio').valueAsDate = today;
-
-        // Calcular la fecha de término permitida (6 meses después de la fecha de inicio)
         var endDateLimit = new Date(today);
         endDateLimit.setMonth(endDateLimit.getMonth() + 12);
-
-        // Ajustar la fecha límite al último día del mes actual
         endDateLimit.setDate(0);
-
-        // Establecer la fecha máxima en el campo de fecha de término
         var maxEndDate = endDateLimit.toISOString().split('T')[0];
         document.getElementById('fecha_termino').setAttribute('min', maxEndDate);
     });
-
     document.getElementById('fecha_inicio').addEventListener('change', function() {
-        // Obtener la fecha seleccionada en el campo de fecha de inicio
         var startDate = new Date(this.value);
-
-        // Calcular la fecha de término permitida (6 meses después de la fecha de inicio)
         var endDateLimit = new Date(startDate);
         endDateLimit.setMonth(endDateLimit.getMonth() + 12);
-
-        // Ajustar la fecha límite al último día del mes actual
         endDateLimit.setDate(0);
-
-        // Establecer la fecha máxima en el campo de fecha de término
         var maxEndDate = endDateLimit.toISOString().split('T')[0];
         document.getElementById('fecha_termino').setAttribute('min', maxEndDate);
     });
-
     document.getElementById('fecha_termino').addEventListener('change', function() {
-        // Obtener la fecha seleccionada en el campo de fecha de término
         var endDate = new Date(this.value);
-
-        // Obtener la fecha mínima permitida del atributo 'min' del campo de fecha de término
         var minEndDate = new Date(document.getElementById('fecha_termino').getAttribute('min'));
-
-        // Comparar las fechas (solo teniendo en cuenta la fecha, no la hora)
         endDate.setHours(0, 0, 0, 0);
         minEndDate.setHours(0, 0, 0, 0);
-
         if (endDate > minEndDate) {
             alert('Selecciona una fecha de término dentro de los 12 meses permitidos.');
-            this.value = ''; // Limpiar el campo
+            this.value = ''; 
         }
     });
 </script>
