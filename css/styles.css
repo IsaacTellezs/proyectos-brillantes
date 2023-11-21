@@ -23,3 +23,51 @@
 }
 
 /* Puedes agregar estilos adicionales para los datos del usuario según tus necesidades */
+
+
+/*ESTILOS DEL MODAL DEL MENSAJE DE ERROR */
+      /*Estilo error-box */
+      .error-box {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        width: 900px;
+        height: 100px;
+        text-align: center;
+        margin-left: 330px;
+    }
+            /* Estilos del modal*/
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; /* Ancho del modal */
+        max-width: 400px; /* Ancho máximo del modal */
+    }
+
+    .modal-content p {
+        font-size: 18px; /* Tamaño de fuente del mensaje de error */
+        line-height: 1.4; /* Espaciado de línea del mensaje de error */
+    }
+
+    .modal-content button {
+        padding: 12px 20px; /* Relleno del botón de cerrar */
+        background-color: #f65129;
+        border:#f65129 ;
+    }
