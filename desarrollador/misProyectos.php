@@ -76,19 +76,19 @@ if (isset($_SESSION['id'])) {
             echo '<div class="col-lg-4 col-md-6 col-12">';
             echo '<div class="job-thumb job-thumb-box">';
             echo '<div class="job-image-box-wrap">';
-            echo '<a href="job-details.html">';
+            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '">';
             // Puedes usar la imagen almacenada en la base de datos o proporcionar una ruta estática
             echo '<img src="' . $row['imagen'] . '" class="job-image img-fluid" alt="">';
             echo '</a>';
             echo '<div class="job-image-box-wrap-info d-flex align-items-center">';
             echo '<p class="mb-0">';
-            echo '<a href="job-listings.html" class="badge badge-level">' . $row['categoria'] . '</a>';
+            echo '<a  class="badge badge-level">' . $row['categoria'] . '</a>';
             echo '</p>';
             echo '</div>';
             echo '</div>';
             echo '<div class="job-body">';
             echo '<h4 class="job-title">';
-            echo '<a href="job-details.html" class="job-title-link">' . $row['nom_proyecto'] . '</a>';
+            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '" class="job-title-link">' . $row['nom_proyecto'] . '</a>';
             echo '</h4>';
             echo '<div class="d-flex align-items-center">';
             echo '<div class="job-image-wrap d-flex align-items-center">';
@@ -104,7 +104,7 @@ if (isset($_SESSION['id'])) {
             echo '<div class="d-flex align-items-center border-top pt-3">';
             // Agrega el enlace con el ID del proyecto
             echo '<a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Editar proyecto</a>';
-            echo '<a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>';
+            
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -123,9 +123,7 @@ if (isset($_SESSION['id'])) {
 mysqli_close($conexion);
 ?>
 
-                        <div class="col-lg-4 col-12 recent-jobs-bottom d-flex ms-auto my-4">
-                            <a href="listaProyectos.php" class="custom-btn btn ms-lg-auto">Ver mas proyectos</a>
-                        </div>
+                      
 
                     </div>
                 </div>
