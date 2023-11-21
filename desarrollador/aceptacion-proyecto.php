@@ -70,9 +70,9 @@ headerDinamico($conexion);
                     <p>A continuación, encontrarás detalles importantes sobre el proceso y los próximos pasos.</p>
 
                     <div class="d-flex align-items-center mt-4">
-                        <a href="#services-section" class="custom-btn custom-border-btn btn me-4">Detalles del proyecto</a>
+                        <a href="\crowd\desarrollador\misProyectos.php" class="custom-btn custom-border-btn btn me-4">Proyectos</a>
 
-                        <a href="contact.html" class="custom-link smoothscroll">Equipo de proyecto</a>
+                        <a href="#" class="custom-link smoothscroll">Equipo de proyecto</a>
                     </div>
                 </div>
             </div>
