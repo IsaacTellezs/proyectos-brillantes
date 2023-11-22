@@ -8,12 +8,9 @@ headerDinamico($conexion);
 
 // Verifica si el usuario está autenticado
 if (!isset($_SESSION['Correo'])) {
-    // Redirige al usuario al formulario de inicio de sesión si no está autenticado
-    header('Location: ../login.php');
+header('Location: ../login.php');
     exit();
 }
-
-// Obtén el id_usuario asociado al correo electrónico de la sesión
 $correoUsuario = $_SESSION['Correo'];
 $query = "SELECT id_usuario FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($query);
@@ -25,14 +22,9 @@ if (!$stmt) {
 $stmt->bind_param("s", $correoUsuario);
 $stmt->execute();
 $stmt->bind_result($id_usuario);
-
-// Comprueba si se encontró un usuario con el correo electrónico proporcionado
 if ($stmt->fetch()) {
-    // El usuario fue encontrado, guarda el id_usuario en la sesión
     $_SESSION['id_usuario'] = $id_usuario;
 } else {
-    // No se encontró un usuario con el correo electrónico proporcionado
-    // Redirige al usuario al formulario de inicio de sesión
     header('Location: ../login.php');
     exit();
 }
@@ -56,18 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: registro-proyectos.php');
         exit();
     }
-   
-
-    // Verificar si se ha enviado un archivo
     if (isset($_FILES['imagen'])) {
-        // Ruta de destino para guardar la imagen
+
         $rutaDestino = '../uploads/' . $_FILES['imagen']['name'];
 
-        // Mover el archivo al directorio de destino
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
-            // La imagen se ha cargado correctamente
-
-            // Recuperar datos del formulario
+            
             $Nombre_proyecto = $_POST['nom_proyecto'];
             $Categorias = $_POST['categoria'];
             $meta_financiacion = $_POST['meta_financiacion'];
@@ -75,31 +61,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fecha_inicio = $_POST['fecha_inicio'];
             $fecha_termino = $_POST['fecha_termino'];
 
-            // Obtener el ID del usuario de la sesión
+
             $id_usuario = $_SESSION['id_usuario'];
 
-            // Insertar datos en la base de datos con el ID del usuario
             $sql = "INSERT INTO proyectos (id_user, nom_proyecto, categoria, meta_financiacion, descripcion, fecha_inicio, fecha_termino, imagen) VALUES (?,?,?,?,?,?,?,?)";
 
-            // Preparar la sentencia
+
             $stmt = $conexion->prepare($sql);
 
             if (!$stmt) {
                 die("Error en la preparación de la consulta: " . $conexion->error);
             }
 
-            // Vincular parámetros y ejecutar la consulta
             $stmt->bind_param("isssssss", $id_usuario, $Nombre_proyecto, $Categorias, $meta_financiacion, $Descripcion, $fecha_inicio, $fecha_termino, $rutaDestino);
 
             if ($stmt->execute()) {
-                // Éxito: los datos se han insertado correctamente en la base de datos
-
-                // Guarda los datos en una sesión
                 $_SESSION['NuevoProyecto'] = $_POST;
                 $_SESSION['NuevoProyecto']['imagen'] = $rutaDestino;
-
-                // Redirige al usuario a la página de categoría correspondiente
-                if ($Categorias === 'Educación') {
+                    if ($Categorias === 'Educación') {
                     header('Location: ../categorias/educacion.php');
                 } elseif ($Categorias === 'Negocios y emprendimiento') {
                     header('Location: ../categorias/NegociosyEmprendimiento.php');
@@ -109,60 +88,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header('Location: ../categorias/SocialySinFines.php');
                 } elseif ($Categorias === 'Salud') {
                     header('Location: ../categorias/Salud.php');
-                } // Agrega más categorías según sea necesario
-
+                } 
                 exit();
             } else {
-                // Error
                 $errorRegistro = "Error en el registro, intenta de nuevo.";
                 header('Location: perfil.php?error=' . urlencode($errorRegistro));
                 exit();
             }
         } else {
-            // Si no se pudo mover la imagen, muestra un mensaje de error
             $errorRegistro = "Error al subir la imagen.";
             header('Location: perfil.php?error=' . urlencode($errorRegistro));
             exit();
         }
     } else {
-        // Si no se ha enviado un archivo, muestra un mensaje de error
         $errorRegistro = "Debes seleccionar una imagen.";
         header('Location: perfil.php?error=' . urlencode($errorRegistro));
         exit();
     }
-
-    // Cerrar la conexión
     $stmt->close();
     $conexion->close();
 }
-
 // Función de validación de palabras clave/
 function validarPalabrasClave($nombreProyecto, $descripcion) {
     $palabrasClave = array('ilegal ','discriminacion','homofobia','machismo','alcohol','cigarros','ilicito','prohibido',
     'odio','violencia','negro','humillacion','pendejo','cigarros','menores','mal uso','sexo','coito',
     'destructor','riesgo','corrupcion','corruptos','solo hombres','deshonesto','evasion','patriotas','spam','caliente',
     'desnudo','desnudas','desnuda','desnudos','agrandamiento','hot','caliente','viagra','putas','puta','puto','tráfico','blancas',
-    'factura','gente de color','personas de color','nigga',); // Reemplaza con tus palabras clave
+    'factura','gente de color','personas de color','nigga',); 
     foreach ($palabrasClave as $palabra) {
-        // Verifica si la palabra clave está presente en la descripción
         if (stripos($nombreProyecto, $palabra) !== false || stripos($descripcion, $palabra) !== false) {
-            return false; // Proyecto no válido
+            return false; 
         }
     }
     return true;
 }
-// Termina Función de validación de palabras clave/
-    // Initialize $errorRegistro variable
 $errorRegistro = "";
-
-// Verifica si hay un mensaje de error en la sesión
 if (isset($_SESSION['errorRegistro'])) {
     $errorRegistro = $_SESSION['errorRegistro'];
-    // Limpia el mensaje de error en la sesión
     unset($_SESSION['errorRegistro']);
 }
-
-    // Termina funcion de validacion
 ?>
 
 
