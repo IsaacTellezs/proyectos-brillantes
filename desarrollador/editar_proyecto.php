@@ -38,37 +38,58 @@ if (isset($_GET['id_proyecto'])) {
 
 // Procesar el formulario cuando se envía
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    // Validar proyecto en base a las palabras clave
+    $nombreProyecto = $_POST['nom_proyecto'];
+    $descripcion = $_POST['descripcion'];
+
+    if (!validarPalabrasClave($nombreProyecto, $descripcion)) {
+        
+        $_SESSION['errorRegistro'] = "Basandanos en la descripción proporcionada del proyecto, no podemos garantizar su viabilidad
+        en este momento. Es posible que falten detalles criticos o que existan riesgos no mencionados. Te recomendamos proporcionar
+        información adicional para una evaluaciòn mas precisa de la viabilidad del proyecto.";
+
+        
+        header('Location: registro-proyectos.php');
+        exit();
+    }
+
     // Verifica si se ha enviado una nueva imagen
-    if (isset($_FILES['project_photo']) && $_FILES['project_photo']['error'] === UPLOAD_ERR_OK) {
-        $imagenTmp = file_get_contents($_FILES['project_photo']['tmp_name']);
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+        // Ruta donde se guardará la imagen (carpeta 'uploads' + nombre del archivo)
+        $imagenPath = '../uploads/' . basename($_FILES['imagen']['name']);
+
+        // Mueve la imagen a la carpeta 'uploads'
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $imagenPath);
+
+        // Actualiza la variable $Imagen con la ruta de la imagen guardada
+        $Imagen = $imagenPath;
     }
 
     // Otros campos del formulario
-    $nuevoProyecto = mysqli_real_escape_string($conexion, $_POST['nuevoProyecto']);
-    $nuevaDescripcion = mysqli_real_escape_string($conexion, $_POST['nuevaDescripcion']);
-    $categoria = mysqli_real_escape_string($conexion, $_POST['categoria']);
+    $Proyecto = mysqli_real_escape_string($conexion, $_POST['nom_proyecto']);
+    $Descripcion = mysqli_real_escape_string($conexion, $_POST['descripcion']);
+    $Categoria = mysqli_real_escape_string($conexion, $_POST['categoria']);
     $meta_financiacion = mysqli_real_escape_string($conexion, $_POST['meta_financiacion']);
-    $fecha_inicio = mysqli_real_escape_string($conexion, $_POST['fecha_inicio']);
-    $fecha_termino = mysqli_real_escape_string($conexion, $_POST['fecha_termino']);
 
     // Consulta SQL para actualizar datos en la tabla proyectos
     $updateQuery = "UPDATE proyectos SET nom_proyecto = ?, descripcion = ?, categoria = ?, meta_financiacion = ?, fecha_inicio = ?, fecha_termino = ?";
 
     // Si se ha subido una nueva imagen, también actualiza el campo imagen
-    if (isset($imagenTmp)) {
+    if (isset($Imagen)) {
         $updateQuery .= ", imagen = ?";
     }
 
-    $updateQuery .= " WHERE id_proyecto = $id_proyecto";
+    $updateQuery .= " WHERE id_proyecto = ?";
 
     // Prepara la consulta de actualización
     $stmt = mysqli_prepare($conexion, $updateQuery);
 
     // Si hay una nueva imagen, vincula el parámetro de la consulta preparada
-    if (isset($imagenTmp)) {
-        mysqli_stmt_bind_param($stmt, 'ssssssb', $nuevoProyecto, $nuevaDescripcion, $categoria, $meta_financiacion, $fecha_inicio, $fecha_termino, $imagenTmp);
+    if (isset($Imagen)) {
+        mysqli_stmt_bind_param($stmt, 'sssssssi', $Proyecto, $Descripcion, $Categoria, $MetaFinanciacion, $FechaInicio, $FechaTermino, $Imagen, $id_proyecto);
     } else {
-        mysqli_stmt_bind_param($stmt, 'ssssss', $nuevoProyecto, $nuevaDescripcion, $categoria, $meta_financiacion, $fecha_inicio, $fecha_termino);
+        mysqli_stmt_bind_param($stmt, 'sssssi', $Proyecto, $Descripcion, $Categoria, $MetaFinanciacion, $FechaInicio, $FechaTermino, $id_proyecto);
     }
 
     // Ejecuta la consulta de actualización
@@ -97,6 +118,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo '    }';
     echo '</script>';
 }
+// Función de validación de palabras clave/
+function validarPalabrasClave($nombreProyecto, $descripcion) {
+    $palabrasClave = array('ilegal ','discriminacion','homofobia','machismo','alcohol','cigarros','ilicito','prohibido',
+    'odio','violencia','negro','humillacion','pendejo','cigarros','menores','mal uso','sexo','coito',
+    'destructor','riesgo','corrupcion','corruptos','solo hombres','deshonesto','evasion','patriotas','spam','caliente',
+    'desnudo','desnudas','desnuda','desnudos','agrandamiento','hot','caliente','viagra','putas','puta','puto','tráfico','blancas',
+    'factura','gente de color','personas de color','nigga',); // Reemplaza con tus palabras clave
+    foreach ($palabrasClave as $palabra) {
+        // Verifica si la palabra clave está presente en la descripción
+        if (stripos($nombreProyecto, $palabra) !== false || stripos($descripcion, $palabra) !== false) {
+            return false; // Proyecto no válido
+        }
+    }
+    return true;
+}
+// Termina Función de validación de palabras clave/
+    // Initialize $errorRegistro variable
+$errorRegistro = "";
+
+// Verifica si hay un mensaje de error en la sesión
+if (isset($_SESSION['errorRegistro'])) {
+    $errorRegistro = $_SESSION['errorRegistro'];
+    // Limpia el mensaje de error en la sesión
+    unset($_SESSION['errorRegistro']);
+}
+
+    // Termina funcion de validacion
 ?>
 
 <!doctype html>
@@ -145,71 +193,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </header>
-
+        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-12 col-md-10 col-12">
                 <form class="custom-form hero-form" method="post" action="editar_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data">
                         <h3 class="text-white mb-3 d-flex justify-content-center">Editar Proyecto</h3>
-
                         <div class="row">
-                            <div class="col-lg-12 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="text" name="nuevoProyecto" id="nuevoProyecto" class="form-control" placeholder="Nuevo Nombre del Proyecto" value="<?php echo $Proyecto; ?>" required>
-                                </div>
-                            </div>
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-pencil-fill custom-icon"></i></span>
+                                            <input type="text" name="nom_proyecto" id="nom_proyecto" class="form-control" placeholder="Nombre proyecto" value="<?php echo $Proyecto; ?>" required>
+                                        </div>
+                                    </div>
 
-                            <div class="col-lg-12 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="text" name="nuevaDescripcion" id="nuevaDescripcion" class="form-control" placeholder="Nueva Descripción" value="<?php echo $Descripcion; ?>" required>
-                                </div>
-                            </div>
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-card-text custom-icon"></i></span>
+                                            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion" value="<?php echo $Descripcion; ?>" required>
+                                        </div>
+                                    </div>
 
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <select class="form-select" id="categoria" name="categoria" required>
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-list custom-icon"></i></span>
+                                            <select class="form-select" id="categoria" name="categoria" required>
                                         <option value="Educación" <?php echo ($Categoria === 'Educación') ? 'selected' : ''; ?>>Educacion</option>
                                         <option value="Negocios y emprendimiento" <?php echo ($Categoria === 'Negocios y emprendimiento') ? 'selected' : ''; ?>>Negocios y emprendimiento</option>
                                         <option value="Gobierno y servicios públicos" <?php echo ($Categoria === 'Gobierno y servicios públicos') ? 'selected' : ''; ?>>Gobierno y servicios publicos</option>
                                         <option value="Social y sin fines de lucro" <?php echo ($Categoria === 'Social y sin fines de lucro') ? 'selected' : ''; ?>>Social y sin fines de lucro</option>
                                         <option value="Salud" <?php echo ($Categoria === 'Salud') ? 'selected' : ''; ?>>Salud</option>
                                     </select>
-                                </div>
-                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="number" name="meta_financiacion" id="meta_financiacion" class="form-control" placeholder="Meta de financiacion" value="<?php echo $MetaFinanciacion; ?>" required pattern="[0-9]+" title="Ingrese solo números">
-                                </div>
-                            </div>
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-cash-coin custom-icon"></i></span>
+                                            <input type="number" name="meta_financiacion" id="meta_financiacion" class="form-control" placeholder="Meta de financiacion" value="<?php echo $MetaFinanciacion; ?>" required pattern="[0-9]+" title="Ingrese solo números">
+                                        </div>
+                                    </div>
 
-                            <!-- Campo fecha_inicio -->
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="Fecha de inicio" value="<?php echo $FechaInicio; ?>" required>
-                                </div>
-                            </div>
-
-                            <!-- Campo fecha_termino -->
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                    <input type="date" name="fecha_termino" id="fecha_termino" class="form-control" placeholder="Fecha de término" value="<?php echo $FechaTermino; ?>" required>
-                                </div>
-                            </div>
-
-                            <!-- Campo para cargar la nueva foto -->
-                            <div class="col-lg-12 col-12">
-    <div class="input-group">
-        <span class="input-group-text" id="inputGroup-sizing-sm"><i class="bi-image custom-icon"></i></span>
-        <input type="file" class="form-control" name="project_photo" id="project_photo" accept="image/*">
-    </div>
-</div>
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm"><i class="bi-image custom-icon"></i></span>
+                                            <input type="file" class="form-control" name="imagen" id="imagen" accept="image/*">
+                                        </div>
+                                    </div>
 
                             <div class="col-lg-12 col-12">
                                 <button type="submit" class="form-control">Guardar Cambios</button>
