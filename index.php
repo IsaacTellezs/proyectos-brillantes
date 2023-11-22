@@ -75,7 +75,6 @@ headerDinamico($conexion);
         <!-- Fin del bloque de script -->
 
     </head>
- 
     <body >
 
         
@@ -152,7 +151,6 @@ headerDinamico($conexion);
                                 
                                     <small class="categories-block-title">Educacion</small>
 
-                                   
                                 </a>
                             </div>
                         </div>
@@ -216,7 +214,6 @@ headerDinamico($conexion);
                             <div class="about-image-wrap custom-border-radius-start">
                                 <img src="images/1.png" class="about-image custom-border-radius-start img-fluid" alt="">
 
-                               
                             </div>
                         </div>
 
@@ -226,7 +223,6 @@ headerDinamico($conexion);
 
                                 <p class="text-white">Es un sitio en linea donde emprendedores podran recolectar fondos a traves de inversionistas o donadores para financiar sus proyectos, y mediante un trato se llevaran beneficios ambas partes</p>
 
-                           
                             </div>
                         </div>
 
@@ -247,8 +243,6 @@ headerDinamico($conexion);
                 </div>
             </section>
 
-
-
             <section class="job-section recent-jobs-section section-padding">
                 <div class="container">
                     <div class="row align-items-center">
@@ -258,282 +252,50 @@ headerDinamico($conexion);
                         </div>
 
                         <div class="clearfix"></div>
+<!-----------INICIO: MUESTRA LOS PROYECTOS MAS RECIENTES-------------------->
+<?php        
+    $sql = "SELECT * FROM proyectos ORDER BY fecha_inicio DESC LIMIT 6";
+    $result = mysqli_query($conexion, $sql);
+    
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="col-lg-4 col-md-6 col-12">';
+            echo '<div class="job-thumb job-thumb-box">';
+            echo '<div class="job-image-box-wrap">';
+            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '">';
+            echo '<img src="' . $row['imagen'] . '" class="job-image img-fluid" alt="">';
+            echo '</a>';
+            echo '<div class="job-image-box-wrap-info d-flex align-items-center">';
+            echo '<p class="mb-0">';
+            echo '<a  class="badge badge-level">' . $row['categoria'] . '</a>';
+            echo '</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '<div class="job-body">';
+            echo '<h4 class="job-title">';
+            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '" class="job-title-link">' . $row['nom_proyecto'] . '</a>';
+            echo '</h4>';
+            echo '<div class="d-flex align-items-center">';
+            echo '<div class="job-image-wrap d-flex align-items-center">';
+            echo '</div>';
+            echo '<a href="#" class="bi-bookmark ms-auto me-2"></a>';
+            echo '<a href="#" class="bi-heart"></a>';
+            echo '</div>';
+            echo '<div class="d-flex align-items-center">';
+            echo $row['descripcion'];
+            echo '</div>';
+            echo '<div class="d-flex align-items-center border-top pt-3">';
+            echo '<a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Editar proyecto</a>';
 
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/it-professional-works-startup-project.jpg" class="job-image img-fluid" alt="">
-                                    </a>
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    } 
 
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                        <p class="mb-0">
-                                            <a href="job-listings.html" class="badge badge-level">Categoria</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center "">
-                                      
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                       
-                                            DESCRIPCION DEL PROYECTO
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-                                    
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/it-professional-works-startup-project.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                        <p class="mb-0">
-                                            <a href="job-listings.html" class="badge badge-level">Categoria</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center "">
-                                      
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                       
-                                            DESCRIPCION DEL PROYECTO
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-                                    
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/it-professional-works-startup-project.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                        <p class="mb-0">
-                                            <a href="job-listings.html" class="badge badge-level">Categoria</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center "">
-                                      
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                       
-                                            DESCRIPCION DEL PROYECTO
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-                                    
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                     
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/it-professional-works-startup-project.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                        <p class="mb-0">
-                                            <a href="job-listings.html" class="badge badge-level">Categoria</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center "">
-                                      
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                       
-                                            DESCRIPCION DEL PROYECTO
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-                                    
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                     
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/it-professional-works-startup-project.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                        <p class="mb-0">
-                                            <a href="job-listings.html" class="badge badge-level">Categoria</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center "">
-                                      
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                       
-                                            DESCRIPCION DEL PROYECTO
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-                                    
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Ver mas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="job-thumb job-thumb-box">
-                                <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
-                                        <img src="images/jobs/it-professional-works-startup-project.jpg" class="job-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="job-image-box-wrap-info d-flex align-items-center">
-                                        <p class="mb-0">
-                                            <a href="job-listings.html" class="badge badge-level">Categoria</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="job-body">
-                                    <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Software para control de Tickets</a>
-                                    </h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="job-image-wrap d-flex align-items-center ">
-                                      
-                                        </div>
-
-                                        <a href="#" class="bi-bookmark ms-auto me-2">
-                                        </a>
-
-                                        <a href="#" class="bi-heart">
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                       
-                                            DESCRIPCION DEL PROYECTO
-                                        
-                                    </div>
-
-                                    <div class="d-flex align-items-center border-top pt-3">
-                                    
-                                        <a href="detallesProyecto.php" class="custom-btn btn ms-auto">Ver mas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+mysqli_close($conexion);
+?>
                         <div class="col-lg-4 col-12 recent-jobs-bottom d-flex ms-auto my-4">
                             <a href="listaProyectos.php" class="custom-btn btn ms-lg-auto">Ver mas proyectos</a>
                         </div>
