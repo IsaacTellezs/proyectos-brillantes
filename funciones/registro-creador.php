@@ -11,37 +11,48 @@ $A_materno = $_POST['materno'];
 $Nom_usuario = $_POST['nom_usuario'];
 $Correo = $_POST['correo'];
 $Tel = $_POST['telefono'];
-$Contraseña = password_hash($_POST['txt-clave'], PASSWORD_DEFAULT); //  Almacenamiento de contraseñas de forma segura
+$Contraseña = password_hash($_POST['txt-clave'], PASSWORD_DEFAULT);
 $Experiencia = $_POST['experiencia'];
 $tipo = $_POST['tipo_usuario'];
 $nivel = $_POST['nivel_usuario'];
 
+// Verificar si el usuario o el correo ya existen
+$consulta = "SELECT * FROM usuarios WHERE nom_usuario = ? OR correo = ?";
+$stmt_verificacion = $conexion->prepare($consulta);
+$stmt_verificacion->bind_param("ss", $Nom_usuario, $Correo);
+$stmt_verificacion->execute();
+$resultado_verificacion = $stmt_verificacion->get_result();
+
+if ($resultado_verificacion->num_rows > 0) {
+    $errorRegistro = "El nombre de usuario o el correo ya están registrados. Intenta con otro.";
+    header('Location: ../registro.php?error=' . urlencode($errorRegistro));
+    exit();
+}
+
 // Insertar datos en la base de datos
+$sql = "INSERT INTO usuarios (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, experiencia, tipo_usuario, nivel_usuario ) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
-    $sql = "INSERT INTO usuarios (nombre, paterno, materno, nom_usuario, contraseña,  correo, telefono, experiencia, tipo_usuario, nivel_usuario ) VALUES (?,?,?,?,?,?,?,?,?,?)";
 // Preparar la sentencia
-    $stmt = $conexion->prepare($sql);
+$stmt = $conexion->prepare($sql);
 
-    if (!$stmt) {
-        die("Error en la preparación de la consulta: " . $conexion->error);
-    }
-    
-    // Vincular parámetros y ejecutar la consulta
-    $stmt->bind_param("ssssssissi", $nombre, $A_paterno, $A_materno, $Nom_usuario,  $Contraseña, $Correo, $Tel, $Experiencia,$tipo, $nivel);
-    
-    if ($stmt->execute()) {
-        
-        header('Location: ../login.php');
-        exit(); 
-    } else {
-       
-        $errorRegistro = "Error en el registro, intenta de nuevo.";
-    header('Location: ../login.php?error=' . urlencode($errorMensaje));
+if (!$stmt) {
+    die("Error en la preparación de la consulta: " . $conexion->error);
+}
+
+// Vincular parámetros y ejecutar la consulta
+$stmt->bind_param("ssssssissi", $nombre, $A_paterno, $A_materno, $Nom_usuario,  $Contraseña, $Correo, $Tel, $Experiencia, $tipo, $nivel);
+
+if ($stmt->execute()) {
+    header('Location: ../login.php');
     exit(); 
-    }
-    
-    // Cerrar la conexión
-    $stmt->close();
-    $conexion->close();
+} else {
+    $errorRegistro = "Error en el registro, intenta de nuevo.";
+    header('Location: ../login.php?error=' . urlencode($errorRegistro));
+    exit(); 
+}
 
+// Cerrar la conexión
+$stmt->close();
+$stmt_verificacion->close();
+$conexion->close();
 ?>

@@ -43,6 +43,13 @@
                         <div class="col-lg-6 col-12">
                         <form class="custom-form hero-form" action="funciones/registro-inversionista.php" method="POST" role="form">
                                 <h3 class="text-white mb-3 d-flex justify-content-center">Registrate</h3>
+                                  <!-- Mensaje de error -->
+                                  <?php
+                                if (isset($_GET['error'])) {
+                                    $errorRegistro = $_GET['error'];
+                                    echo '<div class="alert alert-danger">' . $errorRegistro . '</div>';
+                                }
+                                ?>
 
                                 <div class="row">
                                     <div class="col-lg-12 col-12">
