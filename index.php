@@ -254,46 +254,45 @@ headerDinamico($conexion);
                         <div class="clearfix"></div>
 <!-----------INICIO: MUESTRA LOS PROYECTOS MAS RECIENTES-------------------->
 <?php        
-    $sql = "SELECT * FROM proyectos ORDER BY fecha_inicio DESC LIMIT 6";
-    $result = mysqli_query($conexion, $sql);
-    
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="col-lg-4 col-md-6 col-12">';
-            echo '<div class="job-thumb job-thumb-box">';
-            echo '<div class="job-image-box-wrap">';
-            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '">';
-            echo '<img src="' . $row['imagen'] . '" class="job-image img-fluid" alt="">';
-            echo '</a>';
-            echo '<div class="job-image-box-wrap-info d-flex align-items-center">';
-            echo '<p class="mb-0">';
-            echo '<a  class="badge badge-level">' . $row['categoria'] . '</a>';
-            echo '</p>';
-            echo '</div>';
-            echo '</div>';
-            echo '<div class="job-body">';
-            echo '<h4 class="job-title">';
-            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '" class="job-title-link">' . $row['nom_proyecto'] . '</a>';
-            echo '</h4>';
-            echo '<div class="d-flex align-items-center">';
-            echo '<div class="job-image-wrap d-flex align-items-center">';
-            echo '</div>';
-            echo '<a href="#" class="bi-bookmark ms-auto me-2"></a>';
-            echo '<a href="#" class="bi-heart"></a>';
-            echo '</div>';
-            echo '<div class="d-flex align-items-center">';
-            echo $row['descripcion'];
-            echo '</div>';
-            echo '<div class="d-flex align-items-center border-top pt-3">';
-            echo '<a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Editar proyecto</a>';
+$sql = "SELECT * FROM proyectos ORDER BY fecha_inicio DESC LIMIT 6";
+$result = mysqli_query($conexion, $sql);
 
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-        }
-    } 
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $ProyectoID = $row['id_proyecto'];
+        $nombre_proyecto = $row['nom_proyecto'];
+        $imagen = $row['imagen'];
+        $rutaImagenCompleta = 'uploads/' . $imagen; // Ruta completa a la imagen
+        $categoria = $row['categoria'];
 
+        echo '<div class="col-lg-4 col-md-6 col-12">';
+        echo '    <div class="job-thumb job-thumb-box">';
+        echo '        <div class="job-image-box-wrap">';
+        echo '            <a href="desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
+        echo '                <img src="'  . $rutaImagenCompleta . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
+        echo '            </a>';
+        echo '        </div>';
+        echo '        <div class="job-body">';
+        echo '            <h4 class="job-title">';
+        echo '                <a href="desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="job-title-link">' . $nombre_proyecto . '</a>';
+        echo '            </h4>';
+        echo '            <p class="job-category">Categoría: ' . $categoria . '</p>';
+        echo '            <div class="d-flex align-items-center">';
+        echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
+        echo '                </a>';
+        echo '                <a href="#" class="bi-heart">';
+        echo '                </a>';
+        echo '            </div>';
+        echo '            <div class="d-flex align-items-center">';
+        echo '            </div>';
+        echo '            <div class="d-flex align-items-center border-top pt-3">';
+        echo '                <a href="desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '" class="custom-btn btn ms-auto"> Ver más</a>';
+        echo '            </div>';
+        echo '        </div>';
+        echo '    </div>';
+        echo '</div>';  
+    }
+} 
 mysqli_close($conexion);
 ?>
                         <div class="col-lg-4 col-12 recent-jobs-bottom d-flex ms-auto my-4">
