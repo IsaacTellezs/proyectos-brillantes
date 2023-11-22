@@ -36,8 +36,67 @@ if (isset($_GET['id_proyecto'])) {
     }
 }
 
-// Cierra la conexión a la base de datos antes de iniciar el HTML
-mysqli_close($conexion);
+// Procesar el formulario cuando se envía
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verifica si se ha enviado una nueva imagen
+    if (isset($_FILES['project_photo']) && $_FILES['project_photo']['error'] === UPLOAD_ERR_OK) {
+        $imagenTmp = file_get_contents($_FILES['project_photo']['tmp_name']);
+    }
+
+    // Otros campos del formulario
+    $nuevoProyecto = mysqli_real_escape_string($conexion, $_POST['nuevoProyecto']);
+    $nuevaDescripcion = mysqli_real_escape_string($conexion, $_POST['nuevaDescripcion']);
+    $categoria = mysqli_real_escape_string($conexion, $_POST['categoria']);
+    $meta_financiacion = mysqli_real_escape_string($conexion, $_POST['meta_financiacion']);
+    $fecha_inicio = mysqli_real_escape_string($conexion, $_POST['fecha_inicio']);
+    $fecha_termino = mysqli_real_escape_string($conexion, $_POST['fecha_termino']);
+
+    // Consulta SQL para actualizar datos en la tabla proyectos
+    $updateQuery = "UPDATE proyectos SET nom_proyecto = ?, descripcion = ?, categoria = ?, meta_financiacion = ?, fecha_inicio = ?, fecha_termino = ?";
+
+    // Si se ha subido una nueva imagen, también actualiza el campo imagen
+    if (isset($imagenTmp)) {
+        $updateQuery .= ", imagen = ?";
+    }
+
+    $updateQuery .= " WHERE id_proyecto = $id_proyecto";
+
+    // Prepara la consulta de actualización
+    $stmt = mysqli_prepare($conexion, $updateQuery);
+
+    // Si hay una nueva imagen, vincula el parámetro de la consulta preparada
+    if (isset($imagenTmp)) {
+        mysqli_stmt_bind_param($stmt, 'ssssssb', $nuevoProyecto, $nuevaDescripcion, $categoria, $meta_financiacion, $fecha_inicio, $fecha_termino, $imagenTmp);
+    } else {
+        mysqli_stmt_bind_param($stmt, 'ssssss', $nuevoProyecto, $nuevaDescripcion, $categoria, $meta_financiacion, $fecha_inicio, $fecha_termino);
+    }
+
+    // Ejecuta la consulta de actualización
+    $updateResult = mysqli_stmt_execute($stmt);
+
+    // Cierra la consulta preparada
+    mysqli_stmt_close($stmt);
+
+    // Cierra la conexión a la base de datos
+    mysqli_close($conexion);
+
+    // Mensajes de éxito o error utilizando JavaScript
+    echo '<script>';
+    echo '    window.onload = function() {';
+    echo '        var messageDiv = document.createElement("div");';
+    echo '        messageDiv.style.position = "fixed";';
+    echo '        messageDiv.style.top = "50%";';
+    echo '        messageDiv.style.left = "50%";';
+    echo '        messageDiv.style.transform = "translate(-50%, -50%)";';
+    echo '        messageDiv.style.backgroundColor = "' . ($updateResult ? '#4CAF50' : '#F44336') . '";';  // Color verde para éxito, rojo para error
+    echo '        messageDiv.style.color = "#fff";';
+    echo '        messageDiv.style.padding = "20px";';
+    echo '        messageDiv.style.zIndex = "1000";';
+    echo '        messageDiv.innerText = "' . ($updateResult ? 'Los datos se han actualizado correctamente.' : 'Hubo un problema al actualizar los datos.') . '";';
+    echo '        document.body.appendChild(messageDiv);';
+    echo '    }';
+    echo '</script>';
+}
 ?>
 
 <!doctype html>
@@ -90,7 +149,7 @@ mysqli_close($conexion);
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-12 col-md-10 col-12">
-                    <form class="custom-form hero-form" method="post" action="editar_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form">
+                <form class="custom-form hero-form" method="post" action="editar_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data">
                         <h3 class="text-white mb-3 d-flex justify-content-center">Editar Proyecto</h3>
 
                         <div class="row">
@@ -146,19 +205,16 @@ mysqli_close($conexion);
 
                             <!-- Campo para cargar la nueva foto -->
                             <div class="col-lg-12 col-12">
-                                <div class="input-group">
-                                    <label for="project_photo" class="form-label"></label>
-                                    <input type="file" class="form-control" id="project_photo" name="project_photo" accept="image/*">
-                                </div>
-                            </div>
+    <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-sm"><i class="bi-image custom-icon"></i></span>
+        <input type="file" class="form-control" name="project_photo" id="project_photo" accept="image/*">
+    </div>
+</div>
 
                             <div class="col-lg-12 col-12">
-                                <button type="submit" class="form-control">
-                                    Guardar Cambios
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                                <button type="submit" class="form-control">Guardar Cambios</button>
+                                </div>
+                            </form>
                 </div>
             </div>
         </div>
