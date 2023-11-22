@@ -74,18 +74,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ejecuta la consulta de actualización
     $updateResult = mysqli_stmt_execute($stmt);
 
-    if ($updateResult) {
-        echo 'Los datos se han actualizado correctamente en la base de datos.';
-    } else {
-        echo 'Hubo un problema al actualizar los datos en la base de datos.';
-    }
-
     // Cierra la consulta preparada
     mysqli_stmt_close($stmt);
-}
 
-// Cierra la conexión a la base de datos antes de iniciar el HTML
-mysqli_close($conexion);
+    // Cierra la conexión a la base de datos
+    mysqli_close($conexion);
+
+    // Mensajes de éxito o error utilizando JavaScript
+    echo '<script>';
+    echo '    window.onload = function() {';
+    echo '        var messageDiv = document.createElement("div");';
+    echo '        messageDiv.style.position = "fixed";';
+    echo '        messageDiv.style.top = "50%";';
+    echo '        messageDiv.style.left = "50%";';
+    echo '        messageDiv.style.transform = "translate(-50%, -50%)";';
+    echo '        messageDiv.style.backgroundColor = "' . ($updateResult ? '#4CAF50' : '#F44336') . '";';  // Color verde para éxito, rojo para error
+    echo '        messageDiv.style.color = "#fff";';
+    echo '        messageDiv.style.padding = "20px";';
+    echo '        messageDiv.style.zIndex = "1000";';
+    echo '        messageDiv.innerText = "' . ($updateResult ? 'Los datos se han actualizado correctamente.' : 'Hubo un problema al actualizar los datos.') . '";';
+    echo '        document.body.appendChild(messageDiv);';
+    echo '    }';
+    echo '</script>';
+}
 ?>
 
 <!doctype html>
@@ -194,11 +205,11 @@ mysqli_close($conexion);
 
                             <!-- Campo para cargar la nueva foto -->
                             <div class="col-lg-12 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm"><i class="bi-image custom-icon"></i></span>
-                                            <input type="file"  class="form-control" name="project_photo" id="project_photo" accept="image/*" required>
-                                        </div>
-                                    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-sm"><i class="bi-image custom-icon"></i></span>
+        <input type="file" class="form-control" name="project_photo" id="project_photo" accept="image/*">
+    </div>
+</div>
 
                             <div class="col-lg-12 col-12">
                                 <button type="submit" class="form-control">Guardar Cambios</button>
