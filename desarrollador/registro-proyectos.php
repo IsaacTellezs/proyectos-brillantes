@@ -99,19 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['NuevoProyecto']['imagen'] = $rutaDestino;
 
                 // Redirige al usuario a la página de categoría correspondiente
-                if ($Categorias === 'Educación') {
-                    header('Location: ../categorias/educacion.php');
-                } elseif ($Categorias === 'Negocios y emprendimiento') {
-                    header('Location: ../categorias/NegociosyEmprendimiento.php');
-                } elseif ($Categorias === 'Gobierno y servicios públicos') {
-                    header('Location: ../categorias/GobiernoyServicios.php');
-                } elseif ($Categorias === 'Social y sin fines de lucro') {
-                    header('Location: ../categorias/SocialySinFines.php');
-                } elseif ($Categorias === 'Salud') {
-                    header('Location: ../categorias/Salud.php');
-                } // Agrega más categorías según sea necesario
-
-                exit();
+                header('Location: ../desarrollador/aceptacion-proyecto.php');
             } else {
                 // Error
                 $errorRegistro = "Error en el registro, intenta de nuevo.";
@@ -306,32 +294,25 @@ if (isset($_SESSION['errorRegistro'])) {
             </script>
             
             <script>
-    document.addEventListener('DOMContentLoaded', function() { 
+    document.addEventListener('DOMContentLoaded', function() {
         var today = new Date();
         document.getElementById('fecha_inicio').valueAsDate = today;
-        var endDateLimit = new Date(today);
-        endDateLimit.setMonth(endDateLimit.getMonth() + 12);
-        endDateLimit.setDate(0);
-        var maxEndDate = endDateLimit.toISOString().split('T')[0];
-        document.getElementById('fecha_termino').setAttribute('min', maxEndDate);
+        updateMaxEndDate();
     });
-    document.getElementById('fecha_inicio').addEventListener('change', function() {
-        var startDate = new Date(this.value);
+
+    function updateMaxEndDate() {
+        var startDate = new Date(document.getElementById('fecha_inicio').value);
         var endDateLimit = new Date(startDate);
-        endDateLimit.setMonth(endDateLimit.getMonth() + 12);
-        endDateLimit.setDate(0);
+        endDateLimit.setFullYear(endDateLimit.getFullYear() + 1);
         var maxEndDate = endDateLimit.toISOString().split('T')[0];
-        document.getElementById('fecha_termino').setAttribute('min', maxEndDate);
+        document.getElementById('fecha_termino').setAttribute('max', maxEndDate);
+    }
+
+    document.getElementById('fecha_inicio').addEventListener('change', function() {
+        updateMaxEndDate();
     });
+
     document.getElementById('fecha_termino').addEventListener('change', function() {
-        var endDate = new Date(this.value);
-        var minEndDate = new Date(document.getElementById('fecha_termino').getAttribute('min'));
-        endDate.setHours(0, 0, 0, 0);
-        minEndDate.setHours(0, 0, 0, 0);
-        if (endDate > minEndDate) {
-            alert('Selecciona una fecha de término dentro de los 12 meses permitidos.');
-            this.value = ''; 
-        }
     });
 </script>
 
