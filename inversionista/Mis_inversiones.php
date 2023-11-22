@@ -53,8 +53,6 @@ Bootstrap 5 HTML CSS Template
     </div>
 </header>
 
-
-<section class="job-section recent-jobs-section section-padding">
 <section class="job-section recent-jobs-section section-padding">
             <div class="container">
                 <div class="row align-items-center">
