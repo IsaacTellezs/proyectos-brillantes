@@ -49,7 +49,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="\crowd\inversionista\Datos2.php">Proyectos nuevos</a>
+                            <a class="nav-link" href="\crowd\inversionista\Mis_inversiones.php">Mis inversiones.</a>
                         </li>
 
                         <li class="nav-item dropdown">
