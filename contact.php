@@ -37,12 +37,16 @@ headerDinamico($conexion);
         
 
     </head>
-    
+
+    <body>
+
+    <main>
+
     <section class="search-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-12">
-                <form class="custom-form search-form" action="../categorias/busqueda.php" method="get" role="form" id="searchForm">
+                <form class="custom-form search-form" action="./categorias/busqueda.php" method="get" role="form" id="searchForm">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon2"><i class="bi-search custom-icon"></i></span>
                         <input type="text" name="q" class="form-control" placeholder="Buscar proyectos..." required>
@@ -72,10 +76,6 @@ headerDinamico($conexion);
         }
     });
 </script>
-
-    <body>
-
-    <main>
 
     <header class="site-header py-5">
     <div class="section-overlay"></div>
