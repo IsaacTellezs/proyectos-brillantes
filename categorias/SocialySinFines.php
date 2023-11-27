@@ -16,7 +16,7 @@ headerDinamico($conexion);
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Salud</title>
+        <title>Social y sin fines de lucro</title>
 
         <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
