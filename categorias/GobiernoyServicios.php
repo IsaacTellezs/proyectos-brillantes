@@ -41,6 +41,41 @@ headerDinamico($conexion);
 
     <main>
 
+    <section class="search-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <form class="custom-form search-form" action="busqueda.php" method="get" role="form" id="searchForm">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon2"><i class="bi-search custom-icon"></i></span>
+                        <input type="text" name="q" class="form-control" placeholder="Buscar proyectos..." required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        // Evita que el formulario se envíe normalmente
+        e.preventDefault();
+
+        // Acciones adicionales si es necesario
+
+        // Envía el formulario programáticamente
+        this.submit();
+    });
+
+    // Agrega un listener al campo de entrada para realizar la búsqueda al presionar Enter
+    document.querySelector('.search-form input').addEventListener('keyup', function (e) {
+        if (e.key === 'Enter') {
+            // Realiza la búsqueda al presionar Enter
+            document.getElementById('searchForm').submit();
+        }
+    });
+</script>
+
 <header class="site-header py-5">
     <div class="section-overlay"></div>
 
