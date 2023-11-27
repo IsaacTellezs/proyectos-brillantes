@@ -1,9 +1,11 @@
 <?php
 include '../funciones/conex.php';
 include '../funciones/funciones.php';
-conectar();       
-session_start(); 
+conectar();
+session_start();
 
+// Limpia el búfer de salida antes de enviar las cabeceras
+ob_start();
 
 headerDinamico($conexion);
 
@@ -57,4 +59,7 @@ if (isset($_GET['q'])) {
         exit;
     }
 }
+
+// Limpiar el búfer de salida y enviar cualquier salida almacenada
+ob_end_flush();
 ?>
