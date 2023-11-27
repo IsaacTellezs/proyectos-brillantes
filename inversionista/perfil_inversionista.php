@@ -47,6 +47,18 @@ $stmt->close();
     <link href="../css/index.css" rel="stylesheet">
 </head>
 
+<header class="site-header py-5">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Mi perfil.</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
 <section class="search-section">
     <div class="container">
         <div class="row">
@@ -82,17 +94,6 @@ $stmt->close();
     });
 </script>
 
-<header class="site-header py-5">
-    <div class="section-overlay"></div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="text-white">Mi perfil.</h1>
-            </div>
-        </div>
-    </div>
-</header>
 <br>
 <br>
 <body>

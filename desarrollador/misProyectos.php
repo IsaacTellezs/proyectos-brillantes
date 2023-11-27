@@ -39,7 +39,19 @@ headerDinamico($conexion);
 
         <main>
 
-        <section class="search-section">
+        <header class="site-header py-5">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Mis proyectos</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="search-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-12">
@@ -74,19 +86,6 @@ headerDinamico($conexion);
     });
 </script>
 
-        <header class="site-header py-5">
-    <div class="section-overlay"></div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="text-white">Mis proyectos</h1>
-            </div>
-        </div>
-    </div>
-</header>
-
-
             <section class="job-section recent-jobs-section section-padding">
                 <div class="container">
                     <div class="row align-items-center">
@@ -111,7 +110,7 @@ if (isset($_SESSION['id'])) {
             echo '<div class="col-lg-4 col-md-6 col-12">';
             echo '<div class="job-thumb job-thumb-box">';
             echo '<div class="job-image-box-wrap">';
-            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '">';
+            echo '<a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '">';
             // Puedes usar la imagen almacenada en la base de datos o proporcionar una ruta estática
             echo '<img src="' . $row['imagen'] . '" class="job-image img-fluid" alt="">';
             echo '</a>';
@@ -123,7 +122,7 @@ if (isset($_SESSION['id'])) {
             echo '</div>';
             echo '<div class="job-body">';
             echo '<h4 class="job-title">';
-            echo '<a href="\crowd\desarrollador\informacion-proyecto-desarrollador.php?id_proyecto=' . $row['id_proyecto'] . '" class="job-title-link">' . $row['nom_proyecto'] . '</a>';
+            echo '<a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '" class="job-title-link">' . $row['nom_proyecto'] . '</a>';
             echo '</h4>';
             echo '<div class="d-flex align-items-center">';
             echo '<div class="job-image-wrap d-flex align-items-center">';

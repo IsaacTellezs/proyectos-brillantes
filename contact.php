@@ -42,7 +42,19 @@ headerDinamico($conexion);
 
     <main>
 
-    <section class="search-section">
+    <header class="site-header py-5">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Ponte en contacto.</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="search-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-12">
@@ -76,18 +88,6 @@ headerDinamico($conexion);
         }
     });
 </script>
-
-    <header class="site-header py-5">
-    <div class="section-overlay"></div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="text-white">Ponte en contacto.</h1>
-            </div>
-        </div>
-    </div>
-</header>
 
 <section class="contact-section section-padding">
     <div class="container">
