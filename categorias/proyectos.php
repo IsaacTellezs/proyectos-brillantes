@@ -18,7 +18,7 @@ headerDinamico($conexion);
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Busqueda</title>
+        <title>Proyectos</title>
 
         <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@ headerDinamico($conexion);
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="text-white">Resultado de busqueda</h1>
+                <h1 class="text-white">Proyectos</h1>
             </div>
         </div>
     </div>
@@ -48,24 +48,17 @@ headerDinamico($conexion);
         <div class="row align-items-center">
 
         <?php
-if (isset($_SESSION['resultados_busqueda'])) {
-    $resultados = $_SESSION['resultados_busqueda'];
+// Consulta SQL para obtener todos los proyectos
+$query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos";
 
-    if (count($resultados) > 0) {
-        echo '<div class="row">';
-
-        foreach ($resultados as $nombre_proyecto) {
-            // Escapa el nombre del proyecto para evitar SQL injection
-            $nombre_proyecto = mysqli_real_escape_string($conexion, $nombre_proyecto);
-
-            // Consulta SQL para obtener proyectos
-$query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos WHERE nom_proyecto = '$nombre_proyecto'";
 // Ejecuta la consulta
 $result = mysqli_query($conexion, $query);
 
 if ($result) {
     // Comprueba si hay filas de resultados
     if (mysqli_num_rows($result) > 0) {
+        echo '<div class="row">';
+
         while ($row = mysqli_fetch_assoc($result)) {
             // Recupera los datos de la base de datos
             $ProyectoID = $row['id_proyecto'];
@@ -79,7 +72,7 @@ if ($result) {
             echo '        <div class="job-image-box-wrap">';
             // Enlaza la imagen y el título al detalle del proyecto
             echo '            <a href="../desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
-            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" style="width: 300px; height: 300px;">';
+            echo '                <img src="' . $Imagen . '" class="job-image img-fluid" alt="" >';
             echo '            </a>';
             echo '        </div>';
             echo '        <div class="job-body">';
@@ -104,22 +97,16 @@ if ($result) {
             echo '    </div>';
             echo '</div>';
         }
-                }
-            }
-        }
+
         echo '</div>';
     } else {
-        echo 'No se encontraron resultados.';
+        echo 'No hay proyectos disponibles.';
     }
-
-    unset($_SESSION['resultados_busqueda']);
-} elseif (isset($_SESSION['mensaje_busqueda'])) {
-    echo $_SESSION['mensaje_busqueda'];
-    unset($_SESSION['mensaje_busqueda']);
 } else {
-    echo "No se encontraron resultados.";
+    echo 'Error al realizar la consulta.';
 }
 ?>
+
 </div>
     </div>
 </section>

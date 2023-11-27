@@ -296,7 +296,7 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conexion);
 ?>
                         <div class="col-lg-4 col-12 recent-jobs-bottom d-flex ms-auto my-4">
-                            <a href="listaProyectos.php" class="custom-btn btn ms-lg-auto">Ver mas proyectos</a>
+                            <a href="categorias/proyectos.php" class="custom-btn btn ms-lg-auto">Ver mas proyectos</a>
                         </div>
 
                     </div>
