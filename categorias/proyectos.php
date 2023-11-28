@@ -43,10 +43,11 @@ headerDinamico($conexion);
     </div>
 </header>
 
+
     <section class="job-section section-padding">
     <div class="container">
         <div class="row align-items-center">
-
+        
         <?php
 // Consulta SQL para obtener todos los proyectos
 $query = "SELECT nom_proyecto, imagen, categoria, id_proyecto FROM proyectos";
