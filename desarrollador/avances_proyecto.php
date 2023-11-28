@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="text-white">Detalles del Proyecto</h1>
+                        <h1 class="text-white">Avances del Proyecto</h1>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         
         <div class="container">
                        <div class="row d-flex justify-content-center">
-                <div class="col-lg-12 col-md-10 col-12">
+                <div class="col-lg-6 col-md-10 col-6">
                     <form class="custom-form hero-form" method="post" action="avances_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data">
                         <h3 class="text-white mb-3 d-flex justify-content-center">Avance Proyecto</h3>
                         <div class="row">
