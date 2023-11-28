@@ -1,60 +1,54 @@
 <?php
 include '../funciones/conex.php';
 include '../funciones/funciones.php';
-conectar();
-session_start();
+conectar();       
+session_start(); 
 
 headerDinamico($conexion);
 
-// Función de validación de palabras clave
-function validarPalabrasClave($descripcion_avance, $fecha_avance) {
-    $palabrasClave = array('ilegal ','discriminacion','homofobia','machismo','alcohol','cigarros','ilicito','prohibido',
-    'odio','violencia','negro','humillacion','pendejo','cigarros','menores','mal uso','sexo','coito',
-    'destructor','riesgo','corrupcion','corruptos','solo hombres','deshonesto','evasion','patriotas','spam','caliente',
-    'desnudo','desnudas','desnuda','desnudos','agrandamiento','hot','caliente','viagra','putas','puta','puto','tráfico','blancas',
-    'factura','gente de color','personas de color','nigga',); // Reemplaza con tus palabras clave
-    foreach ($palabrasClave as $palabra) {
-        // Verifica si la palabra clave está presente en la descripción
-        if (stripos($descripcion_avance, $palabra) !== false || stripos($fecha_avance, $palabra) !== false) {
-            return false; // Proyecto no válido
-        }
-    }
-    return true;
-}
+if (isset($_GET['id_proyecto'])) {
+    $id_proyecto = $_GET['id_proyecto'];
 
-// Inicializar las variables para evitar el aviso de "Variable indefinida"
-$id_proyecto = isset($_GET['id_proyecto']) ? $_GET['id_proyecto'] : '';
-$descripcion_avance = '';
-$fecha_avance = '';
+    // Utilizar declaración preparada para prevenir la inyección SQL
+    $query = "SELECT av.descripcion_avance, av.fecha_avance, p.imagen 
+              FROM avances_proyectos av 
+              JOIN proyectos p ON av.id_proyecto = p.id_proyecto
+              WHERE av.id_proyecto = ?";
 
-// Verificar si el formulario ha sido enviado
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Recuperar datos del formulario
-    $descripcion_avance = isset($_POST['descripcion_avance']) ? $_POST['descripcion_avance'] : '';
-    $fecha_avance = isset($_POST['fecha_avance']) ? $_POST['fecha_avance'] : '';
+    // Preparar la declaración
+    $stmt = mysqli_prepare($conexion, $query);
 
-    // Validar palabras clave
-    if (!validarPalabrasClave($descripcion_avance, $fecha_avance)) {
-        // La descripción o la fecha contienen palabras clave no permitidas
-        // Puedes redirigir a una página de error o hacer algo más aquí
-        echo "Error: Descripción o fecha contiene palabras clave no permitidas.";
-        exit;
-    }
+    // Vincular el parámetro
+    mysqli_stmt_bind_param($stmt, "i", $id_proyecto);
 
-    // Insertar datos en la base de datos
-    $query = "INSERT INTO avances_proyectos (id_proyecto, descripcion_avance, fecha_avance) VALUES ('$id_proyecto', '$descripcion_avance', '$fecha_avance')";
-    $result = mysqli_query($conexion, $query);
+    // Ejecutar la declaración
+    $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        // Éxito al insertar en la base de datos
-        echo "Datos insertados correctamente.";
-    } else {
-        // Error al insertar en la base de datos
-        echo "Error al insertar datos: " . mysqli_error($conexion);
-    }
-}
-?>
+        // Obtener el resultado
+        $result = mysqli_stmt_get_result($stmt);
 
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $descripcion_avance = $row['descripcion_avance'];
+            $fecha_avance = $row['fecha_avance'];
+            $Imagen = $row['imagen'];
+
+            // Resto de tu código HTML
+        } else {
+            echo 'No se encontraron detalles para el proyecto.';
+        }
+
+        mysqli_free_result($result);
+    }
+
+    // Cerrar la declaración
+    mysqli_stmt_close($stmt);
+}
+
+// Cerrar la conexión a la base de datos al final
+mysqli_close($conexion);
+?>
 
 <!doctype html>
 <html lang="en">
@@ -91,66 +85,94 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </style>
 </head>
 <body class="Creador-y-desarrollador-page" id="top">
-    <main>
-        <header class="site-header py-5">
-            <div class="section-overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h1 class="text-white">Avances del Proyecto</h1>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        
+<main>
+    <header class="site-header py-5">
+        <div class="section-overlay"></div>
         <div class="container">
-                       <div class="row d-flex justify-content-center">
-                <div class="col-lg-6 col-md-10 col-6">
-                    <form class="custom-form hero-form" method="post" action="avances_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data">
-                        <h3 class="text-white mb-3 d-flex justify-content-center">Avance Proyecto</h3>
-                        <div class="row">
-                                    <div class="col-lg-12 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="bi-pencil-fill custom-icon"></i></span>
-                                            <input type="text" name="descripcion_avance" id="descripcion_avance" class="form-control" placeholder="Descripcion avance" value="<?php echo $descripcion_avance; ?>" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="bi-calendar2 custom-icon"></i></span>
-                                            <input type="date" name="fecha_avance" id="fecha_avance" class="form-control" value="<?php echo $fecha_avance; ?>" required>
-                                        </div>
-                                    </div>
-
-                            <div class="col-lg-12 col-12">
-                                <button type="submit" class="form-control">Guardar Cambios</button>
-                                </div>
-                            </form>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="text-white">Avances del proyecto.</h1>
                 </div>
             </div>
         </div>
-</main>
+    </header>
 
+    <section class="search-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <form class="custom-form search-form" action="../categorias/busqueda.php" method="get" role="form" id="searchForm">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon2"><i class="bi-search custom-icon"></i></span>
+                        <input type="text" name="q" class="form-control" placeholder="Buscar proyectos..." required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        // Evita que el formulario se envíe normalmente
+        e.preventDefault();
+
+        // Acciones adicionales si es necesario
+
+        // Envía el formulario programáticamente
+        this.submit();
+    });
+
+    // Agrega un listener al campo de entrada para realizar la búsqueda al presionar Enter
+    document.querySelector('.search-form input').addEventListener('keyup', function (e) {
+        if (e.key === 'Enter') {
+            // Realiza la búsqueda al presionar Enter
+            document.getElementById('searchForm').submit();
+        }
+    });
+</script>
+
+    <section class="job-section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="project-details">
+                    <div class="project-image">
+                        <div class="job-thumb job-thumb-box">
+                            <div class="job-image-box-wrap">
+                                <img src="<?php echo $Imagen; ?>" class="job-image img-fluid" alt="Imagen del Proyecto" style="max-width: 50%; max-height: 50vh;">
                             </div>
                         </div>
                     </div>
+                    <div class="project-description">
+                    <p>Fecha del avance: <?php echo $fecha_avance; ?></p>
+    <p>Descripcion del avance: <?php echo $descripcion_avance; ?></p>
+    <div class="col-12">
+    <a href="../desarrollador/editar_avances_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" class="btn btn-secondary btn-lg rounded-circle">
+    Añadir avance.
+</a>
                 </div>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+</div>
+    </div>
+</div>
             </div>
-        </section>
-    </main>
-    <?php include '../footer.php'; ?>
-    <!-- JAVASCRIPT FILES -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/counter.js"></script>
-    <script src="../js/custom.js"></script>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+</main>
+<?php include '../footer.php'; ?>
+<!-- JAVASCRIPT FILES -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/counter.js"></script>
+<script src="../js/custom.js"></script>
 </body>
 </html>
