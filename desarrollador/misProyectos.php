@@ -138,7 +138,7 @@ if (isset($_SESSION['id'])) {
             echo '<div class="d-flex align-items-center border-top pt-3">';
             // Agrega el enlace con el ID del proyecto
             echo '<a href="../desarrollador/editar_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Editar proyecto</a>';
-            
+            echo '<a href="../desarrollador/avances_proyecto.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Avances proyecto</a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
