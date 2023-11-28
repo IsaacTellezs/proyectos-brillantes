@@ -170,7 +170,7 @@ headerDinamico($conexion);
                                 <a href="./categorias/GobiernoyServicios.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bank"></i>
                                 
-                                    <small class="categories-block-title">Gobiero y Servicios Publicos</small>
+                                    <small class="categories-block-title">Gobierno y Servicios Publicos</small>
 
                                     
                                 </a>
