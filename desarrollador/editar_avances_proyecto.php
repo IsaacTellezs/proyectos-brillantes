@@ -27,16 +27,6 @@ $id_proyecto = isset($_GET['id_proyecto']) ? $_GET['id_proyecto'] : '';
 $descripcion_avance = '';
 $fecha_avance = '';
 
-// Obtener la información del usuario desde la base de datos para prellenar el formulario
-$user = $_SESSION['Correo'];
-$select_sql = "SELECT descripcion_avance, fecha_avance FROM avances_proyectos WHERE id_proyecto = ?";
-$stmt = $conexion->prepare($select_sql);
-$stmt->bind_param("s", $id_proyecto);
-$stmt->execute();
-$stmt->bind_result($descripcion_avance, $fecha_avance);
-$stmt->fetch();
-$stmt->close();
-
 // Verificar si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Recuperar datos del formulario
@@ -51,23 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Verificar si el proyecto ya existe
-    $select_sql = "SELECT COUNT(*) FROM avances_proyectos WHERE id_proyecto = ?";
-    $stmt = $conexion->prepare($select_sql);
-    $stmt->bind_param("s", $id_proyecto);
-    $stmt->execute();
-    $stmt->bind_result($count);
-    $stmt->fetch();
-    $stmt->close();
-
-    if ($count > 0) {
-        // El proyecto ya existe, realizar una actualización
-        $update_query = "UPDATE avances_proyectos SET descripcion_avance = '$descripcion_avance', fecha_avance = '$fecha_avance' WHERE id_proyecto = '$id_proyecto'";
-    } else {
-        // El proyecto no existe, realizar una inserción
-        $update_query = "INSERT INTO avances_proyectos (id_proyecto, descripcion_avance, fecha_avance) VALUES ('$id_proyecto', '$descripcion_avance', '$fecha_avance')";
-    }
-
+    // Realizar una inserción
+    $update_query = "INSERT INTO avances_proyectos (id_proyecto, descripcion_avance, fecha_avance) VALUES ('$id_proyecto', '$descripcion_avance', '$fecha_avance')";
     $update_result = mysqli_query($conexion, $update_query);
 
     // Mensajes de éxito o error utilizando JavaScript
@@ -88,7 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo '</script>';
 }
 ?>
-
 
 <!doctype html>
 <html lang="en">
