@@ -164,9 +164,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-12">
-                        <button type="submit" class="form-control">Guardar Cambios</button>
-                    </div>
+<div class="col-lg-12 col-12 mt-3">
+    <button type="submit" class="form-control">Guardar Cambios</button>
+</div>
+
+<div class="col-lg-12 col-12">
+    <a href="avances_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data" class="btn btn-secondary">Regresar</a>
+</div>
                 </div>
             </form>
                 </div>

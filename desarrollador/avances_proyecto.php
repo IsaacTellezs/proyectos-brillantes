@@ -144,7 +144,7 @@ mysqli_close($conexion);
                     <div class="project-image">
                         <div class="job-thumb job-thumb-box">
                             <div class="job-image-box-wrap">
-                                <img src="<?php echo $Imagen; ?>" class="job-image img-fluid" alt="Imagen del Proyecto" style="max-width: 50%; max-height: 50vh;">
+                                <img src="<?php echo $Imagen; ?>" class="job-image img-fluid" alt="Imagen del Proyecto" style="max-width: 80%; max-height: 80vh;">
                             </div>
                         </div>
                     </div>
