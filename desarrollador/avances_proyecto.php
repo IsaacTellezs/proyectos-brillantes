@@ -6,26 +6,29 @@ session_start();
 
 headerDinamico($conexion);
 
+$fecha_avance = ""; // Inicializa las variables
+$descripcion_avance = "";
+
 if (isset($_GET['id_proyecto'])) {
     $id_proyecto = $_GET['id_proyecto'];
 
-    // Utilizar declaración preparada para prevenir la inyección SQL
+    // Utiliza declaración preparada para prevenir la inyección SQL
     $query = "SELECT av.descripcion_avance, av.fecha_avance, p.imagen 
               FROM avances_proyectos av 
               JOIN proyectos p ON av.id_proyecto = p.id_proyecto
               WHERE av.id_proyecto = ?";
 
-    // Preparar la declaración
+    // Prepara la declaración
     $stmt = mysqli_prepare($conexion, $query);
 
-    // Vincular el parámetro
+    // Vincula el parámetro
     mysqli_stmt_bind_param($stmt, "i", $id_proyecto);
 
-    // Ejecutar la declaración
+    // Ejecuta la declaración
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        // Obtener el resultado
+        // Obtiene el resultado
         $result = mysqli_stmt_get_result($stmt);
 
         if (mysqli_num_rows($result) > 0) {
@@ -42,13 +45,14 @@ if (isset($_GET['id_proyecto'])) {
         mysqli_free_result($result);
     }
 
-    // Cerrar la declaración
+    // Cierra la declaración
     mysqli_stmt_close($stmt);
 }
 
-// Cerrar la conexión a la base de datos al final
+// Cierra la conexión a la base de datos al final
 mysqli_close($conexion);
 ?>
+
 
 <!doctype html>
 <html lang="en">
