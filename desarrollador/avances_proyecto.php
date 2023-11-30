@@ -116,38 +116,42 @@ if (isset($_GET['id_proyecto'])) {
             }
 
             // Obtener y mostrar los avances del proyecto
-echo "<div class='col-md-6'>";
+            echo "<div class='col-md-6'>";
 
-$query_avances = "SELECT av.descripcion_avance, av.fecha_avance FROM avances_proyectos av WHERE av.id_proyecto = ?";
-$stmt_avances = mysqli_prepare($conexion, $query_avances);
-mysqli_stmt_bind_param($stmt_avances, "i", $id_proyecto);
-$result_avances = mysqli_stmt_execute($stmt_avances);
+            $query_avances = "SELECT av.descripcion_avance, av.fecha_avance FROM avances_proyectos av WHERE av.id_proyecto = ?";
+            $stmt_avances = mysqli_prepare($conexion, $query_avances);
+            mysqli_stmt_bind_param($stmt_avances, "i", $id_proyecto);
+            $result_avances = mysqli_stmt_execute($stmt_avances);
 
-if ($result_avances) {
-    $result_avances = mysqli_stmt_get_result($stmt_avances);
+            if ($result_avances) {
+                $result_avances = mysqli_stmt_get_result($stmt_avances);
 
-    if (mysqli_num_rows($result_avances) > 0) {
-        while ($row_avance = mysqli_fetch_assoc($result_avances)) {
-            $descripcion_avance = $row_avance['descripcion_avance'];
-            $fecha_avance = $row_avance['fecha_avance'];
+                if (mysqli_num_rows($result_avances) > 0) {
+                    while ($row_avance = mysqli_fetch_assoc($result_avances)) {
+                        $descripcion_avance = $row_avance['descripcion_avance'];
+                        $fecha_avance = $row_avance['fecha_avance'];
 
-            echo "<div class='mx-auto text-center' style='max-width: 100%;'>";
-            echo "<p>Fecha del avance: $fecha_avance</p>";
-            echo "<p>Descripción del avance: $descripcion_avance</p>";
-            echo "<hr>";  // Separador entre avances
+                        // Limitar la cantidad de caracteres por fila a 60
+                        $descripcion_avance_wrapped = chunk_split($descripcion_avance, 60, "<br>");
+
+                        echo "<div class='mx-auto text-center' style='max-width: 100%;'>";
+                        echo "<p><strong>Fecha del avance:</strong> $fecha_avance</p>";
+                        echo "<p><strong>Descripción del avance:</strong><br>$descripcion_avance_wrapped</p>";
+                        echo "<hr>";  // Separador entre avances
+                        echo "</div>";
+                    }
+                } else {
+                    echo 'No se encontraron detalles para el proyecto.';
+                }
+
+                mysqli_stmt_close($stmt_avances);
+            }
+
             echo "</div>";
-        }
-    } else {
-        echo 'No se encontraron detalles para el proyecto.';
-    }
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
 
-    mysqli_stmt_close($stmt_avances);
-}
-
-echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
         } else {
             echo 'No se encontraron detalles para el proyecto.';
         }
@@ -158,6 +162,7 @@ echo "</div>";
     mysqli_stmt_close($stmt_imagen);
 }
 ?>
+
 
 
 

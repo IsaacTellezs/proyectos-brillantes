@@ -132,11 +132,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-12">
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"><i class="bi-calendar2 custom-icon"></i></span>
-                            <input type="date" name="fecha_avance" id="fecha_avance" class="form-control" value="<?php echo $fecha_avance; ?>" required>
-                        </div>
-                    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1"><i class="bi-calendar2 custom-icon"></i></span>
+        <input type="date" name="fecha_avance" id="fecha_avance" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
+    </div>
+</div>
+
 
 <div class="col-lg-12 col-12 mt-3">
     <button type="submit" class="form-control">Guardar Cambios</button>
