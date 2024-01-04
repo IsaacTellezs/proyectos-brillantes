@@ -144,7 +144,7 @@ Bootstrap 5 HTML CSS Template
             echo '<div class="d-flex align-items-center border-top pt-3">';
             // Agrega el enlace con el ID del proyecto
             echo '<a href="../inversionista\Datos_inversion.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Ver mi inversion.</a>';
-            
+            echo '<a href="../desarrollador/avances_proyecto2.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Avances proyecto</a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
