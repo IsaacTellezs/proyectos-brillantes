@@ -103,21 +103,21 @@ $stmt->close();
     <div class="row">
         <div class="col-lg-12">
             <form class="custom-form hero-form" action="editar-perfil-usuario.php" method="post" role="form" enctype="multipart/form-data">
-                <h2 class="text-center text-white mb-4">Datos del inversionista</h2>
+                <h2 class="text-center text-white mb-4">Datos del desarrollador.</h2>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="form-group">
-                            <label for="nom_usuario" style="font-size: 24px;"><strong>Nombre</strong></label>
+                            <label for="nom_usuario" style="font-size: 24px;"><strong>Nombre.</strong></label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                                <input type="text" class="form-control" id="nom_usuario" placeholder="Tu nombre" name="nom_usuario" required value="<?php echo $nom_usuario; ?>">
+                                <input type="text" class="form-control" id="nom_usuario" placeholder="Tu nombre." name="nom_usuario" required value="<?php echo $nom_usuario; ?>">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <div a class="form-group">
-                            <label for="email" style="font-size: 24px;"><strong>Correo Electrónico</strong></label>
+                            <label for="email" style="font-size: 24px;"><strong>Correo Electrónico.</strong></label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-envelope custom-icon"></i></span>
                                 <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com" name="correo" required value="<?php echo $correo; ?>">
@@ -129,19 +129,19 @@ $stmt->close();
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="form-group">
-                            <label for="numero" style="font-size: 24px;"><strong>Número de teléfono</strong></label>
+                            <label for="numero" style="font-size: 24px;"><strong>Número de teléfono.</strong></label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi-telephone custom-icon"></i></span>
-                                <input type="text" class="form-control" id="numero" placeholder="Tu número" name="telefono" required value="<?php echo $telefono; ?>">
+                                <input type="text" class="form-control" id="numero" placeholder="Tu número." name="telefono" required value="<?php echo $telefono; ?>">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="form-group">
-                            <label for="experiencia" style="font-size: 24px;"><strong>Experiencia</strong></label>
+                            <label for="experiencia" style="font-size: 24px;"><strong>Experiencia.</strong></label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-briefcase custom-icon"></i></span>
-                                <input type="text" class="form-control" id="experiencia" placeholder="Tu empresa" name="experiencia" required value="<?php echo $experiencia; ?>">
+                                <input type="text" class="form-control" id="experiencia" placeholder="Tu empresa." name="experiencia" required value="<?php echo $experiencia; ?>">
                             </div>
                         </div>
                     </div>
@@ -149,37 +149,72 @@ $stmt->close();
                 <div class="row">
     <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-            <label for="facebook" style="font-size: 24px;"><strong>Facebook</strong></label>
+            <label for="facebook" style="font-size: 24px;"><strong>Facebook.</strong></label>
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-facebook custom-icon"></i></span>
-                <input type="text" class="form-control" id="facebook" placeholder="Tu perfil de Facebook" name="facebook" value="<?php echo $facebook; ?>">
+                <input type="text" class="form-control" id="facebook" placeholder="Tu perfil de Facebook." name="facebook" value="<?php echo $facebook; ?>">
             </div>
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-            <label for="instagram" style="font-size: 24px;"><strong>Instagram</strong></label>
+            <label for="instagram" style="font-size: 24px;"><strong>Instagram.</strong></label>
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-instagram custom-icon"></i></span>
-                <input type="text" class="form-control" id="instagram" placeholder="Tu perfil de Instagram" name="instagram" value="<?php echo $instagram; ?>">
+                <input type="text" class="form-control" id="instagram" placeholder="Tu perfil de Instagram." name="instagram" value="<?php echo $instagram; ?>">
             </div>
         </div>
     </div>
 </div>
 
                 <div class="form-group">
-                    <label for="photo" style="font-size: 24px;"><strong>Subir una foto</strong></label>
+                    <label for="photo" style="font-size: 24px;"><strong>Subir una foto.</strong></label>
                     <input type="file" class="form-control" id="photo" name="user_photo">
                 </div>
                 <br>
                 <div>
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios.</button>
                 </div>
                 </form>
             </div>
         </div>
     </div>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nombreInput = document.getElementById('nom_usuario');
+        var experienciaInput = document.getElementById('experiencia');
+
+        // Función para autocorregir acentos
+        function autocorrectAccents(str) {
+            var map = {
+                'á': 'á', 'é': 'é', 'í': 'í', 'ó': 'ó', 'ú': 'ú',
+                'Á': 'Á', 'É': 'É', 'Í': 'Í', 'Ó': 'Ó', 'Ú': 'Ú'
+            };
+            return str.replace(/[áéíóúÁÉÍÓÚ]/g, function(match) {
+                return map[match];
+            });
+        }
+
+        // Función para capitalizar la primera letra de la primera palabra
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Agrega eventos oninput a los campos
+        nombreInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+
+        experienciaInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+    });
+</script>
+
+
 
 <?php
 include '../footer.php';

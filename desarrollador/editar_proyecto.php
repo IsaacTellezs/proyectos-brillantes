@@ -154,7 +154,7 @@ if (isset($_SESSION['errorRegistro'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Detalles del Proyecto</title>
+    <title>Detalles del Proyecto.</title>
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,7 +188,7 @@ if (isset($_SESSION['errorRegistro'])) {
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="text-white">Detalles del Proyecto</h1>
+                        <h1 class="text-white">Detalles del Proyecto.</h1>
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@ if (isset($_SESSION['errorRegistro'])) {
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-12 col-md-10 col-12">
                 <form class="custom-form hero-form" method="post" action="editar_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data">
-                        <h3 class="text-white mb-3 d-flex justify-content-center">Editar Proyecto</h3>
+                        <h3 class="text-white mb-3 d-flex justify-content-center">Editar Proyecto.</h3>
                         <div class="row">
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
@@ -224,7 +224,7 @@ if (isset($_SESSION['errorRegistro'])) {
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-list custom-icon"></i></span>
                                             <select class="form-select" id="categoria" name="categoria" required>
-                                        <option value="Educación" <?php echo ($Categoria === 'Educación') ? 'selected' : ''; ?>>Educacion</option>
+                                        <option value="Educación" <?php echo ($Categoria === 'Educación') ? 'selected' : ''; ?>>Educación</option>
                                         <option value="Negocios y emprendimiento" <?php echo ($Categoria === 'Negocios y emprendimiento') ? 'selected' : ''; ?>>Negocios y emprendimiento</option>
                                         <option value="Gobierno y servicios públicos" <?php echo ($Categoria === 'Gobierno y servicios públicos') ? 'selected' : ''; ?>>Gobierno y servicios publicos</option>
                                         <option value="Social y sin fines de lucro" <?php echo ($Categoria === 'Social y sin fines de lucro') ? 'selected' : ''; ?>>Social y sin fines de lucro</option>
@@ -248,13 +248,48 @@ if (isset($_SESSION['errorRegistro'])) {
                                     </div>
 
                             <div class="col-lg-12 col-12">
-                                <button type="submit" class="form-control">Guardar Cambios</button>
+                                <button type="submit" class="form-control">Guardar cambios.</button>
                                 </div>
                             </form>
                 </div>
             </div>
         </div>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nombreProyectoInput = document.getElementById('nom_proyecto');
+        var descripcionInput = document.getElementById('descripcion');
+
+        // Función para autocorregir acentos
+        function autocorrectAccents(str) {
+            var map = {
+                'á': 'á', 'é': 'é', 'í': 'í', 'ó': 'ó', 'ú': 'ú',
+                'Á': 'Á', 'É': 'É', 'Í': 'Í', 'Ó': 'Ó', 'Ú': 'Ú'
+            };
+            return str.replace(/[áéíóúÁÉÍÓÚ]/g, function(match) {
+                return map[match];
+            });
+        }
+
+        // Función para capitalizar la primera letra de la primera palabra
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Agrega eventos oninput a los campos
+        nombreProyectoInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+
+        descripcionInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+    });
+</script>
+
+
 
                             </div>
                         </div>

@@ -100,29 +100,29 @@ headerDinamico($conexion);
             <div class="col-lg-8 col-12 mx-auto">
         
                 <form method="POST" class="custom-form contact-form" action="contacto-guardar.php" >
-                    <h2 class="text-center mb-4">¿Tienes un proyecto en mente o duda? Ponte en contacto con nosotros</h2>
+                    <h2 class="text-center mb-4">¿Tienes un proyecto en mente o duda? Ponte en contacto con nosotros.</h2>
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
-                            <label for="first-name">Nombre completo</label>
+                            <label for="first-name">Nombre completo.</label>
 
-                            <input type="text" name="nombre_completo" id="nombre_completo" class="form-control" placeholder="Escribe tu nombre" required>
+                            <input type="text" name="nombre_completo" id="nombre_completo" class="form-control" placeholder="Escribe tu nombre." required>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12">
-                            <label for="email">Email</label>
+                            <label for="email">Email.</label>
 
-                             <input type="email" name="correo_electronico" id="correo_electronico" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Escribe tu correo electronico" required>
+                             <input type="email" name="correo_electronico" id="correo_electronico" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Escribe tu correo electronico." required>
                         </div>
 
                         <div class="col-lg-12 col-12">
-                            <label for="motivo">Mensaje</label>
+                            <label for="motivo">Mensaje.</label>
 
-                            <textarea name="motivo" rows="6" class="form-control" id="motivo" placeholder="¿En que puedo ayudarte?"></textarea>
+                            <textarea name="motivo" rows="6" class="form-control" id="motivo" placeholder="¿En qué puedo ayudarte?"></textarea>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-6 mx-auto">
-                            <button type="submit" class="form-control">Enviar mensaje</button>
+                            <button type="submit" class="form-control">Enviar mensaje.</button>
                             <a href="confirmacion-contacto.php">
                         </div>
                     </div>
@@ -134,6 +134,40 @@ headerDinamico($conexion);
 </section>
 <br><br><br>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nombreCompletoInput = document.getElementById('nombre_completo');
+        var motivoInput = document.getElementById('motivo');
+
+        // Función para autocorregir acentos
+        function autocorrectAccents(str) {
+            var map = {
+                'á': 'á', 'é': 'é', 'í': 'í', 'ó': 'ó', 'ú': 'ú',
+                'Á': 'Á', 'É': 'É', 'Í': 'Í', 'Ó': 'Ó', 'Ú': 'Ú'
+            };
+            return str.replace(/[áéíóúÁÉÍÓÚ]/g, function(match) {
+                return map[match];
+            });
+        }
+
+        // Función para capitalizar la primera letra de la primera palabra
+        function capitalizeFirstLetter(str) {
+            return str.replace(/\b\w/g, function(match) {
+                return match.toLocaleUpperCase();
+            });
+        }
+
+        // Agrega eventos oninput a los campos
+        nombreCompletoInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+
+        motivoInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+        });
+    });
+</script>
 
 
               <!-- footer -->

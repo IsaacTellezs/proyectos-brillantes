@@ -88,7 +88,7 @@ headerDinamico($conexion);
         <div class="row">
 
             <div class="col-lg-12 col-12 text-center">
-                <h2 class="mb-5">Nuestra Plataforma de Financiación Colectiva</h2>
+                <h2 class="mb-5">Nuestra plataforma de financiación colectiva</h2>
             </div>
 
             <div class="services-block-wrap col-lg-4 col-md-6 col-12">
@@ -96,7 +96,7 @@ headerDinamico($conexion);
                     <div class="services-block-title-wrap">
                         <i class="services-block-icon  bi bi-suit-heart-fill"></i>
                     
-                        <h4 class="services-block-title">Lo que Nos Impulsa</h4>
+                        <h4 class="services-block-title">Lo que nos impulsa</h4>
                     </div>
 
                     <div class="services-block-body">
@@ -147,11 +147,11 @@ headerDinamico($conexion);
                    
 
                     <p>Los creadores dentro de "Proyectos Brillantes" tienen la oportunidad de ser seleccionados para poder realizar un proyecto propuesto por ellos
-    mismos con el proposito de crear un impacto innovador, dicha difucultad o area en la cual desenvolver dicho proyecto sera establecido por el mismo.
+    mismos con el propósito de crear un impacto innovador, dicha dificultad o área en la cual desenvolver dicho proyecto será establecido por el mismo.
 
-Los creadores tendran dos propositos:</p>
+Los creadores tendrán dos propósitos:</p>
 <p>🟠 Finalizar y poner en marcha dicho proyecto</p>    
-<p>🟠 Su donante/inversionita obtendra un beneficio establecido por un acuerdo mutuo entre ambas partes como: ser mencionado en el proyecto, servicio o producto gratis.</p>     
+<p>🟠 Su donante/inversionista obtendrá un beneficio establecido por un acuerdo mutuo entre ambas partes como: ser mencionado en el proyecto, servicio o producto gratis.</p>     
 
                  
                 </div>
@@ -180,10 +180,10 @@ Los creadores tendran dos propositos:</p>
 
                    
 
-                    <p>Los Inversionistas dentro de "Proyectos Brillantes" tendran la oportunidad de apoyar el talento 
-                        y la motivacion de los creadores ayudandolos mediante:</p>
-<p>🟠 Donaciones: donde no se esperara nada a cambio</p>    
-<p>🟠 Inversiones: donde obtendra una recompensa por el dinero invertido segun el acuerdo establecido entre ambas partes</p>     
+                    <p>Los Inversionistas dentro de "Proyectos Brillantes" tendrán la oportunidad de apoyar el talento 
+                        y la motivación de los creadores ayudándoles mediante:</p>
+<p>🟠 Donaciones: Donde no se esperara nada a cambio</p>    
+<p>🟠 Inversiones: Donde obtendrá una recompensa por el dinero invertido segÚn el acuerdo establecido entre ambas partes</p>     
 
                  
                 </div>
@@ -363,10 +363,10 @@ Los creadores tendran dos propositos:</p>
         <div class="row">
 
             <div class="col-lg-6 col-10">
-                <h2 class="text-white mb-2">Donde las Ideas se Hacen Realidad</h2>
+                <h2 class="text-white mb-2">Donde las ideas se hacen realidad</h2>
 
                 <p class="text-white">Tienes dudas a cerca de nuestras normas y políticas, consultalas.
-                    Tambien, puedes leer nuestro aviso de privacidad y como protegemos tus datos personales.
+                    También, puedes leer nuestro aviso de privacidad y como protegemos tus datos personales.
                 </p>
             </div>
 

@@ -92,7 +92,7 @@ Bootstrap 5 HTML CSS Template
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-12 mb-4">
-                        <h2>Proyectos</h2>
+                        <h2>Proyectos.</h2>
                     </div>
                     <div class="clearfix"></div>
 
@@ -134,8 +134,6 @@ Bootstrap 5 HTML CSS Template
             echo '<div class="job-image-wrap d-flex align-items-center">';
             // Puedes agregar más elementos aquí si es necesario
             echo '</div>';
-            echo '<a href="#" class="bi-bookmark ms-auto me-2"></a>';
-            echo '<a href="#" class="bi-heart"></a>';
             echo '</div>';
             echo '<div class="d-flex align-items-center">';
             // Puedes mostrar la descripción del proyecto
@@ -144,7 +142,7 @@ Bootstrap 5 HTML CSS Template
             echo '<div class="d-flex align-items-center border-top pt-3">';
             // Agrega el enlace con el ID del proyecto
             echo '<a href="../inversionista\Datos_inversion.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Ver mi inversion.</a>';
-            echo '<a href="../desarrollador/avances_proyecto2.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Avances proyecto</a>';
+            echo '<a href="../desarrollador/avances_proyecto2.php?id_proyecto=' . $row['id_proyecto'] . '" class="custom-btn btn ms-auto">Avances proyecto.</a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';

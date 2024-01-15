@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="text-white">Avances del Proyecto</h1>
+                        <h1 class="text-white">Avances del proyecto.</h1>
                     </div>
                 </div>
             </div>
@@ -121,13 +121,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="row d-flex justify-content-center">
         <div class="col-lg-6 col-md-10 col-6">
             <form class="custom-form hero-form" method="post" action="editar_avances_proyecto.php?id_proyecto=<?php echo $id_proyecto; ?>" role="form" enctype="multipart/form-data">
-                <h3 class="text-white mb-3 d-flex justify-content-center">Avance Proyecto</h3>
+                <h3 class="text-white mb-3 d-flex justify-content-center">Avance proyecto.</h3>
                 <div class="row">
                     <div class="col-lg-12 col-12">
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="bi-pencil-fill custom-icon"></i></span>
                             <!-- Cambié el tipo de input a textarea y ajusté las filas -->
-                            <textarea name="descripcion_avance" id="descripcion_avance" class="form-control" placeholder="Descripcion avance" rows="5" required><?php echo $descripcion_avance; ?></textarea>
+                            <textarea name="descripcion_avance" id="descripcion_avance" class="form-control" placeholder="Descripción avance." rows="5" required><?php echo $descripcion_avance; ?></textarea>
                         </div>
                     </div>
 
@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 <div class="col-lg-12 col-12 mt-3">
-    <button type="submit" class="form-control">Guardar Cambios</button>
+    <button type="submit" class="form-control">Guardar cambios</button>
 </div>
 
 <div class="col-lg-12 col-12">
@@ -152,6 +152,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var descripcionAvanceInput = document.getElementById('descripcion_avance');
+
+        // Función para autocorregir acentos
+        function autocorrectAccents(str) {
+            var map = {
+                'á': 'á', 'é': 'é', 'í': 'í', 'ó': 'ó', 'ú': 'ú',
+                'Á': 'Á', 'É': 'É', 'Í': 'Í', 'Ó': 'Ó', 'Ú': 'Ú'
+            };
+            return str.replace(/[áéíóúÁÉÍÓÚ]/g, function(match) {
+                return map[match];
+            });
+        }
+
+        // Función para capitalizar la primera letra de la primera palabra
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Agrega eventos oninput al campo de descripción_avance
+        descripcionAvanceInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+    });
+</script>
 
                             </div>
                         </div>

@@ -56,7 +56,7 @@ Bootstrap 5 HTML CSS Template
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="text-white">Proyectos social y sin fines de lucro</h1>
+                <h1 class="text-white">Proyectos social y sin fines de lucro.</h1>
             </div>
         </div>
     </div>
@@ -106,26 +106,9 @@ Bootstrap 5 HTML CSS Template
             </div>
 
             <div class="col-lg-4 col-12 d-flex align-items-center ms-auto mb-5 mb-lg-4">
-                <p class="mb-0 ms-lg-auto">Sort by:</p>
-
                 <div class="dropdown dropdown-sorting ms-3 me-4">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSortingButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        Newest Jobs
-                    </button>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownSortingButton">
-                        <li><a class="dropdown-item" href="#">Lastest Jobs</a></li>
-
-                        <li><a class="dropdown-item" href="#">Highed Salary Jobs</a></li>
-
-                        <li><a class="dropdown-item" href="#">Internship Jobs</a></li>
-                    </ul>
                 </div>
-
                 <div class="d-flex">
-                    <a href="#" class="sorting-icon active bi-list me-2"></a>
-
-                    <a href="#" class="sorting-icon bi-grid"></a>
                 </div>
             </div>
 
@@ -163,10 +146,6 @@ if ($result) {
             // Muestra la categoría
             echo '            <p class="job-category">Categoría: ' . $Categoria . '</p>';
             echo '            <div class="d-flex align-items-center">';
-            echo '                <a href="#" class="bi-bookmark ms-auto me-2">';
-            echo '                </a>';
-            echo '                <a href="#" class="bi-heart">';
-            echo '                </a>';
             echo '            </div>';
             echo '            <div class="d-flex align-items-center">';
             echo '            </div>';

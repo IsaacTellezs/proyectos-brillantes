@@ -26,33 +26,33 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav align-items-center ms-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link" href="\crowd\index.php">Pagina Principal</a>
+                        <a class="nav-link" href="\crowd\index.php">Página principal.</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\crowd\about.php">Quienes Somos</a>
+                        <a class="nav-link" href="\crowd\about.php">¿Quiénes somos?</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias.</a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="\crowd\categorias\educacion.php">Educación</a></li>
-                            <li><a class="dropdown-item" href="\crowd\categorias\NegociosyEmprendimiento.php">Negocios y Emprendimiento</a></li>
-                            <li><a class="dropdown-item" href="\crowd\categorias\GobiernoyServicios.php">Gobierno y Servicios Publicos</a></li>
-                            <li><a class="dropdown-item" href="\crowd\categorias\SocialySinFines.php">Social y sin fines de Lucro</a></li>
-                            <li><a class="dropdown-item" href="\crowd\categorias\Salud.php">Salud</a></li>
+                            <li><a class="dropdown-item" href="\crowd\categorias\educacion.php">Educación.</a></li>
+                            <li><a class="dropdown-item" href="\crowd\categorias\NegociosyEmprendimiento.php">Negocios y emprendimiento.</a></li>
+                            <li><a class="dropdown-item" href="\crowd\categorias\GobiernoyServicios.php">Gobierno y servicios públicos.</a></li>
+                            <li><a class="dropdown-item" href="\crowd\categorias\SocialySinFines.php">Social y sin fines de lucro.</a></li>
+                            <li><a class="dropdown-item" href="\crowd\categorias\Salud.php">Salud.</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\crowd\desarrollador\registro-proyectos.php">Subir proyecto</a>
+                        <a class="nav-link" href="\crowd\desarrollador\registro-proyectos.php">Subir proyecto.</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="\crowd\desarrollador\misProyectos.php">Mis proyectos</a>
+                    <a class="nav-link" href="\crowd\desarrollador\misProyectos.php">Mis proyectos.</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio</a>
+                        <a class="nav-link dropdown-toggle custom-btn btn" href="#">Inicio.</a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="\crowd\index.php">Inicio</a></li>
-                            <li><a class="dropdown-item" href="\crowd\desarrollador\perfil.php">Mi perfil</a></li>
-                            <li><a class="dropdown-item" href="\crowd\funciones\logout.php">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="\crowd\index.php">Inicio.</a></li>
+                            <li><a class="dropdown-item" href="\crowd\desarrollador\perfil.php">Mi perfil.</a></li>
+                            <li><a class="dropdown-item" href="\crowd\funciones\logout.php">Cerrar sesión.</a></li>
                         </ul>
                     </li>
             </div>

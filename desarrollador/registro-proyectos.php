@@ -201,20 +201,20 @@ if (isset($_SESSION['errorRegistro'])) {
 
                         <div class="col-lg-6 col-12">
                             <form class="custom-form hero-form" action="registro-proyectos.php" method="POST" role="form" enctype="multipart/form-data">
-                                <h3 class="text-white mb-3 d-flex justify-content-center">Proyecto</h3>
+                                <h3 class="text-white mb-3 d-flex justify-content-center">Proyecto.</h3>
 
                                 <div class="row">
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-pencil-fill custom-icon"></i></span>
-                                            <input type="text" name="nom_proyecto" id="nom_proyecto" class="form-control" placeholder="Nombre proyecto" required>
+                                            <input type="text" name="nom_proyecto" id="nom_proyecto" class="form-control" placeholder="Nombre proyecto." required>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-card-text custom-icon"></i></span>
-                                            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion" required>
+                                            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion." required>
                                         </div>
                                     </div>
 
@@ -222,11 +222,11 @@ if (isset($_SESSION['errorRegistro'])) {
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-list custom-icon"></i></span>
                                             <select class="form-select" id="categoria" name="categoria" required>
-                                                <option value="Educación">Educacion</option>
-                                                <option value="Negocios y emprendimiento">Negocios y emprendimiento</option>
-                                                <option value="Gobierno y servicios públicos">Gobierno y servicios publicos</option>
-                                                <option value="Social y sin fines de lucro">Social y sin fines de lucro</option>
-                                                <option value="Salud">Salud</option>
+                                                <option value="Educación">Educación.</option>
+                                                <option value="Negocios y emprendimiento">Negocios y emprendimiento.</option>
+                                                <option value="Gobierno y servicios públicos">Gobierno y servicios publicos.</option>
+                                                <option value="Social y sin fines de lucro">Social y sin fines de lucro.</option>
+                                                <option value="Salud">Salud.</option>
                                             </select>
                                         </div>
                                     </div>
@@ -234,21 +234,21 @@ if (isset($_SESSION['errorRegistro'])) {
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-cash-coin custom-icon"></i></span>
-                                            <input type="number" name="meta_financiacion" id="meta_financiacion" class="form-control" placeholder="Meta de financiacion" required pattern="[0-9]+" title="Ingrese solo números">
+                                            <input type="number" name="meta_financiacion" id="meta_financiacion" class="form-control" placeholder="Meta de financiación." required pattern="[0-9]+" title="Ingrese solo números">
                                         </div>
                                     </div>
 <!-- Campo fecha_inicio --> 
                                 <div class="col-lg-6 col-md-6 col-12">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi-calendar2 custom-icon"></i></span>
-                                                <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="Fecha de inicio" required title="Fecha de inicio">
+                                                <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="Fecha de inicio." required title="Fecha de inicio">
                                         </div>
                                     </div>
                                     <!-- Campo fecha_termino -->
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi-calendar2-check custom-icon"></i></span>
-                                            <input type="date" name="fecha_termino" id="fecha_termino" class="form-control" placeholder="Fecha de término" required title="Establece una fecha de término no mayor a 1 año">
+                                            <input type="date" name="fecha_termino" id="fecha_termino" class="form-control" placeholder="Fecha de término." required title="Establece una fecha de término no mayor a un año">
                                     </div>
                                 </div>
 
@@ -261,7 +261,7 @@ if (isset($_SESSION['errorRegistro'])) {
 
                                     <div class="col-lg-12 col-12">
                                         <button type="submit" class="form-control">
-                                            Subir proyecto
+                                            Subir proyecto.
                                         </button>
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@ if (isset($_SESSION['errorRegistro'])) {
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <p id="modalMessage"><?php echo $errorRegistro; ?></p>
-                <button id="closeModalBtn">Cerrar</button>
+                <button id="closeModalBtn">Cerrar.</button>
             </div>
         </div>
             <!-- Agrega el script para inicializar el Datepicker -->
@@ -302,6 +302,42 @@ if (isset($_SESSION['errorRegistro'])) {
 
             </script>
             
+            <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nombreProyectoInput = document.getElementById('nom_proyecto');
+        var descripcionInput = document.getElementById('descripcion');
+
+        // Función para autocorregir acentos
+        function autocorrectAccents(str) {
+            var map = {
+                'á': 'á', 'é': 'é', 'í': 'í', 'ó': 'ó', 'ú': 'ú',
+                'Á': 'Á', 'É': 'É', 'Í': 'Í', 'Ó': 'Ó', 'Ú': 'Ú'
+            };
+            return str.replace(/[áéíóúÁÉÍÓÚ]/g, function(match) {
+                return map[match];
+            });
+        }
+
+        // Función para capitalizar la primera letra de la primera palabra
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Agrega eventos oninput a los campos
+        nombreProyectoInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+
+        descripcionInput.addEventListener('input', function() {
+            this.value = autocorrectAccents(this.value);
+            this.value = capitalizeFirstLetter(this.value);
+        });
+    });
+</script>
+
+
+
             <script>
     document.addEventListener('DOMContentLoaded', function() {
         var today = new Date();

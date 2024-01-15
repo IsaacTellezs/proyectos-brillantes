@@ -45,7 +45,7 @@ headerDinamico($conexion);
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="text-white">Mis proyectos</h1>
+                <h1 class="text-white">Mis proyectos.</h1>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@ headerDinamico($conexion);
                     <div class="row align-items-center">
 
                         <div class="col-lg-6 col-12 mb-4">
-                            <h2>Proyectos</h2>
+                            <h2>Proyectos.</h2>
                         </div>
 
                         <div class="clearfix"></div>
@@ -128,8 +128,6 @@ if (isset($_SESSION['id'])) {
             echo '<div class="job-image-wrap d-flex align-items-center">';
             // Puedes agregar más elementos aquí si es necesario
             echo '</div>';
-            echo '<a href="#" class="bi-bookmark ms-auto me-2"></a>';
-            echo '<a href="#" class="bi-heart"></a>';
             echo '</div>';
             echo '<div class="d-flex align-items-center">';
             // Puedes mostrar la descripción del proyecto

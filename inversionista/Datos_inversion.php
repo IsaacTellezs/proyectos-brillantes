@@ -128,7 +128,7 @@ mysqli_close($conexion);
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="text-white">Detalles del Proyecto</h1>
+                    <h1 class="text-white">Detalles de la inversion.</h1>
                 </div>
             </div>
         </div>

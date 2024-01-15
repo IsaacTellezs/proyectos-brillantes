@@ -89,11 +89,11 @@ headerDinamico($conexion);
 
                         <div class="col-lg-6 col-12 mb-5 mb-lg-0">
                             <div class="hero-section-text mt-5">
-                                <h6 class="text-white">Eres innovador o te interesa apoyar algun proyecto?</h6>
+                                <h6 class="text-white">¿Eres innovador o te interesa apoyar algún proyecto?</h6>
 
-                                <h1 class="hero-title text-white mt-4 mb-4">Plataforma de<br> financiacion colectiva</h1>
+                                <h1 class="hero-title text-white mt-4 mb-4">Plataforma de<br> financiación colectiva.</h1>
 
-                                <a href="#categories-section" class="custom-btn custom-border-btn btn">Ver proyectos</a>
+                                <a href="#categories-section" class="custom-btn custom-border-btn btn">Ver proyectos.</a>
                             </div>
                         </div>
 
@@ -104,12 +104,12 @@ headerDinamico($conexion);
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
-                    <input type="text" name="q" id="job-title" class="form-control" placeholder="Buscar por categoría" required>
+                    <input type="text" name="q" id="job-title" class="form-control" placeholder="Buscar por categoría." required>
                 </div>
             </div>
 
             <div class="col-lg-12 col-12">
-                <button type="submit" class="form-control">Buscar</button>
+                <button type="submit" class="form-control">Buscar.</button>
             </div>
         </div>
         <div class="col-12">
@@ -141,7 +141,7 @@ headerDinamico($conexion);
                     <div class="row justify-content-center align-items-center">
 
                         <div class="col-lg-12 col-12 text-center">
-                            <h2 class="mb-5">Ver <span>Categorias</span></h2>
+                            <h2 class="mb-5">Ver <span>Categorías.</span></h2>
                         </div>
 
                         <div class="col-lg-2 col-md-4 col-6">
@@ -149,7 +149,7 @@ headerDinamico($conexion);
                                 <a href="./categorias/educacion.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-book"></i>
                                 
-                                    <small class="categories-block-title">Educacion</small>
+                                    <small class="categories-block-title">Educación.</small>
 
                                 </a>
                             </div>
@@ -160,7 +160,7 @@ headerDinamico($conexion);
                                 <a href="./categorias/NegociosyEmprendimiento.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-fill "></i>
                                 
-                                    <small class="categories-block-title">Negocios y Emprendimiento</small>
+                                    <small class="categories-block-title">Negocios y emprendimiento.</small>
                                 </a>
                             </div>
                         </div>
@@ -170,7 +170,7 @@ headerDinamico($conexion);
                                 <a href="./categorias/GobiernoyServicios.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bank"></i>
                                 
-                                    <small class="categories-block-title">Gobierno y Servicios Publicos</small>
+                                    <small class="categories-block-title">Gobierno y servicios públicos.</small>
 
                                     
                                 </a>
@@ -182,7 +182,7 @@ headerDinamico($conexion);
                                 <a href="./categorias/SocialySinFines.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-chat-square-text"></i>
                                 
-                                    <small class="categories-block-title">Social y sin fines de Lucro</small>
+                                    <small class="categories-block-title">Social y sin fines de lucro.</small>
 
                                     
                                 </a>
@@ -194,7 +194,7 @@ headerDinamico($conexion);
                                 <a href="./categorias/Salud.php" class="d-flex flex-column justify-content-center align-items-center h-100">
                                     <i class="categories-icon bi-bag-plus"></i>
                                 
-                                    <small class="categories-block-title">Salud</small>
+                                    <small class="categories-block-title">Salud.</small>
 
                                     
                                 </a>
@@ -219,9 +219,9 @@ headerDinamico($conexion);
 
                         <div class="col-lg-6 col-12">
                             <div class="custom-text-block">
-                                <h2 class="text-white mb-2">¿Que es CROWDFUNDING?</h2>
+                                <h2 class="text-white mb-2">¿Qué es CROWDFUNDING?</h2>
 
-                                <p class="text-white">Es un sitio en linea donde emprendedores podran recolectar fondos a traves de inversionistas o donadores para financiar sus proyectos, y mediante un trato se llevaran beneficios ambas partes</p>
+                                <p class="text-white">Es un sitio en línea donde emprendedores podrán recolectar fondos a través de inversionistas o donadores para financiar sus proyectos, y mediante un trato se llevaran beneficios ambas partes</p>
 
                             </div>
                         </div>
@@ -248,7 +248,7 @@ headerDinamico($conexion);
                     <div class="row align-items-center">
 
                         <div class="col-lg-6 col-12 mb-4">
-                            <h2>Proyectos Recientes</h2>
+                            <h2>Proyectos recientes.</h2>
                         </div>
 
                         <div class="clearfix"></div>
@@ -296,7 +296,7 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conexion);
 ?>
                         <div class="col-lg-4 col-12 recent-jobs-bottom d-flex ms-auto my-4">
-                            <a href="categorias/proyectos.php" class="custom-btn btn ms-lg-auto">Ver mas proyectos</a>
+                            <a href="categorias/proyectos.php" class="custom-btn btn ms-lg-auto">Ver más proyectos.</a>
                         </div>
 
                     </div>
@@ -310,16 +310,16 @@ mysqli_close($conexion);
                     <div class="row">
 
                         <div class="col-lg-6 col-10">
-                            <h2 class="text-white mb-2">Donde las Ideas se Hacen Realidad</h2>
+                            <h2 class="text-white mb-2">¡Donde las ideas se hacen realidad!</h2>
 
                             <p class="text-white">¡Únete a nuestra comunidad de apasionados por la innovación! En "Proyectos Brillantes", estamos comprometidos en impulsar el potencial de mentes creativas y emprendedoras. Ayúdanos a convertir ideas en realidad.</p>
                         </div>
 
                         <div class="col-lg-4 col-12 ms-auto">
                             <div class="custom-border-btn-wrap d-flex align-items-center mt-lg-4 mt-2">
-                                <a href="#" class="custom-btn custom-border-btn btn me-4">Crea una cuenta</a>
+                                <a href="#" class="custom-btn custom-border-btn btn me-4">Crea una cuenta.</a>
 
-                                <a href="contact.php" class="custom-link">Contacto</a>
+                                <a href="contact.php" class="custom-link">Contacto.</a>
                             </div>
                         </div>
 

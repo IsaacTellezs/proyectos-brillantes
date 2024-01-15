@@ -43,7 +43,7 @@
 
                         <div class="col-lg-6 col-12 ">
                         <form class="custom-form hero-form" action="funciones/iniciar-sesion-inversionista.php" method="post" role="form">
-                                <h3 class="text-white mb-3 d-flex justify-content-center">Iniciar sesión</h3>
+                                <h3 class="text-white mb-3 d-flex justify-content-center">Iniciar sesión.</h3>
                                   <!-- Mensaje de error -->
                                 <?php
                                 if (isset($_GET['error'])) {
@@ -57,7 +57,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope"></i></span>
 
-                                            <input type="email" name="txt-email" id="txt-email" class="form-control" placeholder="Email" required>
+                                            <input type="email" name="txt-email" id="txt-email" class="form-control" placeholder="Email." required>
                                         </div>
                                     </div>
 
@@ -65,7 +65,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
 
-                                            <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña" required>
+                                            <input type="password" name="txt-clave" id="txt-clave" class="form-control" placeholder="Contraseña." required>
                                             <i class="px-2 input-group-text toggle-password bi bi-eye" onclick="togglePassword()"></i>
                                         </div>
                                     </div>
@@ -73,10 +73,10 @@
 
                                     <div class="col-lg-12 col-12">
                                         <button type="submit" class="form-control">
-                                            Iniciar sesión
+                                            Iniciar sesión.
                                         </button>
                                     </div>
-                                    <a class ="text-white mb-3 d-flex justify-content-center" href="recovery.php">Olvide mi contraseña</a>
+                                    <a class ="text-white mb-3 d-flex justify-content-center" href="recovery.php">Olvide mi contraseña.</a>
 
                                     <?php 
                                     if(isset($_GET['message'])){
@@ -86,14 +86,14 @@
                                         <?php 
                                         switch ($_GET['message']) {
                                           case 'ok':
-                                            echo 'Por favor, revisa tu correo';
+                                            echo 'Por favor, revisa tu correo.';
                                             break;
                                           case 'success_password':
-                                            echo 'Inicia sesión con tu nueva contraseña';
+                                            echo 'Inicia sesión con tu nueva contraseña.';
                                             break;
                                             
                                           default:
-                                            echo 'Algo salió mal, intenta de nuevo';
+                                            echo 'Algo salió mal, intenta de nuevo.';
                                             break;
                                         }
                                         ?>

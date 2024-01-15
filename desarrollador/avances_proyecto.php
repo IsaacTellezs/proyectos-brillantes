@@ -107,7 +107,7 @@ if (isset($_GET['id_proyecto'])) {
                     echo "</div>";
 
                     echo "<div class='col-md-12 text-center mt-3'>";
-                    echo "<a href='editar_avances_proyecto.php?id_proyecto=$id_proyecto' class='btn btn-primary'>Agregar Avance</a>";
+                    echo "<a href='editar_avances_proyecto.php?id_proyecto=$id_proyecto' class='btn btn-primary'>Agregar avance.</a>";
                     echo "</div>";
 
                     echo "</div>";
