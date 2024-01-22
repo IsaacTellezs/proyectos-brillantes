@@ -44,9 +44,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Centro de control.</a>
-                        </li>
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="\crowd\inversionista\Mis_inversiones.php">Mis inversiones.</a>
