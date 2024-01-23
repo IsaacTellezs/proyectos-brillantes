@@ -87,7 +87,7 @@
 
                                     <div class="col-lg-12 col-12">
                                         <button type="submit" class="form-control">
-                                            Registrarme.
+                                            Registrar.
                                         </button>
                                     </div>
 
