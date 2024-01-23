@@ -28,7 +28,7 @@ if ($result->num_rows === 1) {
         $_SESSION['TipoAdmin'] = $tipoAdmin;
 
         if ($tipoAdmin == 1) {
-            header('Location: ../admin/registro-admin.php');
+            header('Location: ../superadmin/registro-admin.php');
             exit();
         } elseif ($tipoAdmin == 0) {
             header('Location: ../admin/data-info.php');
