@@ -9,6 +9,8 @@ headerDinamico($conexion);
 $fecha_avance = ""; // Inicializa las variables
 $descripcion_avance = "";
 $ImagenMostrada = false; // Variable para controlar si la imagen ya se mostró
+
+
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +106,51 @@ $ImagenMostrada = false; // Variable para controlar si la imagen ya se mostró
                             echo "<img src='$Imagen' class='job-image img-fluid' alt='Imagen del Proyecto' style='max-width: 100%; max-height: 60vh;'>";
                             echo "</div>";
                             echo "</div>";
+
+                            $query_meta_financiacion = "SELECT p.meta_financiacion FROM proyectos p WHERE p.id_proyecto = ?";
+$stmt_meta_financiacion = mysqli_prepare($conexion, $query_meta_financiacion);
+mysqli_stmt_bind_param($stmt_meta_financiacion, "i", $id_proyecto);
+$result_meta_financiacion = mysqli_stmt_execute($stmt_meta_financiacion);
+
+if ($result_meta_financiacion) {
+    $result_meta_financiacion = mysqli_stmt_get_result($stmt_meta_financiacion);
+    $row_meta_financiacion = mysqli_fetch_assoc($result_meta_financiacion);
+    $meta_financiacion = $row_meta_financiacion['meta_financiacion'];
+    mysqli_free_result($result_meta_financiacion);
+    mysqli_stmt_close($stmt_meta_financiacion);
+} else {
+    // Manejar el error si es necesario
+}
+echo "<br>";
+echo "<br>";
+
+echo "<div class='col-md-6 mx-auto'>";
+echo "<div class='mx-auto text-center my-auto' style='max-width: 100%;'>";
+echo "<p><strong>Meta de financiación:</strong> $meta_financiacion</p>";
+
+$query_total_contribuciones = "SELECT SUM(p.cantidad) AS cantidad FROM pago p WHERE p.id_proyect = ?";
+$stmt_total_contribuciones = mysqli_prepare($conexion, $query_total_contribuciones);
+mysqli_stmt_bind_param($stmt_total_contribuciones, "i", $id_proyecto);
+$result_total_contribuciones = mysqli_stmt_execute($stmt_total_contribuciones);
+
+if ($result_total_contribuciones) {
+    $result_total_contribuciones = mysqli_stmt_get_result($stmt_total_contribuciones);
+    $row_total_contribuciones = mysqli_fetch_assoc($result_total_contribuciones);
+    $cantidad = $row_total_contribuciones['cantidad'];
+    mysqli_free_result($result_total_contribuciones);
+    mysqli_stmt_close($stmt_total_contribuciones);
+} else {
+    // Manejar el error si es necesario
+}
+
+$porcentaje_financiado = ($cantidad / $meta_financiacion) * 100;
+
+echo "<p><strong>Total recaudado:</strong> $cantidad</p>";
+echo "<div class='progress'>";
+echo "<div class='progress-bar' role='progressbar' style='width: $porcentaje_financiado%;' aria-valuenow='$porcentaje_financiado' aria-valuemin='0' aria-valuemax='100'></div>";
+echo "</div>";
+echo "</div>";
+echo "</div>";
 
                             // No incluir el botón de agregar avance
 
