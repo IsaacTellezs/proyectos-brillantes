@@ -5,14 +5,14 @@ conectar();
 session_start();
 headerDinamico($conexion);
 
-if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['experiencia'], $_POST['facebook'], $_POST['instagram'])) {
+if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['experiencia'], $_POST['linkedin'], $_POST['github'])) {
     // Obtener datos del formulario
     $nom_usuario = $_POST['nom_usuario'];
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $experiencia = $_POST['experiencia'];
-    $facebook = $_POST['facebook'];
-    $instagram = $_POST['instagram'];
+    $linkedin = $_POST['linkedin'];
+    $github = $_POST['github'];
 
         // Validación de teléfono
         if (!is_numeric($telefono)) {
@@ -33,9 +33,9 @@ if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['e
 
                     // Insertar los datos en la base de datos (usando una conexión MySQL)
                     $user = $_SESSION['Correo'];
-                    $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, experiencia = ?, facebook = ?, instagram = ?, foto = ? WHERE correo = ?";
+                    $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, experiencia = ?, linkedin = ?, github = ?, foto = ? WHERE correo = ?";
 $stmt = $conexion->prepare($update_sql);
-$stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram, $file_name, $user);
+$stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $linkedin, $github, $file_name, $user);
 
 
                     if ($stmt->execute()) {
@@ -55,11 +55,11 @@ $stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $experiencia, $f
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT nom_usuario, correo, telefono, experiencia, facebook, instagram FROM usuarios WHERE correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, experiencia, linkedin, github FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
-$stmt->bind_result($nom_usuario, $correo, $telefono, $experiencia, $facebook, $instagram);
+$stmt->bind_result($nom_usuario, $correo, $telefono, $experiencia, $linkedin, $github);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -149,19 +149,19 @@ $stmt->close();
                 <div class="row">
     <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-            <label for="facebook" style="font-size: 24px;"><strong>Facebook.</strong></label>
+            <label for="linkedin" style="font-size: 24px;"><strong>Linkedin.</strong></label>
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-facebook custom-icon"></i></span>
-                <input type="text" class="form-control" id="facebook" placeholder="Tu perfil de Facebook." name="facebook" value="<?php echo $facebook; ?>">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-linkedin custom-icon"></i></span>
+                <input type="text" class="form-control" id="linkedin" placeholder="Tu perfil de linkedin." name="linkedin" value="<?php echo $linkedin; ?>">
             </div>
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-            <label for="instagram" style="font-size: 24px;"><strong>Instagram.</strong></label>
+            <label for="github" style="font-size: 24px;"><strong>Github.</strong></label>
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-instagram custom-icon"></i></span>
-                <input type="text" class="form-control" id="instagram" placeholder="Tu perfil de Instagram." name="instagram" value="<?php echo $instagram; ?>">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-github custom-icon"></i></span>
+                <input type="text" class="form-control" id="github" placeholder="Tu perfil de github." name="github" value="<?php echo $github; ?>">
             </div>
         </div>
     </div>
