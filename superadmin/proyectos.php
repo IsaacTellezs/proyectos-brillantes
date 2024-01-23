@@ -41,7 +41,7 @@
         <main>
 
         <div class="container mt-5">
-    <h2>Datos de Contacto</h2>
+    <h2>Proyectos</h2>
 
     <table class="table">
         <thead>
