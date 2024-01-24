@@ -269,7 +269,7 @@ if (mysqli_num_rows($result) > 0) {
         echo '    <div class="job-thumb job-thumb-box">';
         echo '        <div class="job-image-box-wrap">';
         echo '            <a href="desarrollador/informacion-proyecto-desarrollador.php?id_proyecto=' . $ProyectoID . '">';
-        echo '                <img src="'  . $rutaImagenCompleta . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 300px; height: 300px;">';
+        echo '                <img src="'  . $rutaImagenCompleta . '" class="job-image img-fluid" alt="' . $nombre_proyecto . '" style="width: 400px; height: 400px;">';
         echo '            </a>';
         echo '        </div>';
         echo '        <div class="job-body">';
