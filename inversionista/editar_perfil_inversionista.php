@@ -6,12 +6,14 @@ session_start();
 headerDinamico($conexion);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['empresa'])) {
+    if (isset($_POST['nom_usuario'], $_POST['correo'], $_POST['telefono'], $_POST['empresa'], $_POST['linkedin'], $_POST['github'])) {
         // Obtener datos del formulario
         $nom_usuario = $_POST['nom_usuario'];
         $correo = $_POST['correo'];
         $telefono = $_POST['telefono'];
         $empresa = $_POST['empresa'];
+        $linkedin = $_POST['linkedin'];
+        $github = $_POST['github'];
 
         // Validación de teléfono
         if (!is_numeric($telefono)) {
@@ -32,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // Insertar los datos en la base de datos (usando una conexión MySQL)
                     $user = $_SESSION['Correo'];
-                    $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ?, foto = ? WHERE correo = ?";
+                    $update_sql = "UPDATE usuarios SET nom_usuario = ?, correo = ?, telefono = ?, empresa = ?, linkedin = ?, github = ?, foto = ? WHERE correo = ?";
                     $stmt = $conexion->prepare($update_sql);
-                    $stmt->bind_param("ssssss", $nom_usuario, $correo, $telefono, $empresa, $file_name, $user);
+                    $stmt->bind_param("ssssssss", $nom_usuario, $correo, $telefono, $empresa,  $linkedin, $github, $file_name, $user);
 
                     if ($stmt->execute()) {
                         header('Location: perfil_inversionista.php');
@@ -54,11 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT nom_usuario, correo, telefono, empresa FROM usuarios WHERE correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, empresa, foto, linkedin, github FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
-$stmt->bind_result($nom_usuario, $correo, $telefono, $empresa);
+$stmt->bind_result($nom_usuario, $correo, $telefono, $empresa, $foto, $linkedin, $github); // Agregado $linkedin y $github
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -145,6 +147,26 @@ $stmt->close();
                         </div>
                     </div>
                 </div>
+                <div class="row">
+    <div class="col-lg-6 col-md-6 col-12">
+        <div class="form-group">
+            <label for="linkedin" style="font-size: 24px;"><strong>Linkedin.</strong></label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-linkedin custom-icon"></i></span>
+                <input type="text" class="form-control" id="linkedin" placeholder="Tu perfil de linkedin." name="linkedin" value="<?php echo $linkedin; ?>">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12">
+        <div class="form-group">
+            <label for="github" style="font-size: 24px;"><strong>Github.</strong></label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-github custom-icon"></i></span>
+                <input type="text" class="form-control" id="github" placeholder="Tu perfil de github." name="github" value="<?php echo $github; ?>">
+            </div>
+        </div>
+    </div>
+</div>
                 <div class="form-group">
                     <label for="photo" style="font-size: 24px;"><strong>Subir una foto.</strong></label>
                     <input type="file" class="form-control" id="photo" name="user_photo">

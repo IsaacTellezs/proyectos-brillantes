@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 // Obtener la información del usuario desde la base de datos para prellenar el formulario
 $user = $_SESSION['Correo'];
-$select_sql = "SELECT nom_usuario, correo, telefono, experiencia, foto, facebook, instagram FROM usuarios WHERE correo = ?";
+$select_sql = "SELECT nom_usuario, correo, telefono, experiencia, foto, linkedin, github FROM usuarios WHERE correo = ?";
 $stmt = $conexion->prepare($select_sql);
 $stmt->bind_param("s", $user);
 $stmt->execute();
-$stmt->bind_result($nom_usuario, $correo, $telefono, $experiencia, $foto, $facebook, $instagram); // Agregado $facebook y $instagram
+$stmt->bind_result($nom_usuario, $correo, $telefono, $experiencia, $foto, $linkedin, $github); // Agregado $facebook y $instagram
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -111,19 +111,20 @@ $stmt->close();
                 <p style="font-size: 30px;">Correo: <?php echo $correo; ?></p>
                 <p style="font-size: 30px;">Telefono: <?php echo $telefono; ?></p>
                 <p style="font-size: 30px;">Experiencia: <?php echo $experiencia; ?></p>
-                <div class="col-12">
+                
+<div class="col-12 text-right">
+    <a href="<?php echo $linkedin; ?>" target="_blank" class="btn btn-primary btn-lg rounded-circle">
+        <i class="fab fa-linkedin-in"></i> <!-- Icono de LinkedIn -->
+    </a>
+    <a href="<?php echo $github; ?>" target="_blank" class="btn btn-primary btn-lg rounded-circle">
+        <i class="fab fa-github"></i> <!-- Icono de GitHub -->
+    </a>
+</div>
+<div class="col-12">
                     <a href="../desarrollador/editar-perfil-usuario.php" class="btn btn-secondary btn-lg rounded-circle">
                         Editar perfil
                     </a>
-                </div>
-                <div class="col-12 text-right">
-                    <a href="<?php echo $facebook; ?>" target="_blank" class="btn btn-primary btn-lg rounded-circle">
-                        <i class="fab fa-facebook-f"></i> <!-- Icono de Facebook -->
-                    </a>
-                    <a href="<?php echo $instagram; ?>" target="_blank" class="btn btn-primary btn-lg rounded-circle">
-                        <i class="fab fa-instagram"></i> <!-- Icono de Instagram -->
-                    </a>
-                </div>
+                    </div>
             </div>
         </div>
     </div>
